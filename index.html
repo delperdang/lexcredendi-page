@@ -1269,6 +1269,13 @@ Day 363 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG001
 Day 364 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG0015/__PAC.HTM>CCC 2846</a>-2856<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/61b3e7a4-5c65-4aa8-bf96-67447b23e73e.mp3>Click to Play Podcast</a>
 Day 365 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG0015/__PAE.HTM>CCC 2857</a>-2865<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/786262c6-cfce-46ac-8b33-7a5f4299b7a2.mp3>Click to Play Podcast</a>`;
 
+        // Precompute JSON arrays from CSV config
+        const prayerData = parseCSV(prayerDataCSV);
+        const apologeticsData = parseCSV(apologeticsDataCSV);
+        const doctrineData = parseCSV(doctrineDataCSV);
+        const bibleInYearData = parseCSV(bibleInYearDataCSV);
+        const catechismInYearData = parseCSV(catechismInYearDataCSV);
+
         function parseCSV(csvText) {
             const lines = csvText.trim().split('\n');
             const headers = lines[0].split(',').map(header => header.trim());
@@ -1287,7 +1294,7 @@ Day 365 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG001
         }
 
         const prayersList = document.getElementById('prayers-list');
-        const prayers = parseCSV(prayerDataCSV);
+        const prayers = prayerData;
         prayers.forEach((prayer, index) => {
             const prayerId = `prayer-${index}`;
             const card = document.createElement('div');
@@ -1340,7 +1347,7 @@ Day 365 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG001
         });
 
         const apologeticsList = document.getElementById('apologetics-list');
-        const apologeticsTopics = parseCSV(apologeticsDataCSV);
+        const apologeticsTopics = apologeticsData;
         apologeticsTopics.forEach((topic, index) => {
             const topicId = `apologetics-${index}`;
             const item = document.createElement('div');
@@ -1358,7 +1365,7 @@ Day 365 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG001
         });
 
         const doctrineList = document.getElementById('doctrine-list');
-        const doctrineFormulas = parseCSV(doctrineDataCSV);
+        const doctrineFormulas = doctrineData;
         doctrineFormulas.forEach((formula, index) => {
             const formulaId = `doctrine-${index}`;
             const item = document.createElement('div');
@@ -1386,7 +1393,7 @@ Day 365 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG001
         });
 
         const bibleInYearList = document.getElementById('bible-in-year-list');
-        let allBibleReadings = parseCSV(bibleInYearDataCSV); 
+        let allBibleReadings = bibleInYearData; 
 
         function displayBibleReadings(readings) {
             bibleInYearList.innerHTML = '';
@@ -1415,7 +1422,7 @@ Day 365 - How We Pray - Our Father,<a href=https://www.vatican.va/archive/ENG001
         });
 
         const catechismInYearList = document.getElementById('catechism-in-year-list');
-        let allCatechismReadings = parseCSV(catechismInYearDataCSV);
+        let allCatechismReadings = catechismInYearData;
 
         function displayCatechismReadings(readings) {
             catechismInYearList.innerHTML = '';
