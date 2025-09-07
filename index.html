@@ -448,52 +448,93 @@
         window.addEventListener('scroll', updateActiveLink);
         window.addEventListener('load', updateActiveLink); 
 
-        // --- CSV Data ---
-        const prayerDataCSV = `Prayer_Title_EN,Prayer_Text_EN,Prayer_Title_LA,Prayer_Text_LA
-Prayer 1,Lorem ipsum,Prayer 1 Latin,Lorem ipsum
-Prayer 2,dolor sit,Prayer 2 Latin,dolor sit
-Prayer 3,amet,Prayer 3 Latin,amet`;
-
-        const apologeticsDataCSV = `Topic_Title,Topic_Content_With_Linked_References
-Test Title 1,<a href=https://bible.usccb.org/bible/genesis/27>Gen 27:25</a> – Isaac drinks wine<br><a href=https://bible.usccb.org/bible/deuteronomy/14>Deut 14:23-26</a> – God tells Israelites to buy wine and strong drink<br><a href=https://bible.usccb.org/bible/ecclesiastes/9>Eccl 9:7</a> – drink your wine with a merry heart God approves of it<br><a href=https://bible.usccb.org/bible/isaiah/25>Isa 25:6</a> – God provides choice wine<br><a href=https://bible.usccb.org/bible/luke/7>Lk 7:33-34</a> – Jesus drinks wine<br><a href=https://bible.usccb.org/bible/john/2>Jn 2:2-10</a> – Jesus turns water into wine<br><a href=https://bible.usccb.org/bible/1timothy/5>1 Tim 5:23</a> – Paul tells Timothy to drink wine
-Test Title 2,<a href=https://bible.usccb.org/bible/proverbs/20>Prov 20:1</a> – wine is a mocker<br><a href=https://bible.usccb.org/bible/isaiah/5>Isa 5:11</a> – Woe to those addicted to alcohol<br><a href=https://bible.usccb.org/bible/isaiah/5>Isa 5:22</a> – Woe to “heroes of drinking wine”<br><a href=https://bible.usccb.org/bible/ephesians/5>Eph 5:18</a> – do not get drunk
-Test Title 3,<a href=https://bible.usccb.org/bible/acts/2>Acts 2:38-39</a> – “Repent and be baptized… this promise is for you and your children.”<br><a href=https://bible.usccb.org/bible/acts/16>Acts 16:15</a>; <a href=https://bible.usccb.org/bible/acts/16>Acts 16:33</a>; <a href=https://bible.usccb.org/bible/acts/18>Acts 18:8</a>; <a href=https://bible.usccb.org/bible/1corinthians/1>1 Cor 1:16</a> – household baptisms suggest baptism of children<br><a href=https://bible.usccb.org/bible/john/3>Jn 3:5</a>; <a href=https://bible.usccb.org/bible/romans/6>Rom 6:4</a> – necessity of baptism<br><a href=https://bible.usccb.org/bible/colossians/2>Col 2:11-12</a> – OT circumcision replaced by NT baptism as sign of the covenant (OT circumcision was performed on infants see <a href=https://bible.usccb.org/bible/genesis/17>Gen 17:12</a>)`;
-
-        const doctrineDataCSV = `Formula_Title,Formula_Content
-Test Formula 1,Death<br>Judgement<br>Hell<br>Heaven
-Test Formula 2,Prudence<br>Justice<br>Fortitude<br>Temperance
-Test Formula 3,Do to others as you would have them do to you.`;
-
-        const bibleInYearDataCSV = `Day_Title,Bible_Passages
-Day 1 - Early World,<a href=https://bible.usccb.org/bible/genesis/1>Genesis 1</a>–2 <a href=https://bible.usccb.org/bible/psalms/19>Psalm 19</a><br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/3eb220b4-a884-4f10-ae77-84c159309c9d.mp3>Click to Play Podcast</a>
-Day 2 - Early World,<a href=https://bible.usccb.org/bible/genesis/3>Genesis 3</a>–4 <a href=https://bible.usccb.org/bible/psalms/104>Psalm 104</a><br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/890f7a15-b8e3-427f-9657-c53184a4289c.mp3>Click to Play Podcast</a>
-Day 3 - Early World,<a href=https://bible.usccb.org/bible/genesis/5>Genesis 5</a>–6 <a href=https://bible.usccb.org/bible/psalms/136>Psalm 136</a><br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/8a11f78d-2770-422a-9351-715c188dad27.mp3>Click to Play Podcast</a>`;
-
-        const catechismInYearDataCSV = `Day_Title,Catechism_Paragraphs
-Day 1 - Prologue,<a href=https://www.vatican.va/archive/ENG0015/__P2.HTM>CCC 1</a>-10<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/b8cb3586-04ca-41f2-81bb-0a12ba5b1961.mp3>Click to Play Podcast</a>
-Day 2 - Prologue,<a href=https://www.vatican.va/archive/ENG0015/__P4.HTM>CCC 11</a>-25<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/691b2139-13b1-4e7e-a8e6-f63a5db3a073.mp3>Click to Play Podcast</a>
-Day 4 - What We Believe - Divine Revelation - The Search,<a href=https://www.vatican.va/archive/ENG0015/__P8.HTM>CCC 26</a>-35<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/3fa82f76-869a-444a-b635-03787dabcc42.mp3>Click to Play Podcast</a>`;
-
-        function parseCSV(csvText) {
-            const lines = csvText.trim().split('\n');
-            const headers = lines[0].split(',').map(header => header.trim());
-            const records = [];
-            for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(value => value.trim().replace(/^"|"$/g, ''));
-                if (values.length === headers.length) {
-                    const record = {};
-                    headers.forEach((header, index) => {
-                        record[header] = values[index];
-                    });
-                    records.push(record);
-                }
+        // --- JSON Data ---
+        const prayerData = [
+            {
+                "Prayer_Title_EN": "Prayer 1",
+                "Prayer_Text_EN": "Lorem ipsum",
+                "Prayer_Title_LA": "Prayer 1 Latin",
+                "Prayer_Text_LA": "Lorem ipsum"
+            },
+            {
+                "Prayer_Title_EN": "Prayer 2",
+                "Prayer_Text_EN": "dolor sit",
+                "Prayer_Title_LA": "Prayer 2 Latin",
+                "Prayer_Text_LA": "dolor sit"
+            },
+            {
+                "Prayer_Title_EN": "Prayer 3",
+                "Prayer_Text_EN": "amet",
+                "Prayer_Title_LA": "Prayer 3 Latin",
+                "Prayer_Text_LA": "amet"
             }
-            return records;
-        }
+        ];
+
+        const apologeticsData = [
+            {
+                "Topic_Title": "Test Title 1",
+                "Topic_Content_With_Linked_References": "<a href=https://bible.usccb.org/bible/genesis/27>Gen 27:25</a> – Isaac drinks wine<br><a href=https://bible.usccb.org/bible/deuteronomy/14>Deut 14:23-26</a> – God tells Israelites to buy wine and strong drink<br><a href=https://bible.usccb.org/bible/ecclesiastes/9>Eccl 9:7</a> – drink your wine with a merry heart God approves of it<br><a href=https://bible.usccb.org/bible/isaiah/25>Isa 25:6</a> – God provides choice wine<br><a href=https://bible.usccb.org/bible/luke/7>Lk 7:33-34</a> – Jesus drinks wine<br><a href=https://bible.usccb.org/bible/john/2>Jn 2:2-10</a> – Jesus turns water into wine<br><a href=https://bible.usccb.org/bible/1timothy/5>1 Tim 5:23</a> – Paul tells Timothy to drink wine"
+            },
+            {
+                "Topic_Title": "Test Title 2",
+                "Topic_Content_With_Linked_References": "<a href=https://bible.usccb.org/bible/proverbs/20>Prov 20:1</a> – wine is a mocker<br><a href=https://bible.usccb.org/bible/isaiah/5>Isa 5:11</a> – Woe to those addicted to alcohol<br><a href=https://bible.usccb.org/bible/isaiah/5>Isa 5:22</a> – Woe to \"heroes of drinking wine\"<br><a href=https://bible.usccb.org/bible/ephesians/5>Eph 5:18</a> – do not get drunk"
+            },
+            {
+                "Topic_Title": "Test Title 3",
+                "Topic_Content_With_Linked_References": "<a href=https://bible.usccb.org/bible/acts/2>Acts 2:38-39</a> – \"Repent and be baptized… this promise is for you and your children.\"<br><a href=https://bible.usccb.org/bible/acts/16>Acts 16:15</a>; <a href=https://bible.usccb.org/bible/acts/16>Acts 16:33</a>; <a href=https://bible.usccb.org/bible/acts/18>Acts 18:8</a>; <a href=https://bible.usccb.org/bible/1corinthians/1>1 Cor 1:16</a> – household baptisms suggest baptism of children<br><a href=https://bible.usccb.org/bible/john/3>Jn 3:5</a>; <a href=https://bible.usccb.org/bible/romans/6>Rom 6:4</a> – necessity of baptism<br><a href=https://bible.usccb.org/bible/colossians/2>Col 2:11-12</a> – OT circumcision replaced by NT baptism as sign of the covenant (OT circumcision was performed on infants see <a href=https://bible.usccb.org/bible/genesis/17>Gen 17:12</a>)"
+            }
+        ];
+
+        const doctrineData = [
+            {
+                "Formula_Title": "Test Formula 1",
+                "Formula_Content": "Death<br>Judgement<br>Hell<br>Heaven"
+            },
+            {
+                "Formula_Title": "Test Formula 2",
+                "Formula_Content": "Prudence<br>Justice<br>Fortitude<br>Temperance"
+            },
+            {
+                "Formula_Title": "Test Formula 3",
+                "Formula_Content": "Do to others as you would have them do to you."
+            }
+        ];
+
+        const bibleInYearData = [
+            {
+                "Day_Title": "Day 1 - Early World",
+                "Bible_Passages": "<a href=https://bible.usccb.org/bible/genesis/1>Genesis 1</a>–2 <a href=https://bible.usccb.org/bible/psalms/19>Psalm 19</a><br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/3eb220b4-a884-4f10-ae77-84c159309c9d.mp3>Click to Play Podcast</a>"
+            },
+            {
+                "Day_Title": "Day 2 - Early World",
+                "Bible_Passages": "<a href=https://bible.usccb.org/bible/genesis/3>Genesis 3</a>–4 <a href=https://bible.usccb.org/bible/psalms/104>Psalm 104</a><br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/890f7a15-b8e3-427f-9657-c53184a4289c.mp3>Click to Play Podcast</a>"
+            },
+            {
+                "Day_Title": "Day 3 - Early World",
+                "Bible_Passages": "<a href=https://bible.usccb.org/bible/genesis/5>Genesis 5</a>–6 <a href=https://bible.usccb.org/bible/psalms/136>Psalm 136</a><br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/8a11f78d-2770-422a-9351-715c188dad27.mp3>Click to Play Podcast</a>"
+            }
+        ];
+
+        const catechismInYearData = [
+            {
+                "Day_Title": "Day 1 - Prologue",
+                "Catechism_Paragraphs": "<a href=https://www.vatican.va/archive/ENG0015/__P2.HTM>CCC 1</a>-10<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/b8cb3586-04ca-41f2-81bb-0a12ba5b1961.mp3>Click to Play Podcast</a>"
+            },
+            {
+                "Day_Title": "Day 2 - Prologue",
+                "Catechism_Paragraphs": "<a href=https://www.vatican.va/archive/ENG0015/__P4.HTM>CCC 11</a>-25<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/691b2139-13b1-4e7e-a8e6-f63a5db3a073.mp3>Click to Play Podcast</a>"
+            },
+            {
+                "Day_Title": "Day 4 - What We Believe - Divine Revelation - The Search",
+                "Catechism_Paragraphs": "<a href=https://www.vatican.va/archive/ENG0015/__P8.HTM>CCC 26</a>-35<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/3fa82f76-869a-444a-b635-03787dabcc42.mp3>Click to Play Podcast</a>"
+            }
+        ];
+
 
         const prayersList = document.getElementById('prayers-list');
-        const prayers = parseCSV(prayerDataCSV);
-        prayers.forEach((prayer, index) => {
+        
+        function loadPrayers() {
+            prayerData.forEach((prayer, index) => {
             const prayerId = `prayer-${index}`;
             const card = document.createElement('div');
             card.className = 'card card-theme-bg p-6 shadow-lg rounded-xl'; 
@@ -542,11 +583,14 @@ Day 4 - What We Believe - Divine Revelation - The Search,<a href=https://www.vat
                     }
                 });
             });
-        });
+            });
+        }
+        loadPrayers();
 
         const apologeticsList = document.getElementById('apologetics-list');
-        const apologeticsTopics = parseCSV(apologeticsDataCSV);
-        apologeticsTopics.forEach((topic, index) => {
+        
+        function loadApologetics() {
+            apologeticsData.forEach((topic, index) => {
             const topicId = `apologetics-${index}`;
             const item = document.createElement('div');
             item.className = 'card card-theme-bg rounded-lg shadow-md';
@@ -560,11 +604,14 @@ Day 4 - What We Believe - Divine Revelation - The Search,<a href=https://www.vat
                 </div>
             `;
             apologeticsList.appendChild(item);
-        });
+            });
+        }
+        loadApologetics();
 
         const doctrineList = document.getElementById('doctrine-list');
-        const doctrineFormulas = parseCSV(doctrineDataCSV);
-        doctrineFormulas.forEach((formula, index) => {
+        
+        function loadDoctrine() {
+            doctrineData.forEach((formula, index) => {
             const formulaId = `doctrine-${index}`;
             const item = document.createElement('div');
             item.className = 'card card-theme-bg rounded-lg shadow-md';
@@ -578,7 +625,9 @@ Day 4 - What We Believe - Divine Revelation - The Search,<a href=https://www.vat
                 </div>
             `;
             doctrineList.appendChild(item);
-        });
+            });
+        }
+        loadDoctrine();
         
         document.querySelectorAll('.accordion-toggle').forEach(button => {
             button.addEventListener('click', () => {
@@ -591,7 +640,7 @@ Day 4 - What We Believe - Divine Revelation - The Search,<a href=https://www.vat
         });
 
         const bibleInYearList = document.getElementById('bible-in-year-list');
-        let allBibleReadings = parseCSV(bibleInYearDataCSV); 
+        let allBibleReadings = bibleInYearData; 
 
         function displayBibleReadings(readings) {
             bibleInYearList.innerHTML = '';
@@ -620,7 +669,7 @@ Day 4 - What We Believe - Divine Revelation - The Search,<a href=https://www.vat
         });
 
         const catechismInYearList = document.getElementById('catechism-in-year-list');
-        let allCatechismReadings = parseCSV(catechismInYearDataCSV);
+        let allCatechismReadings = catechismInYearData;
 
         function displayCatechismReadings(readings) {
             catechismInYearList.innerHTML = '';
