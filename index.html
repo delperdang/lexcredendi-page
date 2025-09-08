@@ -1686,23 +1686,20 @@
         });
 
 
-        let dateOffset = 0;
+        let bibleDateOffset = 0;
+        let catechismDateOffset = 0;
 
-        function updateReadings() {
+        function updateBibleReading() {
             const now = new Date();
-            now.setDate(now.getDate() + dateOffset);
+            now.setDate(now.getDate() + bibleDateOffset);
             const start = new Date(now.getFullYear(), 0, 0);
             const diff = now - start;
             const oneDay = 1000 * 60 * 60 * 24;
             const dayOfYear = Math.floor(diff / oneDay);
 
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const displayDate = now.toLocaleDateString('en-US', options);
+            document.getElementById('bible-date').textContent = now.toLocaleDateString('en-US', options);
 
-            document.getElementById('catechism-date').textContent = displayDate;
-            document.getElementById('bible-date').textContent = displayDate;
-
-            // --- Display Bible Reading ---
             const bibleContent = document.getElementById('daily-bible-content');
             const todaysBibleReading = bibleInYearData.find(r => r.Day_Number === dayOfYear);
 
@@ -1714,8 +1711,19 @@
             } else {
                 bibleContent.innerHTML = `<p>No reading for this day.</p>`;
             }
+        }
 
-            // --- Display Catechism Reading ---
+        function updateCatechismReading() {
+            const now = new Date();
+            now.setDate(now.getDate() + catechismDateOffset);
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const dayOfYear = Math.floor(diff / oneDay);
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('catechism-date').textContent = now.toLocaleDateString('en-US', options);
+
             const catechismContent = document.getElementById('daily-catechism-content');
             const todaysCatechismReading = catechismInYearData.find(r => r.Day_Number === dayOfYear);
 
@@ -1730,12 +1738,13 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            updateReadings();
+            updateBibleReading();
+            updateCatechismReading();
 
-            document.getElementById('prev-catechism-day').addEventListener('click', () => { dateOffset--; updateReadings(); });
-            document.getElementById('next-catechism-day').addEventListener('click', () => { dateOffset++; updateReadings(); });
-            document.getElementById('prev-bible-day').addEventListener('click', () => { dateOffset--; updateReadings(); });
-            document.getElementById('next-bible-day').addEventListener('click', () => { dateOffset++; updateReadings(); });
+            document.getElementById('prev-bible-day').addEventListener('click', () => { bibleDateOffset--; updateBibleReading(); });
+            document.getElementById('next-bible-day').addEventListener('click', () => { bibleDateOffset++; updateBibleReading(); });
+            document.getElementById('prev-catechism-day').addEventListener('click', () => { catechismDateOffset--; updateCatechismReading(); });
+            document.getElementById('next-catechism-day').addEventListener('click', () => { catechismDateOffset++; updateCatechismReading(); });
         });
 
         const rosaryAlbumsContainer = document.getElementById('rosary-albums');
