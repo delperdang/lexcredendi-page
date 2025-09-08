@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,10 @@
     <link rel="icon" href="https://ik.imagekit.io/qy6hiycaw/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
         #hero {
             position: relative;
             background-image: url('https://cdn.pixabay.com/photo/2017/08/27/21/42/cathedral-2688075_1280.jpg');
@@ -27,7 +30,7 @@
             z-index: 1;
         }
 
-        #hero > div {
+        #hero>div {
             position: relative;
             z-index: 2;
         }
@@ -53,25 +56,32 @@
         .custom-shape-divider-bottom-1663186399 .shape-fill {
             fill: #F3F4F6;
         }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #888;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
         html.dark ::-webkit-scrollbar-track {
             background: #2d3748;
         }
+
         html.dark ::-webkit-scrollbar-thumb {
             background: #718096;
         }
+
         html.dark ::-webkit-scrollbar-thumb:hover {
             background: #a0aec0;
         }
@@ -81,33 +91,113 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .bg-theme-primary { background-color: #ffffff; }
-        .text-theme-primary { color: #1f2937; }
-        .text-theme-secondary { color: #4b5563; }
-        .border-theme-primary { border-color: #e5e7eb; }
-        .card-theme-bg { background-color: #f9fafb; }
-        .card-theme-hover-bg:hover { background-color: #f3f4f6; }
-        .button-theme { background-color: #3b82f6; color: #ffffff; }
-        .button-theme:hover { background-color: #2563eb; }
-        .nav-link-theme { color: #374151; }
-        .nav-link-theme:hover { color: #1d4ed8; }
-        .active-nav-link-theme { color: #1d4ed8; font-weight: 600; }
-        .meditation-theme-bg { background: radial-gradient(circle, #a7c5eb 0%, #6495ed 100%); }
-        .section-bg-alt { background-color: #f9fafb; }
+        .bg-theme-primary {
+            background-color: #ffffff;
+        }
 
-        html.dark .bg-theme-primary { background-color: #111827; }
-        html.dark .text-theme-primary { color: #f3f4f6; }
-        html.dark .text-theme-secondary { color: #9ca3af; }
-        html.dark .border-theme-primary { border-color: #374151; }
-        html.dark .card-theme-bg { background-color: #1f2937; }
-        html.dark .card-theme-hover-bg:hover { background-color: #374151; }
-        html.dark .button-theme { background-color: #60a5fa; color: #111827; }
-        html.dark .button-theme:hover { background-color: #3b82f6; }
-        html.dark .nav-link-theme { color: #d1d5db; }
-        html.dark .nav-link-theme:hover { color: #93c5fd; }
-        html.dark .active-nav-link-theme { color: #93c5fd; font-weight: 600; }
-        html.dark .meditation-theme-bg { background: radial-gradient(circle, #4a5568 0%, #2c3e50 100%); }
-        html.dark .section-bg-alt { background-color: #1f2937; }
+        .text-theme-primary {
+            color: #1f2937;
+        }
+
+        .text-theme-secondary {
+            color: #4b5563;
+        }
+
+        .border-theme-primary {
+            border-color: #e5e7eb;
+        }
+
+        .card-theme-bg {
+            background-color: #f9fafb;
+        }
+
+        .card-theme-hover-bg:hover {
+            background-color: #f3f4f6;
+        }
+
+        .button-theme {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        .button-theme:hover {
+            background-color: #2563eb;
+        }
+
+        .nav-link-theme {
+            color: #374151;
+        }
+
+        .nav-link-theme:hover {
+            color: #1d4ed8;
+        }
+
+        .active-nav-link-theme {
+            color: #1d4ed8;
+            font-weight: 600;
+        }
+
+        .meditation-theme-bg {
+            background: radial-gradient(circle, #a7c5eb 0%, #6495ed 100%);
+        }
+
+        .section-bg-alt {
+            background-color: #f9fafb;
+        }
+
+        html.dark .bg-theme-primary {
+            background-color: #111827;
+        }
+
+        html.dark .text-theme-primary {
+            color: #f3f4f6;
+        }
+
+        html.dark .text-theme-secondary {
+            color: #9ca3af;
+        }
+
+        html.dark .border-theme-primary {
+            border-color: #374151;
+        }
+
+        html.dark .card-theme-bg {
+            background-color: #1f2937;
+        }
+
+        html.dark .card-theme-hover-bg:hover {
+            background-color: #374151;
+        }
+
+        html.dark .button-theme {
+            background-color: #60a5fa;
+            color: #111827;
+        }
+
+        html.dark .button-theme:hover {
+            background-color: #3b82f6;
+        }
+
+        html.dark .nav-link-theme {
+            color: #d1d5db;
+        }
+
+        html.dark .nav-link-theme:hover {
+            color: #93c5fd;
+        }
+
+        html.dark .active-nav-link-theme {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        html.dark .meditation-theme-bg {
+            background: radial-gradient(circle, #4a5568 0%, #2c3e50 100%);
+        }
+
+        html.dark .section-bg-alt {
+            background-color: #1f2937;
+        }
 
         .accordion-content {
             max-height: 0;
@@ -116,6 +206,7 @@
             padding-top: 0;
             padding-bottom: 0;
         }
+
         .accordion-content.open {
             max-height: 1000px;
             padding-top: 1rem;
@@ -135,15 +226,33 @@
         }
 
         @keyframes breath {
-            0%, 100% { transform: scale(0.8); opacity: 0.7; }
-            50% { transform: scale(1); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
+
         .meditation-text {
             animation: fadeInOut 8s ease-in-out infinite;
         }
+
         @keyframes fadeInOut {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .rosary-grid {
@@ -151,17 +260,21 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
         }
+
         .rosary-image-container {
             position: relative;
             overflow: hidden;
             border-radius: 0.5rem;
         }
+
         .rosary-image-container img {
             transition: transform 0.3s ease;
         }
+
         .rosary-image-container:hover img {
             transform: scale(1.05);
         }
+
         .rosary-mystery-name {
             position: absolute;
             bottom: 0;
@@ -175,6 +288,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+
         .rosary-image-container:hover .rosary-mystery-name {
             opacity: 1;
         }
@@ -184,17 +298,19 @@
             border-color: #3b82f6;
             color: #3b82f6;
         }
+
         html.dark .tab-active {
             border-color: #60a5fa;
             color: #60a5fa;
         }
 
-                .card {
+        .card {
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
-                .card:hover {
+
+        .card:hover {
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             transform: translateY(-5px);
         }
@@ -224,9 +340,11 @@
             border-radius: 9999px;
             padding: 0.25rem;
         }
+
         html.dark .pill-toggle {
             background-color: #4b5563;
         }
+
         .pill-toggle button {
             border: none;
             background: none;
@@ -236,11 +354,13 @@
             font-weight: 500;
             transition: color 0.3s ease, background-color 0.3s ease;
         }
+
         .pill-toggle button.active {
             background-color: #ffffff;
             color: #1f2937;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         }
+
         html.dark .pill-toggle button.active {
             background-color: #374151;
             color: #f9fafb;
@@ -250,7 +370,7 @@
             padding-top: 4rem;
             padding-bottom: 4rem;
         }
-        
+
         header {
             position: sticky;
             top: 0;
@@ -263,20 +383,23 @@
             border-color: #e5e7eb;
             color: #1f2937;
         }
+
         .search-input-theme::placeholder {
             color: #9ca3af;
         }
+
         html.dark .search-input-theme {
             background-color: #374151;
             border-color: #4b5563;
             color: #f3f4f6;
         }
+
         html.dark .search-input-theme::placeholder {
             color: #6b7280;
         }
-
     </style>
 </head>
+
 <body class="bg-theme-primary text-theme-primary">
 
     <header id="mainHeader" class="bg-theme-primary shadow-md">
@@ -287,33 +410,64 @@
                 </div>
 
                 <nav class="hidden md:flex space-x-6 items-center">
-                    <a href="#prayers" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Prayers</a>
-                    <a href="#apologetics" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Apologetics</a>
-                    <a href="#doctrine" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Doctrine</a>
-                    <a href="#bible-in-year" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Bible</a>
-                    <a href="#catechism-in-year" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Catechism</a>
-                    <a href="#meditation" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Meditation</a>
-                    <a href="#rosary" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Rosary</a>
-                    <a href="#useful-links" class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Links</a>
-                    
-                    <button id="theme-toggle" type="button" class="text-theme-secondary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    <a href="#prayers"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Prayers</a>
+                    <a href="#apologetics"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Apologetics</a>
+                    <a href="#doctrine"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Doctrine</a>
+                    <a href="#bible-in-year"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Bible</a>
+                    <a href="#catechism-in-year"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Catechism</a>
+                    <a href="#meditation"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Meditation</a>
+                    <a href="#rosary"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Rosary</a>
+                    <a href="#useful-links"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Links</a>
+
+                    <button id="theme-toggle" type="button"
+                        class="text-theme-secondary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
                     </button>
                 </nav>
 
                 <div class="md:hidden flex items-center">
-                    <button id="theme-toggle-mobile" type="button" class="mr-2 text-theme-secondary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                         <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </button>
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-theme-secondary hover:text-theme-primary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <button id="theme-toggle-mobile" type="button"
+                        class="mr-2 text-theme-secondary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                         </svg>
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-theme-secondary hover:text-theme-primary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -322,72 +476,89 @@
 
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#prayers" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Prayers</a>
-                <a href="#apologetics" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Apologetics</a>
-                <a href="#doctrine" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Doctrine</a>
-                <a href="#bible-in-year" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Bible</a>
-                <a href="#catechism-in-year" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Catechism</a>
-                <a href="#meditation" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Meditation</a>
-                <a href="#rosary" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Rosary</a>
-                <a href="#useful-links" class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Links</a>
+                <a href="#prayers"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Prayers</a>
+                <a href="#apologetics"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Apologetics</a>
+                <a href="#doctrine"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Doctrine</a>
+                <a href="#bible-in-year"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Bible</a>
+                <a href="#catechism-in-year"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Catechism</a>
+                <a href="#meditation"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Meditation</a>
+                <a href="#rosary"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Rosary</a>
+                <a href="#useful-links"
+                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Links</a>
             </div>
         </div>
     </header>
 
     <main>
-                <section id="hero" class="py-16 md:py-24">
+        <section id="hero" class="py-16 md:py-24">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white">
                     Lex Credendi
                 </h1>
-                                <p class="mt-4 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                <p class="mt-4 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
                     Your comprehensive hub for Catholic prayers, apologetics, doctrine, and spiritual resources.
                 </p>
-                 <p class="mt-2 text-sm text-theme-secondary max-w-2xl mx-auto">
+                <p class="mt-2 text-sm text-theme-secondary max-w-2xl mx-auto">
                     <i>"The law of prayer is the law of belief."</i>
                 </p>
             </div>
             <div class="custom-shape-divider-bottom-1663186399">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
                 </svg>
             </div>
         </section>
 
-                <section id="prayers" class="section-bg-alt fade-in-element">
+        <section id="prayers" class="section-bg-alt fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Prayers</h2>
                 <div id="prayers-list" class="space-y-6">
-                    </div>
+                </div>
             </div>
         </section>
 
-                <section id="apologetics" class="bg-theme-primary fade-in-element">
+        <section id="apologetics" class="bg-theme-primary fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Apologetics</h2>
                 <div id="apologetics-list" class="space-y-4">
-                     </div>
+                </div>
             </div>
         </section>
 
-                <section id="doctrine" class="section-bg-alt fade-in-element">
+        <section id="doctrine" class="section-bg-alt fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Doctrine</h2>
                 <div id="doctrine-list" class="space-y-4">
-                    </div>
+                </div>
             </div>
         </section>
 
-                <section id="reading-plans" class="bg-theme-primary fade-in-element">
+        <section id="reading-plans" class="bg-theme-primary fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Reading Plans</h2>
                 <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-                    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="reading-plans-tabs" role="tablist">
+                    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="reading-plans-tabs"
+                        role="tablist">
                         <li class="mr-2" role="presentation">
-                            <button class="inline-block p-4 border-b-2 rounded-t-lg" id="bible-tab" data-tabs-target="#bible-content" type="button" role="tab" aria-controls="bible-content" aria-selected="true">Bible in a Year</button>
+                            <button class="inline-block p-4 border-b-2 rounded-t-lg" id="bible-tab"
+                                data-tabs-target="#bible-content" type="button" role="tab" aria-controls="bible-content"
+                                aria-selected="true">Bible in a Year</button>
                         </li>
                         <li class="mr-2" role="presentation">
-                            <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="catechism-tab" data-tabs-target="#catechism-content" type="button" role="tab" aria-controls="catechism-content" aria-selected="false">Catechism in a Year</button>
+                            <button
+                                class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                                id="catechism-tab" data-tabs-target="#catechism-content" type="button" role="tab"
+                                aria-controls="catechism-content" aria-selected="false">Catechism in a Year</button>
                         </li>
                     </ul>
                 </div>
@@ -397,7 +568,9 @@
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-search text-gray-400"></i>
                             </div>
-                            <input type="text" id="bible-search" placeholder="Search by Day (e.g., Day 1) or Reading (e.g. Genesis 1)" class="search-input-theme w-full p-3 pl-10 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <input type="text" id="bible-search"
+                                placeholder="Search by Day (e.g., Day 1) or Reading (e.g. Genesis 1)"
+                                class="search-input-theme w-full p-3 pl-10 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div id="bible-in-year-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         </div>
@@ -407,7 +580,9 @@
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-search text-gray-400"></i>
                             </div>
-                            <input type="text" id="catechism-search" placeholder="Search by Day (e.g., Day 1) or Paragraph (e.g. CCC 1)" class="search-input-theme w-full p-3 pl-10 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <input type="text" id="catechism-search"
+                                placeholder="Search by Day (e.g., Day 1) or Paragraph (e.g. CCC 1)"
+                                class="search-input-theme w-full p-3 pl-10 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div id="catechism-in-year-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         </div>
@@ -416,7 +591,7 @@
             </div>
         </section>
 
-                <section id="meditation" class="bg-theme-primary fade-in-element">
+        <section id="meditation" class="bg-theme-primary fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-theme-primary mb-12 text-center">Meditation</h2>
                 <div class="flex flex-col items-center justify-center min-h-[300px]">
@@ -429,24 +604,25 @@
             </div>
         </section>
 
-                <section id="rosary" class="section-bg-alt fade-in-element">
+        <section id="rosary" class="section-bg-alt fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">The Holy Rosary</h2>
                 <div id="rosary-albums" class="space-y-10">
-                    </div>
+                </div>
             </div>
         </section>
 
-                <section id="useful-links" class="bg-theme-primary fade-in-element">
+        <section id="useful-links" class="bg-theme-primary fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Useful Links</h2>
                 <ul id="useful-links-list" class="space-y-3 max-w-md mx-auto">
-                    </ul>
+                </ul>
             </div>
         </section>
     </main>
 
-    <button id="back-to-top-btn" class="button-theme p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-opacity duration-300">
+    <button id="back-to-top-btn"
+        class="button-theme p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-opacity duration-300">
         <i class="fas fa-arrow-up text-white"></i>
     </button>
 
@@ -481,8 +657,8 @@
                 themeToggleDarkIconMobile.classList.remove('hidden');
             }
         }
-        
-        if (localStorage.getItem('color-theme') === 'dark' || 
+
+        if (localStorage.getItem('color-theme') === 'dark' ||
             (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             applyTheme(true);
         } else {
@@ -493,7 +669,7 @@
             const isDarkNow = document.documentElement.classList.toggle('dark');
             localStorage.setItem('color-theme', isDarkNow ? 'dark' : 'light');
             applyTheme(isDarkNow);
-            updateActiveLink(); 
+            updateActiveLink();
         };
 
         themeToggleBtn.addEventListener('click', toggleTheme);
@@ -517,12 +693,12 @@
                 }
             });
         });
-        
+
         // --- Smooth Scrolling & Active Nav Link ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href === "#") { 
+                if (href === "#") {
                     e.preventDefault();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
@@ -532,7 +708,7 @@
                         const headerOffset = document.getElementById('mainHeader').offsetHeight;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
+
                         window.scrollTo({
                             top: offsetPosition,
                             behavior: 'smooth'
@@ -551,7 +727,7 @@
             const headerHeight = mainHeader.offsetHeight;
 
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - headerHeight - 50; 
+                const sectionTop = section.offsetTop - headerHeight - 50;
                 if (window.pageYOffset >= sectionTop) {
                     currentSectionId = section.getAttribute('id');
                 }
@@ -559,56 +735,56 @@
 
             navLinks.forEach(link => {
                 link.classList.remove('active-nav-link-theme', 'font-semibold');
-                link.classList.remove('active-nav-link-light', 'active-nav-link-dark'); 
-                
+                link.classList.remove('active-nav-link-light', 'active-nav-link-dark');
+
                 if (link.getAttribute('href') === `#${currentSectionId}`) {
                     link.classList.add('active-nav-link-theme', 'font-semibold');
                 }
             });
         }
         window.addEventListener('scroll', updateActiveLink);
-        window.addEventListener('load', updateActiveLink); 
+        window.addEventListener('load', updateActiveLink);
 
         // --- JSON Data ---
         const prayerData = [
-{"Prayer_Title_EN": "Lorem ipsum dolor sit amet", "Prayer_Text_EN": "Lorem ipsum dolor sit amet", "Prayer_Title_LA": "Lorem ipsum dolor sit amet", "Prayer_Text_LA": "Lorem ipsum dolor sit amet"},
-{"Prayer_Title_EN": "Lorem ipsum dolor sit amet", "Prayer_Text_EN": "Lorem ipsum dolor sit amet", "Prayer_Title_LA": "Lorem ipsum dolor sit amet", "Prayer_Text_LA": "Lorem ipsum dolor sit amet"},
-{"Prayer_Title_EN": "Lorem ipsum dolor sit amet", "Prayer_Text_EN": "Lorem ipsum dolor sit amet", "Prayer_Title_LA": "Lorem ipsum dolor sit amet", "Prayer_Text_LA": "Lorem ipsum dolor sit amet"},
+            { "Prayer_Title_EN": "Lorem ipsum dolor sit amet", "Prayer_Text_EN": "Lorem ipsum dolor sit amet", "Prayer_Title_LA": "Lorem ipsum dolor sit amet", "Prayer_Text_LA": "Lorem ipsum dolor sit amet" },
+            { "Prayer_Title_EN": "Lorem ipsum dolor sit amet", "Prayer_Text_EN": "Lorem ipsum dolor sit amet", "Prayer_Title_LA": "Lorem ipsum dolor sit amet", "Prayer_Text_LA": "Lorem ipsum dolor sit amet" },
+            { "Prayer_Title_EN": "Lorem ipsum dolor sit amet", "Prayer_Text_EN": "Lorem ipsum dolor sit amet", "Prayer_Title_LA": "Lorem ipsum dolor sit amet", "Prayer_Text_LA": "Lorem ipsum dolor sit amet" },
         ];
 
         const apologeticsData = [
-{"Topic_Title": "Lorem ipsum dolor sit amet", "Topic_Content_With_Linked_References": "Lorem ipsum dolor sit amet"},
-{"Topic_Title": "Lorem ipsum dolor sit amet", "Topic_Content_With_Linked_References": "Lorem ipsum dolor sit amet"},
-{"Topic_Title": "Lorem ipsum dolor sit amet", "Topic_Content_With_Linked_References": "Lorem ipsum dolor sit amet"},
+            { "Topic_Title": "Lorem ipsum dolor sit amet", "Topic_Content_With_Linked_References": "Lorem ipsum dolor sit amet" },
+            { "Topic_Title": "Lorem ipsum dolor sit amet", "Topic_Content_With_Linked_References": "Lorem ipsum dolor sit amet" },
+            { "Topic_Title": "Lorem ipsum dolor sit amet", "Topic_Content_With_Linked_References": "Lorem ipsum dolor sit amet" },
         ];
 
         const doctrineData = [
-{"Formula_Title": "Lorem ipsum dolor sit amet", "Formula_Content": "Lorem ipsum dolor sit amet"},
-{"Formula_Title": "Lorem ipsum dolor sit amet", "Formula_Content": "Lorem ipsum dolor sit amet"},
-{"Formula_Title": "Lorem ipsum dolor sit amet", "Formula_Content": "Lorem ipsum dolor sit amet"},
+            { "Formula_Title": "Lorem ipsum dolor sit amet", "Formula_Content": "Lorem ipsum dolor sit amet" },
+            { "Formula_Title": "Lorem ipsum dolor sit amet", "Formula_Content": "Lorem ipsum dolor sit amet" },
+            { "Formula_Title": "Lorem ipsum dolor sit amet", "Formula_Content": "Lorem ipsum dolor sit amet" },
         ];
 
         const bibleInYearData = [
-{"Day_Title": "Lorem ipsum dolor sit amet", "Bible_Passages": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/3eb220b4-a884-4f10-ae77-84c159309c9d.mp3>Click to Play Podcast</a>"},
-{"Day_Title": "Lorem ipsum dolor sit amet", "Bible_Passages": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/890f7a15-b8e3-427f-9657-c53184a4289c.mp3>Click to Play Podcast</a>"},
-{"Day_Title": "Lorem ipsum dolor sit amet", "Bible_Passages": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/8a11f78d-2770-422a-9351-715c188dad27.mp3>Click to Play Podcast</a>"},
-    ];
+            { "Day_Title": "Lorem ipsum dolor sit amet", "Bible_Passages": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/3eb220b4-a884-4f10-ae77-84c159309c9d.mp3>Click to Play Podcast</a>" },
+            { "Day_Title": "Lorem ipsum dolor sit amet", "Bible_Passages": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/890f7a15-b8e3-427f-9657-c53184a4289c.mp3>Click to Play Podcast</a>" },
+            { "Day_Title": "Lorem ipsum dolor sit amet", "Bible_Passages": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/c6354d0d-bd10-4eed-b811-1bb569d46efd/8a11f78d-2770-422a-9351-715c188dad27.mp3>Click to Play Podcast</a>" },
+        ];
 
         const catechismInYearData = [
-{"Day_Title": "Lorem ipsum dolor sit amet", "Catechism_Paragraphs": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/b8cb3586-04ca-41f2-81bb-0a12ba5b1961.mp3>Click to Play Podcast</a>"},
-{"Day_Title": "Lorem ipsum dolor sit amet", "Catechism_Paragraphs": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/691b2139-13b1-4e7e-a8e6-f63a5db3a073.mp3>Click to Play Podcast</a>"},
-{"Day_Title": "Lorem ipsum dolor sit amet", "Catechism_Paragraphs": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/3fa82f76-869a-444a-b635-03787dabcc42.mp3>Click to Play Podcast</a>"},
-    ];
+            { "Day_Title": "Lorem ipsum dolor sit amet", "Catechism_Paragraphs": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/b8cb3586-04ca-41f2-81bb-0a12ba5b1961.mp3>Click to Play Podcast</a>" },
+            { "Day_Title": "Lorem ipsum dolor sit amet", "Catechism_Paragraphs": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/691b2139-13b1-4e7e-a8e6-f63a5db3a073.mp3>Click to Play Podcast</a>" },
+            { "Day_Title": "Lorem ipsum dolor sit amet", "Catechism_Paragraphs": "Lorem ipsum dolor sit amet<br><a href=https://dts.podtrac.com/redirect.mp3/aphid.fireside.fm/d/1437767933/cdfbae20-3944-4880-bb6c-5860a901b00a/3fa82f76-869a-444a-b635-03787dabcc42.mp3>Click to Play Podcast</a>" },
+        ];
 
 
         const prayersList = document.getElementById('prayers-list');
-        
+
         function loadPrayers() {
             prayerData.forEach((prayer, index) => {
-            const prayerId = `prayer-${index}`;
-            const card = document.createElement('div');
-            card.className = 'card card-theme-bg p-6 shadow-lg rounded-xl'; 
-            card.innerHTML = `
+                const prayerId = `prayer-${index}`;
+                const card = document.createElement('div');
+                card.className = 'card card-theme-bg p-6 shadow-lg rounded-xl';
+                card.innerHTML = `
                 <div class="flex justify-between items-center mb-3">
                     <h3 class="text-xl font-semibold text-theme-primary prayer-title-en">${prayer.Prayer_Title_EN}</h3>
                     <h3 class="text-xl font-semibold text-theme-primary prayer-title-la hidden">${prayer.Prayer_Title_LA}</h3>
@@ -620,51 +796,50 @@
                 <div class="prayer-text-en text-theme-secondary leading-relaxed">${prayer.Prayer_Text_EN}</div>
                 <div class="prayer-text-la text-theme-secondary leading-relaxed hidden">${prayer.Prayer_Text_LA}</div>
             `;
-            prayersList.appendChild(card);
+                prayersList.appendChild(card);
 
-            const langToggleButtons = card.querySelectorAll('.lang-toggle-btn');
-            const titleEn = card.querySelector('.prayer-title-en');
-            const titleLa = card.querySelector('.prayer-title-la');
-            const textEn = card.querySelector('.prayer-text-en');
-            const textLa = card.querySelector('.prayer-text-la');
+                const langToggleButtons = card.querySelectorAll('.lang-toggle-btn');
+                const titleEn = card.querySelector('.prayer-title-en');
+                const titleLa = card.querySelector('.prayer-title-la');
+                const textEn = card.querySelector('.prayer-text-en');
+                const textLa = card.querySelector('.prayer-text-la');
 
-            langToggleButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const lang = button.dataset.lang;
+                langToggleButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const lang = button.dataset.lang;
 
-                    // Update button active states
-                    langToggleButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.setAttribute('aria-pressed', 'false');
+                        langToggleButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                            btn.setAttribute('aria-pressed', 'false');
+                        });
+                        button.classList.add('active');
+                        button.setAttribute('aria-pressed', 'true');
+
+                        if (lang === 'en') {
+                            titleEn.classList.remove('hidden');
+                            titleLa.classList.add('hidden');
+                            textEn.classList.remove('hidden');
+                            textLa.classList.add('hidden');
+                        } else {
+                            titleEn.classList.add('hidden');
+                            titleLa.classList.remove('hidden');
+                            textEn.classList.add('hidden');
+                            textLa.classList.remove('hidden');
+                        }
                     });
-                    button.classList.add('active');
-                    button.setAttribute('aria-pressed', 'true');
-
-                    if (lang === 'en') {
-                        titleEn.classList.remove('hidden');
-                        titleLa.classList.add('hidden');
-                        textEn.classList.remove('hidden');
-                        textLa.classList.add('hidden');
-                    } else {
-                        titleEn.classList.add('hidden');
-                        titleLa.classList.remove('hidden');
-                        textEn.classList.add('hidden');
-                        textLa.classList.remove('hidden');
-                    }
                 });
-            });
             });
         }
         loadPrayers();
 
         const apologeticsList = document.getElementById('apologetics-list');
-        
+
         function loadApologetics() {
             apologeticsData.forEach((topic, index) => {
-            const topicId = `apologetics-${index}`;
-            const item = document.createElement('div');
-                        item.className = 'card card-theme-bg rounded-lg shadow-md fade-in-element';
-            item.innerHTML = `
+                const topicId = `apologetics-${index}`;
+                const item = document.createElement('div');
+                item.className = 'card card-theme-bg rounded-lg shadow-md fade-in-element';
+                item.innerHTML = `
                 <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-medium text-theme-primary card-theme-hover-bg focus:outline-none" aria-expanded="false" aria-controls="${topicId}-content">
                     <span><i class="fas fa-shield-halved text-theme-secondary mr-3"></i>${topic.Topic_Title}</span>
                     <svg class="w-5 h-5 shrink-0 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -673,19 +848,19 @@
                     ${topic.Topic_Content_With_Linked_References}
                 </div>
             `;
-            apologeticsList.appendChild(item);
+                apologeticsList.appendChild(item);
             });
         }
         loadApologetics();
 
         const doctrineList = document.getElementById('doctrine-list');
-        
+
         function loadDoctrine() {
             doctrineData.forEach((formula, index) => {
-            const formulaId = `doctrine-${index}`;
-            const item = document.createElement('div');
-                        item.className = 'card card-theme-bg rounded-lg shadow-md fade-in-element';
-            item.innerHTML = `
+                const formulaId = `doctrine-${index}`;
+                const item = document.createElement('div');
+                item.className = 'card card-theme-bg rounded-lg shadow-md fade-in-element';
+                item.innerHTML = `
                 <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-medium text-theme-primary card-theme-hover-bg focus:outline-none" aria-expanded="false" aria-controls="${formulaId}-content">
                     <span><i class="fas fa-scroll text-theme-secondary mr-3"></i>${formula.Formula_Title}</span>
                      <svg class="w-5 h-5 shrink-0 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -694,11 +869,11 @@
                     ${formula.Formula_Content}
                 </div>
             `;
-            doctrineList.appendChild(item);
+                doctrineList.appendChild(item);
             });
         }
         loadDoctrine();
-        
+
         document.querySelectorAll('.accordion-toggle').forEach(button => {
             button.addEventListener('click', () => {
                 const content = document.getElementById(button.getAttribute('aria-controls'));
@@ -710,7 +885,7 @@
         });
 
         const bibleInYearList = document.getElementById('bible-in-year-list');
-        let allBibleReadings = bibleInYearData; 
+        let allBibleReadings = bibleInYearData;
 
         function displayBibleReadings(readings) {
             bibleInYearList.innerHTML = '';
@@ -731,7 +906,7 @@
         const bibleSearchInput = document.getElementById('bible-search');
         bibleSearchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            const filteredReadings = allBibleReadings.filter(r => 
+            const filteredReadings = allBibleReadings.filter(r =>
                 r.Day_Title.toLowerCase().includes(searchTerm) ||
                 r.Bible_Passages.toLowerCase().includes(searchTerm)
             );
@@ -760,7 +935,7 @@
         const catechismSearchInput = document.getElementById('catechism-search');
         catechismSearchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            const filteredReadings = allCatechismReadings.filter(r => 
+            const filteredReadings = allCatechismReadings.filter(r =>
                 r.Day_Title.toLowerCase().includes(searchTerm) ||
                 r.Catechism_Paragraphs.toLowerCase().includes(searchTerm)
             );
@@ -768,42 +943,50 @@
         });
 
         const rosaryAlbumsContainer = document.getElementById('rosary-albums');
-        const rosaryAlbums = [ 
-            { name: "Luminous Mysteries", description: "Luminous Mysteries", images: [
-                { src: "https://ik.imagekit.io/qy6hiycaw/luminous_01.jpg", name: "The Baptism of Christ" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/luminous_02.jpg", name: "The Wedding Feast at Cana" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/luminous_03.jpg", name: "The Proclamation of the Kingdom" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/luminous_04.jpg", name: "The Transfiguration" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/luminous_05.jpg", name: "The Institution of the Eucharist" }
-            ]},
-            { name: "Glorious Mysteries", description: "Glorious Mysteries", images: [
-                { src: "https://ik.imagekit.io/qy6hiycaw/glorious_01.jpg", name: "The Resurrection" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/glorious_02.jpg", name: "The Ascension" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/glorious_03.jpg", name: "The Descent of the Holy Spirit" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/glorious_04.jpg", name: "The Assumption" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/glorious_05.jpg", name: "The Coronation of Mary" }
-            ]},
-            { name: "Joyful Mysteries", description: "Joyful Mysteries", images: [
-                { src: "https://ik.imagekit.io/qy6hiycaw/joyful_01.jpg", name: "The Annunciation" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/joyful_02.jpg", name: "The Visitation" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/joyful_03.jpg", name: "The Nativity" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/joyful_04.jpg", name: "The Presentation in the Temple" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/joyful_05.jpg", name: "The Finding in the Temple" }
-            ]},
-            { name: "Sorrowful Mysteries", description: "Sorrowful Mysteries", images: [
-                { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_01.jpg", name: "The Agony in the Garden" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_02.jpg", name: "The Scourging at the Pillar" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_03.jpg", name: "The Crowning with Thorns" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_04.jpg", name: "The Carrying of the Cross" },
-                { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_05.jpg", name: "The Crucifixion and Death" }
-            ]},
+        const rosaryAlbums = [
+            {
+                name: "Luminous Mysteries", description: "Luminous Mysteries", images: [
+                    { src: "https://ik.imagekit.io/qy6hiycaw/luminous_01.jpg", name: "The Baptism of Christ" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/luminous_02.jpg", name: "The Wedding Feast at Cana" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/luminous_03.jpg", name: "The Proclamation of the Kingdom" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/luminous_04.jpg", name: "The Transfiguration" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/luminous_05.jpg", name: "The Institution of the Eucharist" }
+                ]
+            },
+            {
+                name: "Glorious Mysteries", description: "Glorious Mysteries", images: [
+                    { src: "https://ik.imagekit.io/qy6hiycaw/glorious_01.jpg", name: "The Resurrection" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/glorious_02.jpg", name: "The Ascension" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/glorious_03.jpg", name: "The Descent of the Holy Spirit" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/glorious_04.jpg", name: "The Assumption" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/glorious_05.jpg", name: "The Coronation of Mary" }
+                ]
+            },
+            {
+                name: "Joyful Mysteries", description: "Joyful Mysteries", images: [
+                    { src: "https://ik.imagekit.io/qy6hiycaw/joyful_01.jpg", name: "The Annunciation" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/joyful_02.jpg", name: "The Visitation" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/joyful_03.jpg", name: "The Nativity" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/joyful_04.jpg", name: "The Presentation in the Temple" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/joyful_05.jpg", name: "The Finding in the Temple" }
+                ]
+            },
+            {
+                name: "Sorrowful Mysteries", description: "Sorrowful Mysteries", images: [
+                    { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_01.jpg", name: "The Agony in the Garden" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_02.jpg", name: "The Scourging at the Pillar" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_03.jpg", name: "The Crowning with Thorns" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_04.jpg", name: "The Carrying of the Cross" },
+                    { src: "https://ik.imagekit.io/qy6hiycaw/sorrowful_05.jpg", name: "The Crucifixion and Death" }
+                ]
+            },
         ];
-      
+
         rosaryAlbums.forEach(album => {
             const albumDiv = document.createElement('div');
             albumDiv.className = 'mb-10';
             albumDiv.innerHTML = `<h3 class="text-2xl font-semibold text-theme-primary mb-6 text-center">${album.description}</h3>`;
-            
+
             const gridDiv = document.createElement('div');
             gridDiv.className = 'rosary-grid';
 
@@ -841,7 +1024,7 @@
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
@@ -880,12 +1063,11 @@
             });
         });
 
-        // Set initial active tab
         document.getElementById('bible-tab').click();
 
         const backToTopButton = document.getElementById('back-to-top-btn');
 
-        window.onscroll = function() {
+        window.onscroll = function () {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 backToTopButton.style.display = "block";
             } else {
@@ -898,4 +1080,5 @@
         });
     </script>
 </body>
+
 </html>
