@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lex Credendi Catholic Resource Hub</title>
-    <link rel="icon" href="https://imagedelivery.net/PwwFoxX145pJ1GHCG1Npzg/9d5b7875-4ec5-400e-2858-f6ff14f27400/public" type="image/svg+xml">
+    <link rel="icon" href="https://imagedelivery.net/PwwFoxX145pJ1GHCG1Npzg/9d5b7875-4ec5-400e-2858-f6ff14f27400/public"
+        type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -32,7 +33,7 @@
 
         #hero {
             position: relative;
-            background-image: url('https://cdn.pixabay.com/photo/2017/08/27/21/42/cathedral-2688075_1280.jpg');
+            background-image: url('https://imagedelivery.net/PwwFoxX145pJ1GHCG1Npzg/2060b674-8da2-4d22-a4cf-f4b420862600/public');
             background-size: cover;
             background-position: center;
         }
@@ -55,7 +56,7 @@
 
         .custom-shape-divider-bottom-1663186399 {
             position: absolute;
-            bottom: 0;
+            bottom: -64px;
             left: 0;
             width: 100%;
             overflow: hidden;
@@ -64,11 +65,17 @@
             z-index: 1;
         }
 
+        @media (min-width: 768px) {
+            .custom-shape-divider-bottom-1663186399 {
+                bottom: -96px;
+            }
+        }
+
         .custom-shape-divider-bottom-1663186399 svg {
             position: relative;
             display: block;
             width: calc(100% + 1.3px);
-            height: 150px;
+            height: 120px;
         }
 
         .custom-shape-divider-bottom-1663186399 .shape-fill {
@@ -513,8 +520,8 @@
     </header>
 
     <main>
-        <section id="hero" class="py-16 md:py-24">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section id="hero" class="relative py-16 md:py-24">
+            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white">
                     Lex Credendi
                 </h1>
