@@ -550,9 +550,18 @@
                         class="card card-theme-bg p-6 shadow-xl rounded-2xl border border-theme-primary transform hover:scale-105 transition-transform duration-300 ease-in-out">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-book-bible text-3xl text-theme-secondary mr-4"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-theme-primary">Bible in a Year</h3>
-                                <p class="text-sm text-theme-secondary">Today's Scripture Passages</p>
+                            <div class="flex justify-between items-center w-full">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-theme-primary">Bible in a Year</h3>
+                                    <p id="bible-date" class="text-sm text-theme-secondary">Today's Scripture Passages
+                                    </p>
+                                </div>
+                                <div class="flex items-center">
+                                    <button id="prev-bible-day"
+                                        class="mr-2 px-2 py-1 rounded-md bg-theme-secondary text-white">-</button>
+                                    <button id="next-bible-day"
+                                        class="px-2 py-1 rounded-md bg-theme-secondary text-white">+</button>
+                                </div>
                             </div>
                         </div>
                         <div id="daily-bible-content" class="text-theme-secondary space-y-3">
@@ -565,9 +574,17 @@
                         class="card card-theme-bg p-6 shadow-xl rounded-2xl border border-theme-primary transform hover:scale-105 transition-transform duration-300 ease-in-out">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-cross text-3xl text-theme-secondary mr-4"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-theme-primary">Catechism in a Year</h3>
-                                <p class="text-sm text-theme-secondary">Today's Paragraphs</p>
+                            <div class="flex justify-between items-center w-full">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-theme-primary">Catechism in a Year</h3>
+                                    <p id="catechism-date" class="text-sm text-theme-secondary">Today's Paragraphs</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <button id="prev-catechism-day"
+                                        class="mr-2 px-2 py-1 rounded-md bg-theme-secondary text-white">-</button>
+                                    <button id="next-catechism-day"
+                                        class="px-2 py-1 rounded-md bg-theme-secondary text-white">+</button>
+                                </div>
                             </div>
                         </div>
                         <div id="daily-catechism-content" class="text-theme-secondary space-y-3">
@@ -1669,12 +1686,21 @@
         });
 
 
-        function displayTodaysReadings() {
+        let dateOffset = 0;
+
+        function updateReadings() {
             const now = new Date();
+            now.setDate(now.getDate() + dateOffset);
             const start = new Date(now.getFullYear(), 0, 0);
             const diff = now - start;
             const oneDay = 1000 * 60 * 60 * 24;
             const dayOfYear = Math.floor(diff / oneDay);
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const displayDate = now.toLocaleDateString('en-US', options);
+
+            document.getElementById('catechism-date').textContent = displayDate;
+            document.getElementById('bible-date').textContent = displayDate;
 
             // --- Display Bible Reading ---
             const bibleContent = document.getElementById('daily-bible-content');
@@ -1682,11 +1708,11 @@
 
             if (todaysBibleReading) {
                 bibleContent.innerHTML = `
-                    <h4 class="text-xl font-semibold text-theme-primary mb-2">${todaysBibleReading.Day_Title}</h4>
-                    <p class="text-base leading-relaxed">${todaysBibleReading.Bible_Passages}</p>
+                    <p class="font-semibold text-lg text-theme-primary">${todaysBibleReading.Day_Title}</p>
+                    <p class="text-md">${todaysBibleReading.Bible_Passages}</p>
                 `;
             } else {
-                bibleContent.innerHTML = '<p class="text-center italic p-8">No Bible reading scheduled for today.</p>';
+                bibleContent.innerHTML = `<p>No reading for this day.</p>`;
             }
 
             // --- Display Catechism Reading ---
@@ -1695,15 +1721,22 @@
 
             if (todaysCatechismReading) {
                 catechismContent.innerHTML = `
-                    <h4 class="text-xl font-semibold text-theme-primary mb-2">${todaysCatechismReading.Day_Title}</h4>
-                    <p class="text-base leading-relaxed">Paragraphs: ${todaysCatechismReading.Catechism_Paragraphs}</p>
+                    <p class="font-semibold text-lg text-theme-primary">${todaysCatechismReading.Day_Title}</p>
+                    <p class="text-md">${todaysCatechismReading.Catechism_Paragraphs}</p>
                 `;
             } else {
-                catechismContent.innerHTML = '<p class="text-center italic p-8">No Catechism reading scheduled for today.</p>';
+                catechismContent.innerHTML = `<p>No reading for this day.</p>`;
             }
         }
 
-        document.addEventListener('DOMContentLoaded', displayTodaysReadings);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateReadings();
+
+            document.getElementById('prev-catechism-day').addEventListener('click', () => { dateOffset--; updateReadings(); });
+            document.getElementById('next-catechism-day').addEventListener('click', () => { dateOffset++; updateReadings(); });
+            document.getElementById('prev-bible-day').addEventListener('click', () => { dateOffset--; updateReadings(); });
+            document.getElementById('next-bible-day').addEventListener('click', () => { dateOffset++; updateReadings(); });
+        });
 
         const rosaryAlbumsContainer = document.getElementById('rosary-albums');
         const rosaryAlbums = [
