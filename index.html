@@ -546,7 +546,6 @@
                 <h2 class="text-3xl font-bold text-theme-primary mb-12 text-center">Reading Plan</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
 
-                    <!-- Today's Bible Reading -->
                     <div id="daily-bible-reading-card"
                         class="card card-theme-bg p-6 shadow-xl rounded-2xl border border-theme-primary transform hover:scale-105 transition-transform duration-300 ease-in-out">
                         <div class="flex items-center mb-4">
@@ -557,13 +556,11 @@
                             </div>
                         </div>
                         <div id="daily-bible-content" class="text-theme-secondary space-y-3">
-                            <!-- Content will be injected by JavaScript -->
                             <div class="text-center p-8">
                                 <p class="text-lg italic">Loading today's reading...</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Today's Catechism Reading -->
                     <div id="daily-catechism-reading-card"
                         class="card card-theme-bg p-6 shadow-xl rounded-2xl border border-theme-primary transform hover:scale-105 transition-transform duration-300 ease-in-out">
                         <div class="flex items-center mb-4">
@@ -574,7 +571,6 @@
                             </div>
                         </div>
                         <div id="daily-catechism-content" class="text-theme-secondary space-y-3">
-                            <!-- Content will be injected by JavaScript -->
                             <div class="text-center p-8">
                                 <p class="text-lg italic">Loading today's reading...</p>
                             </div>
@@ -687,7 +683,7 @@
             });
         });
 
-        // --- Smooth Scrolling & Active Nav Link ---
+        // --- Smooth Scroll & Active Nav Link ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
