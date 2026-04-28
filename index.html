@@ -452,130 +452,225 @@
         }
 
         /* ===== BREATHING MEDITATION ===== */
-        .meditation-wrap {
+        .meditation-container {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            padding: 3rem;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, rgba(13, 27, 62, 0.95), rgba(8, 12, 28, 0.95));
+        }
+
+        .meditation-visualizer {
+            position: relative;
+            width: 280px;
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3rem;
+            transition: transform 0.5s ease-in-out;
         }
 
-        .breathing-ring {
+        .lotus-petal {
             position: absolute;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            border: 1px solid rgba(201, 168, 68, 0.25);
-            animation: breathRing 8s ease-in-out infinite;
+            background: radial-gradient(circle at 30% 30%, rgba(138, 180, 248, 0.9), rgba(59, 130, 246, 0.6));
+            mix-blend-mode: screen;
+            opacity: 0.7;
+            transform-origin: 50% 50%;
+            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(2px);
         }
 
-        .breathing-ring-1 {
-            width: 300px;
-            height: 300px;
-            animation-delay: -0.4s;
+        .lotus-petal:nth-child(1) {
+            transform: rotate(0deg) translate(0px);
         }
 
-        .breathing-ring-2 {
-            width: 360px;
-            height: 360px;
-            animation-delay: -0.8s;
-            border-color: rgba(201, 168, 68, 0.12);
+        .lotus-petal:nth-child(2) {
+            transform: rotate(60deg) translate(0px);
         }
 
-        .breathing-ring-3 {
-            width: 420px;
-            height: 420px;
-            animation-delay: -1.2s;
-            border-color: rgba(201, 168, 68, 0.06);
+        .lotus-petal:nth-child(3) {
+            transform: rotate(120deg) translate(0px);
         }
 
-        @media (max-width: 480px) {
-            .breathing-ring-1 {
-                width: 240px;
-                height: 240px;
-            }
-
-            .breathing-ring-2 {
-                width: 290px;
-                height: 290px;
-            }
-
-            .breathing-ring-3 {
-                width: 340px;
-                height: 340px;
-            }
+        .lotus-petal:nth-child(4) {
+            transform: rotate(180deg) translate(0px);
         }
 
-        @keyframes breathRing {
-
-            0%,
-            100% {
-                transform: scale(0.87);
-                opacity: 0.6;
-            }
-
-            50% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .lotus-petal:nth-child(5) {
+            transform: rotate(240deg) translate(0px);
         }
 
-        .breathing-circle {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            animation: breathCircle 8s ease-in-out infinite;
-            position: relative;
+        .lotus-petal:nth-child(6) {
+            transform: rotate(300deg) translate(0px);
+        }
+
+        /* Animation States */
+        /* Rest State */
+        .meditation-visualizer.phase-rest .lotus-petal {
+            transition: transform 2s ease;
+        }
+
+        .meditation-visualizer.phase-rest .lotus-petal:nth-child(1) {
+            transform: rotate(0deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-rest .lotus-petal:nth-child(2) {
+            transform: rotate(60deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-rest .lotus-petal:nth-child(3) {
+            transform: rotate(120deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-rest .lotus-petal:nth-child(4) {
+            transform: rotate(180deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-rest .lotus-petal:nth-child(5) {
+            transform: rotate(240deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-rest .lotus-petal:nth-child(6) {
+            transform: rotate(300deg) translateY(-10px) scale(0.6);
+        }
+
+        /* Inhale State */
+        .meditation-visualizer.phase-inhale {
+            transform: scale(1);
+        }
+
+        .meditation-visualizer.phase-inhale .lotus-petal {
+            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .meditation-visualizer.phase-inhale .lotus-petal:nth-child(1) {
+            transform: rotate(0deg) translateY(-50px) scale(1.1);
+        }
+
+        .meditation-visualizer.phase-inhale .lotus-petal:nth-child(2) {
+            transform: rotate(60deg) translateY(-50px) scale(1.1);
+        }
+
+        .meditation-visualizer.phase-inhale .lotus-petal:nth-child(3) {
+            transform: rotate(120deg) translateY(-50px) scale(1.1);
+        }
+
+        .meditation-visualizer.phase-inhale .lotus-petal:nth-child(4) {
+            transform: rotate(180deg) translateY(-50px) scale(1.1);
+        }
+
+        .meditation-visualizer.phase-inhale .lotus-petal:nth-child(5) {
+            transform: rotate(240deg) translateY(-50px) scale(1.1);
+        }
+
+        .meditation-visualizer.phase-inhale .lotus-petal:nth-child(6) {
+            transform: rotate(300deg) translateY(-50px) scale(1.1);
+        }
+
+        /* Exhale State */
+        .meditation-visualizer.phase-exhale {
+            transform: scale(1);
+        }
+
+        .meditation-visualizer.phase-exhale .lotus-petal {
+            transition: transform 5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .meditation-visualizer.phase-exhale .lotus-petal:nth-child(1) {
+            transform: rotate(0deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-exhale .lotus-petal:nth-child(2) {
+            transform: rotate(60deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-exhale .lotus-petal:nth-child(3) {
+            transform: rotate(120deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-exhale .lotus-petal:nth-child(4) {
+            transform: rotate(180deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-exhale .lotus-petal:nth-child(5) {
+            transform: rotate(240deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-visualizer.phase-exhale .lotus-petal:nth-child(6) {
+            transform: rotate(300deg) translateY(-10px) scale(0.6);
+        }
+
+        .meditation-text-container {
+            position: absolute;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            z-index: 1;
-        }
-
-        @media (max-width: 480px) {
-            .breathing-circle {
-                width: 190px;
-                height: 190px;
-            }
-        }
-
-        @keyframes breathCircle {
-
-            0%,
-            100% {
-                transform: scale(0.87);
-                opacity: 0.75;
-                box-shadow: 0 0 30px rgba(30, 58, 138, 0.5), 0 0 60px rgba(201, 168, 68, 0.1);
-            }
-
-            50% {
-                transform: scale(1);
-                opacity: 1;
-                box-shadow: 0 0 60px rgba(30, 58, 138, 0.8), 0 0 120px rgba(201, 168, 68, 0.2);
-            }
-        }
-
-        .meditation-theme-bg {
-            background: radial-gradient(circle at 40% 40%, #2a4faa, #0d1b3e);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
 
         .meditation-text {
-            color: white;
-            line-height: 1.65;
-            animation: fadeInOut 8s ease-in-out infinite;
-            font-size: 0.88rem;
-            padding: 0 1rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.125rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            max-width: 80%;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
         }
 
-        @keyframes fadeInOut {
+        .meditation-text.fade-out {
+            opacity: 0;
+        }
 
-            0%,
-            100% {
-                opacity: 0.6;
-            }
+        .meditation-instruction {
+            margin-bottom: 2.5rem;
+            font-family: 'Cinzel', serif;
+            color: rgba(201, 168, 68, 0.9);
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            transition: opacity 0.5s ease;
+        }
 
-            50% {
-                opacity: 1;
-            }
+        .meditation-controls {
+            margin-top: 3rem;
+            z-index: 10;
+        }
+
+        .btn-meditation {
+            background: transparent;
+            border: 1px solid rgba(201, 168, 68, 0.6);
+            color: rgba(201, 168, 68, 0.9);
+            padding: 0.6rem 2rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-meditation:hover {
+            background: rgba(201, 168, 68, 0.15);
+            border-color: rgba(201, 168, 68, 0.9);
+            color: white;
+            box-shadow: 0 0 15px rgba(201, 168, 68, 0.3);
         }
 
         /* ===== ROSARY ===== */
@@ -899,14 +994,27 @@
                 <div class="section-ornament" style="--accent:rgba(201,168,68,0.8);">
                     <div class="section-ornament-dot"></div>
                 </div>
-                <div class="meditation-wrap flex flex-col items-center justify-center" style="min-height:420px;">
-                    <div class="breathing-ring breathing-ring-3"></div>
-                    <div class="breathing-ring breathing-ring-2"></div>
-                    <div class="breathing-ring breathing-ring-1"></div>
-                    <div class="breathing-circle meditation-theme-bg">
-                        <p class="meditation-text font-medium p-4">
-                            Lord Jesus Christ, Son of God, have mercy on me, a sinner.
-                        </p>
+
+                <div class="meditation-container mx-auto max-w-4xl">
+                    <p id="meditation-instruction" class="meditation-instruction">Ready</p>
+
+                    <div id="meditation-visualizer" class="meditation-visualizer phase-rest">
+                        <div class="lotus-petal"></div>
+                        <div class="lotus-petal"></div>
+                        <div class="lotus-petal"></div>
+                        <div class="lotus-petal"></div>
+                        <div class="lotus-petal"></div>
+                        <div class="lotus-petal"></div>
+
+                        <div class="meditation-text-container">
+                            <p id="meditation-text" class="meditation-text">
+                                The Jesus Prayer
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="meditation-controls">
+                        <button id="meditation-toggle" class="btn-meditation">Start Session</button>
                     </div>
                 </div>
             </div>
@@ -2249,6 +2357,83 @@
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // ===== MEDITATION LOGIC =====
+        const visualizer = document.getElementById('meditation-visualizer');
+        const toggleBtn = document.getElementById('meditation-toggle');
+        const meditationText = document.getElementById('meditation-text');
+        const instructionText = document.getElementById('meditation-instruction');
+
+        let isMeditating = false;
+        let meditationTimeout = null;
+        let phaseTimeout = null;
+
+        const INHALE_TIME = 4000;
+        const HOLD_IN_TIME = 2000;
+        const EXHALE_TIME = 5000;
+        const HOLD_OUT_TIME = 2000;
+
+        function updateTextWithFade(element, newText) {
+            element.classList.add('fade-out');
+            setTimeout(() => {
+                element.textContent = newText;
+                element.classList.remove('fade-out');
+            }, 500);
+        }
+
+        function startMeditationCycle() {
+            if (!isMeditating) return;
+
+            instructionText.textContent = "Inhale";
+            visualizer.className = 'meditation-visualizer phase-inhale';
+            updateTextWithFade(meditationText, "Lord Jesus Christ, Son of God,");
+
+            phaseTimeout = setTimeout(() => {
+                if (!isMeditating) return;
+
+                instructionText.textContent = "Hold";
+
+                phaseTimeout = setTimeout(() => {
+                    if (!isMeditating) return;
+
+                    instructionText.textContent = "Exhale";
+                    visualizer.className = 'meditation-visualizer phase-exhale';
+                    updateTextWithFade(meditationText, "have mercy on me, a sinner.");
+
+                    phaseTimeout = setTimeout(() => {
+                        if (!isMeditating) return;
+
+                        instructionText.textContent = "Hold";
+
+                        meditationTimeout = setTimeout(startMeditationCycle, HOLD_OUT_TIME);
+
+                    }, EXHALE_TIME);
+                }, HOLD_IN_TIME);
+            }, INHALE_TIME);
+        }
+
+        function stopMeditation() {
+            isMeditating = false;
+            clearTimeout(meditationTimeout);
+            clearTimeout(phaseTimeout);
+
+            visualizer.className = 'meditation-visualizer phase-rest';
+            instructionText.textContent = "Ready";
+            updateTextWithFade(meditationText, "The Jesus Prayer");
+            toggleBtn.textContent = "Start Session";
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            if (isMeditating) {
+                stopMeditation();
+            } else {
+                isMeditating = true;
+                toggleBtn.textContent = "Stop Session";
+                startMeditationCycle();
+            }
+        });
+
+        stopMeditation();
     </script>
 </body>
 
