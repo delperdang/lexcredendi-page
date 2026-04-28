@@ -8,7 +8,9 @@
     <link rel="icon" href="https://imagedelivery.net/PwwFoxX145pJ1GHCG1Npzg/9d5b7875-4ec5-400e-2858-f6ff14f27400/public"
         type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,12 +23,13 @@
             --text-secondary: #4a4a6a;
             --accent: #c9a844;
             --accent-dim: #9a7a2a;
-            --glass-bg: rgba(255,255,255,0.60);
-            --glass-bg-hover: rgba(255,255,255,0.80);
-            --glass-border: rgba(255,255,255,0.75);
-            --glass-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
-            --nav-bg: rgba(242,239,233,0.82);
+            --glass-bg: rgba(255, 255, 255, 0.60);
+            --glass-bg-hover: rgba(255, 255, 255, 0.80);
+            --glass-border: rgba(255, 255, 255, 0.75);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+            --nav-bg: rgba(242, 239, 233, 0.82);
         }
+
         html.dark {
             --bg-primary: #0d1117;
             --bg-secondary: #111827;
@@ -34,15 +37,19 @@
             --text-secondary: #9ca3af;
             --accent: #d4a853;
             --accent-dim: #b8972e;
-            --glass-bg: rgba(255,255,255,0.04);
-            --glass-bg-hover: rgba(255,255,255,0.09);
-            --glass-border: rgba(255,255,255,0.10);
-            --glass-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.25);
-            --nav-bg: rgba(13,17,23,0.85);
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-bg-hover: rgba(255, 255, 255, 0.09);
+            --glass-border: rgba(255, 255, 255, 0.10);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.25);
+            --nav-bg: rgba(13, 17, 23, 0.85);
         }
 
         /* ===== BASE ===== */
-        *, *::before, *::after { box-sizing: border-box; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -52,28 +59,68 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .font-cinzel { font-family: 'Cinzel', serif; }
+        h1,
+        h2,
+        h3,
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
 
         /* ===== LINKS ===== */
-        a { color: var(--accent); text-decoration: underline; }
-        a:hover { color: var(--accent-dim); text-decoration: none; }
-        a:visited { color: var(--accent); }
-        .nav-link-theme, .nav-link-theme:visited { color: var(--text-primary); text-decoration: none !important; }
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: var(--accent-dim);
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: var(--accent);
+        }
+
+        .nav-link-theme,
+        .nav-link-theme:visited {
+            color: var(--text-primary);
+            text-decoration: none !important;
+        }
 
         /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--accent), var(--accent-dim));
             border-radius: 3px;
         }
 
         /* ===== THEME CLASSES ===== */
-        .bg-theme-primary { background-color: var(--bg-primary); }
-        .section-bg-alt { background-color: var(--bg-secondary); }
-        .text-theme-primary { color: var(--text-primary); }
-        .text-theme-secondary { color: var(--text-secondary); }
-        .border-theme-primary { border-color: var(--glass-border); }
+        .bg-theme-primary {
+            background-color: var(--bg-primary);
+        }
+
+        .section-bg-alt {
+            background-color: var(--bg-secondary);
+        }
+
+        .text-theme-primary {
+            color: var(--text-primary);
+        }
+
+        .text-theme-secondary {
+            color: var(--text-secondary);
+        }
+
+        .border-theme-primary {
+            border-color: var(--glass-border);
+        }
 
         /* ===== GLASS CARD ===== */
         .card-theme-bg {
@@ -82,19 +129,24 @@
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--glass-border);
         }
-        .card-theme-hover-bg:hover { background: var(--glass-bg-hover); }
+
+        .card-theme-hover-bg:hover {
+            background: var(--glass-bg-hover);
+        }
 
         .card {
             border-radius: 1rem;
             box-shadow: var(--glass-shadow);
             transition: box-shadow 0.35s ease, transform 0.35s ease, background 0.3s ease;
         }
+
         .card:hover {
-            box-shadow: 0 24px 48px rgba(0,0,0,0.14), 0 4px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.06);
             transform: translateY(-5px);
         }
+
         html.dark .card:hover {
-            box-shadow: 0 24px 48px rgba(0,0,0,0.55), 0 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55), 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         /* ===== NAV ===== */
@@ -106,13 +158,15 @@
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
             border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
         }
+
         .nav-link-theme {
             position: relative;
             transition: color 0.2s ease;
         }
+
         .nav-link-theme::after {
             content: '';
             position: absolute;
@@ -123,10 +177,23 @@
             background: var(--accent);
             transition: width 0.3s ease;
         }
-        .nav-link-theme:hover { color: var(--accent) !important; }
-        .nav-link-theme:hover::after { width: 100%; }
-        .active-nav-link-theme { color: var(--accent) !important; font-weight: 600; }
-        .active-nav-link-theme::after { width: 100%; }
+
+        .nav-link-theme:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link-theme:hover::after {
+            width: 100%;
+        }
+
+        .active-nav-link-theme {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .active-nav-link-theme::after {
+            width: 100%;
+        }
 
         #mobile-menu {
             background: var(--nav-bg);
@@ -139,17 +206,20 @@
             background: linear-gradient(135deg, #1e3a8a, #1a56db);
             color: white;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(30,58,138,0.3);
+            box-shadow: 0 4px 14px rgba(30, 58, 138, 0.3);
         }
+
         .button-theme:hover {
             background: linear-gradient(135deg, #163070, #1347c0);
-            box-shadow: 0 6px 20px rgba(30,58,138,0.45);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.45);
             transform: translateY(-1px);
         }
+
         html.dark .button-theme {
             background: linear-gradient(135deg, #2563eb, #60a5fa);
-            box-shadow: 0 4px 14px rgba(59,130,246,0.3);
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
         }
+
         html.dark .button-theme:hover {
             background: linear-gradient(135deg, #1d4ed8, #3b82f6);
         }
@@ -165,35 +235,46 @@
             display: flex;
             align-items: center;
         }
+
         #hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(160deg, rgba(8,12,28,0.88) 0%, rgba(26,58,107,0.72) 50%, rgba(8,12,28,0.88) 100%);
+            background: linear-gradient(160deg, rgba(8, 12, 28, 0.88) 0%, rgba(26, 58, 107, 0.72) 50%, rgba(8, 12, 28, 0.88) 100%);
             z-index: 1;
         }
+
         #hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, rgba(201,168,68,0.12) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(201, 168, 68, 0.12) 0%, transparent 70%);
             z-index: 1;
         }
-        #hero > div { position: relative; z-index: 2; }
+
+        #hero>div {
+            position: relative;
+            z-index: 2;
+        }
 
         .hero-title {
             font-family: 'Cinzel', serif;
             letter-spacing: 0.1em;
-            text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 0 80px rgba(201,168,68,0.2);
+            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6), 0 0 80px rgba(201, 168, 68, 0.2);
             animation: heroFadeUp 1.2s ease-out both;
         }
-        .hero-subtitle { animation: heroFadeUp 1.2s ease-out 0.25s both; }
+
+        .hero-subtitle {
+            animation: heroFadeUp 1.2s ease-out 0.25s both;
+        }
+
         .hero-quote {
-            color: rgba(201,168,68,0.88);
+            color: rgba(201, 168, 68, 0.88);
             font-style: italic;
             letter-spacing: 0.03em;
             animation: heroFadeUp 1.2s ease-out 0.5s both;
         }
+
         .gold-ornament {
             display: flex;
             align-items: center;
@@ -202,50 +283,48 @@
             margin: 1.5rem 0;
             animation: heroFadeUp 1.2s ease-out 0.75s both;
         }
-        .gold-ornament::before, .gold-ornament::after {
+
+        .gold-ornament::before,
+        .gold-ornament::after {
             content: '';
             flex: 1;
             max-width: 100px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(201,168,68,0.7));
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 68, 0.7));
         }
+
         .gold-ornament::after {
-            background: linear-gradient(90deg, rgba(201,168,68,0.7), transparent);
+            background: linear-gradient(90deg, rgba(201, 168, 68, 0.7), transparent);
         }
+
         .gold-ornament-diamond {
             width: 7px;
             height: 7px;
             background: var(--accent);
             transform: rotate(45deg);
-            box-shadow: 0 0 12px rgba(201,168,68,0.6);
-        }
-        @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(28px); }
-            to   { opacity: 1; transform: translateY(0); }
+            box-shadow: 0 0 12px rgba(201, 168, 68, 0.6);
         }
 
-        .custom-shape-divider-bottom-1663186399 {
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            z-index: 3;
+        @keyframes heroFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .custom-shape-divider-bottom-1663186399 svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 70px;
-        }
-        @media (min-width: 768px) {
-            .custom-shape-divider-bottom-1663186399 svg { height: 90px; }
-        }
-        .custom-shape-divider-bottom-1663186399 .shape-fill { fill: var(--bg-primary); }
+
+
 
         /* ===== SECTIONS ===== */
-        section { padding-top: 5rem; padding-bottom: 5rem; position: relative; }
+        section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            position: relative;
+        }
 
         .section-heading {
             font-family: 'Cinzel', serif;
@@ -254,6 +333,7 @@
             text-align: center;
             margin-bottom: 0;
         }
+
         .section-ornament {
             display: flex;
             align-items: center;
@@ -262,15 +342,19 @@
             margin-top: 0.75rem;
             margin-bottom: 3rem;
         }
-        .section-ornament::before, .section-ornament::after {
+
+        .section-ornament::before,
+        .section-ornament::after {
             content: '';
             width: 48px;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--accent));
         }
+
         .section-ornament::after {
             background: linear-gradient(90deg, var(--accent), transparent);
         }
+
         .section-ornament-dot {
             width: 5px;
             height: 5px;
@@ -280,22 +364,43 @@
         }
 
         /* ===== SECTION BACKGROUNDS ===== */
-        #prayers { background: var(--bg-primary); }
-        #apologetics { background: var(--bg-secondary); }
-        #doctrine { background: var(--bg-primary); }
-        #reading-plans { background: var(--bg-secondary); }
-        #meditation { background: linear-gradient(160deg, #080c1c 0%, #1a3278 50%, #080c1c 100%); }
-        #rosary { background: var(--bg-primary); }
-        #useful-links { background: var(--bg-secondary); }
+        #prayers {
+            background: var(--bg-primary);
+        }
+
+        #apologetics {
+            background: var(--bg-secondary);
+        }
+
+        #doctrine {
+            background: var(--bg-primary);
+        }
+
+        #reading-plans {
+            background: var(--bg-secondary);
+        }
+
+        #meditation {
+            background: linear-gradient(160deg, #080c1c 0%, #1a3278 50%, #080c1c 100%);
+        }
+
+        #rosary {
+            background: var(--bg-primary);
+        }
+
+        #useful-links {
+            background: var(--bg-secondary);
+        }
 
         /* ===== ACCORDION ===== */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.35s ease;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
             padding-top: 0;
             padding-bottom: 0;
         }
+
         .accordion-content.open {
             max-height: 3000px;
             padding-top: 1rem;
@@ -305,12 +410,16 @@
         /* ===== PILL TOGGLE ===== */
         .pill-toggle {
             display: inline-flex;
-            background: rgba(0,0,0,0.07);
+            background: rgba(0, 0, 0, 0.07);
             border-radius: 9999px;
             padding: 3px;
             border: 1px solid var(--glass-border);
         }
-        html.dark .pill-toggle { background: rgba(255,255,255,0.07); }
+
+        html.dark .pill-toggle {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
         .pill-toggle button {
             border: none;
             background: none;
@@ -323,14 +432,16 @@
             transition: all 0.25s ease;
             cursor: pointer;
         }
+
         .pill-toggle button.active {
             background: linear-gradient(135deg, #1e3a8a, #1a56db);
             color: white;
-            box-shadow: 0 2px 10px rgba(30,58,138,0.35);
+            box-shadow: 0 2px 10px rgba(30, 58, 138, 0.35);
         }
+
         html.dark .pill-toggle button.active {
             background: linear-gradient(135deg, #2563eb, #60a5fa);
-            box-shadow: 0 2px 10px rgba(59,130,246,0.3);
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
         }
 
         /* ===== TABS ===== */
@@ -348,24 +459,65 @@
             justify-content: center;
             padding: 3rem;
         }
+
         .breathing-ring {
             position: absolute;
             border-radius: 50%;
-            border: 1px solid rgba(201,168,68,0.25);
+            border: 1px solid rgba(201, 168, 68, 0.25);
             animation: breathRing 8s ease-in-out infinite;
         }
-        .breathing-ring-1 { width: 300px; height: 300px; animation-delay: -0.4s; }
-        .breathing-ring-2 { width: 360px; height: 360px; animation-delay: -0.8s; border-color: rgba(201,168,68,0.12); }
-        .breathing-ring-3 { width: 420px; height: 420px; animation-delay: -1.2s; border-color: rgba(201,168,68,0.06); }
+
+        .breathing-ring-1 {
+            width: 300px;
+            height: 300px;
+            animation-delay: -0.4s;
+        }
+
+        .breathing-ring-2 {
+            width: 360px;
+            height: 360px;
+            animation-delay: -0.8s;
+            border-color: rgba(201, 168, 68, 0.12);
+        }
+
+        .breathing-ring-3 {
+            width: 420px;
+            height: 420px;
+            animation-delay: -1.2s;
+            border-color: rgba(201, 168, 68, 0.06);
+        }
+
         @media (max-width: 480px) {
-            .breathing-ring-1 { width: 240px; height: 240px; }
-            .breathing-ring-2 { width: 290px; height: 290px; }
-            .breathing-ring-3 { width: 340px; height: 340px; }
+            .breathing-ring-1 {
+                width: 240px;
+                height: 240px;
+            }
+
+            .breathing-ring-2 {
+                width: 290px;
+                height: 290px;
+            }
+
+            .breathing-ring-3 {
+                width: 340px;
+                height: 340px;
+            }
         }
+
         @keyframes breathRing {
-            0%, 100% { transform: scale(0.87); opacity: 0.6; }
-            50%       { transform: scale(1); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(0.87);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
+
         .breathing-circle {
             width: 240px;
             height: 240px;
@@ -378,16 +530,34 @@
             text-align: center;
             z-index: 1;
         }
+
         @media (max-width: 480px) {
-            .breathing-circle { width: 190px; height: 190px; }
+            .breathing-circle {
+                width: 190px;
+                height: 190px;
+            }
         }
+
         @keyframes breathCircle {
-            0%, 100% { transform: scale(0.87); opacity: 0.75; box-shadow: 0 0 30px rgba(30,58,138,0.5), 0 0 60px rgba(201,168,68,0.1); }
-            50%       { transform: scale(1);    opacity: 1;    box-shadow: 0 0 60px rgba(30,58,138,0.8), 0 0 120px rgba(201,168,68,0.2); }
+
+            0%,
+            100% {
+                transform: scale(0.87);
+                opacity: 0.75;
+                box-shadow: 0 0 30px rgba(30, 58, 138, 0.5), 0 0 60px rgba(201, 168, 68, 0.1);
+            }
+
+            50% {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 60px rgba(30, 58, 138, 0.8), 0 0 120px rgba(201, 168, 68, 0.2);
+            }
         }
+
         .meditation-theme-bg {
             background: radial-gradient(circle at 40% 40%, #2a4faa, #0d1b3e);
         }
+
         .meditation-text {
             color: white;
             line-height: 1.65;
@@ -395,9 +565,17 @@
             font-size: 0.88rem;
             padding: 0 1rem;
         }
+
         @keyframes fadeInOut {
-            0%, 100% { opacity: 0.6; }
-            50%       { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* ===== ROSARY ===== */
@@ -406,6 +584,7 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
+
         .rosary-image-container {
             position: relative;
             overflow: hidden;
@@ -414,19 +593,24 @@
             border: 1px solid var(--glass-border);
             box-shadow: var(--glass-shadow);
         }
+
         .rosary-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .rosary-image-container:hover img { transform: scale(1.08); }
+
+        .rosary-image-container:hover img {
+            transform: scale(1.08);
+        }
+
         .rosary-mystery-name {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.82));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
             color: white;
             padding: 2rem 0.75rem 0.75rem;
             font-family: 'Cinzel', serif;
@@ -436,7 +620,10 @@
             opacity: 0;
             transition: opacity 0.35s ease;
         }
-        .rosary-image-container:hover .rosary-mystery-name { opacity: 1; }
+
+        .rosary-image-container:hover .rosary-mystery-name {
+            opacity: 1;
+        }
 
         /* ===== BACK TO TOP ===== */
         #back-to-top-btn {
@@ -451,12 +638,13 @@
             background: linear-gradient(135deg, var(--accent-dim), var(--accent));
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
             transition: all 0.3s ease;
         }
+
         #back-to-top-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
         }
 
         /* ===== SEARCH ===== */
@@ -466,7 +654,10 @@
             border-color: var(--glass-border);
             color: var(--text-primary);
         }
-        .search-input-theme::placeholder { color: var(--text-secondary); }
+
+        .search-input-theme::placeholder {
+            color: var(--text-secondary);
+        }
 
         /* ===== FADE IN ===== */
         .fade-in-element {
@@ -474,7 +665,11 @@
             transform: translateY(24px);
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
-        .fade-in-element.is-visible { opacity: 1; transform: translateY(0); }
+
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ===== FOOTER ===== */
         footer {
@@ -490,7 +685,8 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="font-cinzel text-xl font-bold tracking-widest text-theme-primary" style="text-decoration:none;letter-spacing:0.12em;">LEX CREDENDI</a>
+                    <a href="#" class="font-cinzel text-xl font-bold tracking-widest text-theme-primary"
+                        style="text-decoration:none;letter-spacing:0.12em;">LEX CREDENDI</a>
                 </div>
 
                 <nav class="hidden md:flex space-x-6 items-center">
@@ -511,7 +707,10 @@
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Links</a>
 
                     <button id="theme-toggle" type="button"
-                        class="text-theme-secondary focus:outline-none rounded-full p-2 transition-all duration-200" style="background:var(--glass-bg);border:1px solid var(--glass-border);" onmouseenter="this.style.background='var(--glass-bg-hover)'" onmouseleave="this.style.background='var(--glass-bg)'">
+                        class="text-theme-secondary focus:outline-none rounded-full p-2 transition-all duration-200"
+                        style="background:var(--glass-bg);border:1px solid var(--glass-border);"
+                        onmouseenter="this.style.background='var(--glass-bg-hover)'"
+                        onmouseleave="this.style.background='var(--glass-bg)'">
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -527,7 +726,10 @@
 
                 <div class="md:hidden flex items-center">
                     <button id="theme-toggle-mobile" type="button"
-                        class="mr-2 text-theme-secondary focus:outline-none rounded-full p-2 transition-all duration-200" style="background:var(--glass-bg);border:1px solid var(--glass-border);" onmouseenter="this.style.background='var(--glass-bg-hover)'" onmouseleave="this.style.background='var(--glass-bg)'">
+                        class="mr-2 text-theme-secondary focus:outline-none rounded-full p-2 transition-all duration-200"
+                        style="background:var(--glass-bg);border:1px solid var(--glass-border);"
+                        onmouseenter="this.style.background='var(--glass-bg-hover)'"
+                        onmouseleave="this.style.background='var(--glass-bg)'">
                         <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -540,7 +742,8 @@
                         </svg>
                     </button>
                     <button id="mobile-menu-button"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-theme-secondary focus:outline-none transition-colors duration-200" style="background:var(--glass-bg);border:1px solid var(--glass-border);">
+                        class="inline-flex items-center justify-center p-2 rounded-md text-theme-secondary focus:outline-none transition-colors duration-200"
+                        style="background:var(--glass-bg);border:1px solid var(--glass-border);">
                         <span class="sr-only">Open main menu</span>
                         <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" aria-hidden="true">
@@ -559,13 +762,21 @@
 
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-4 pt-3 pb-4 space-y-1">
-                <a href="#prayers" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Prayers</a>
-                <a href="#apologetics" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Apologetics</a>
-                <a href="#doctrine" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Doctrine</a>
-                <a href="#reading-plans" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reading Plan</a>
-                <a href="#meditation" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Meditation</a>
-                <a href="#rosary" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Rosary</a>
-                <a href="#useful-links" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Links</a>
+                <a href="#prayers"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Prayers</a>
+                <a href="#apologetics"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Apologetics</a>
+                <a href="#doctrine"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Doctrine</a>
+                <a href="#reading-plans"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reading
+                    Plan</a>
+                <a href="#meditation"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Meditation</a>
+                <a href="#rosary"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Rosary</a>
+                <a href="#useful-links"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Links</a>
             </div>
         </div>
     </header>
@@ -579,27 +790,23 @@
                 <div class="gold-ornament mx-auto" style="max-width:320px;">
                     <div class="gold-ornament-diamond"></div>
                 </div>
-                <p class="hero-subtitle mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                <p
+                    class="hero-subtitle mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
                     Your comprehensive hub for Catholic prayers, apologetics, doctrine, and spiritual resources.
                 </p>
                 <p class="hero-quote mt-6 text-sm sm:text-base max-w-2xl mx-auto">
                     "The law of prayer is the law of belief."
                 </p>
             </div>
-            <div class="custom-shape-divider-bottom-1663186399">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                    preserveAspectRatio="none">
-                    <path
-                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                        class="shape-fill"></path>
-                </svg>
-            </div>
+
         </section>
 
         <section id="prayers" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl">Prayers</h2>
-                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
                 <div id="prayers-list" class="space-y-6">
                 </div>
             </div>
@@ -608,7 +815,9 @@
         <section id="apologetics" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl">Apologetics</h2>
-                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
                 <div id="apologetics-list" class="space-y-4">
                 </div>
             </div>
@@ -617,7 +826,9 @@
         <section id="doctrine" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl">Doctrine</h2>
-                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
                 <div id="doctrine-list" class="space-y-4">
                 </div>
             </div>
@@ -626,21 +837,25 @@
         <section id="reading-plans" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl">Reading Plan</h2>
-                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
 
-                    <div id="daily-bible-reading-card"
-                        class="card card-theme-bg p-6">
+                    <div id="daily-bible-reading-card" class="card card-theme-bg p-6">
                         <div class="flex items-center mb-5">
                             <i class="fas fa-book-bible text-2xl mr-4 flex-shrink-0" style="color:var(--accent);"></i>
                             <div class="flex justify-between items-center w-full gap-3">
                                 <div>
                                     <h3 class="font-cinzel text-xl font-bold text-theme-primary">Bible in a Year</h3>
-                                    <p id="bible-date" class="text-xs text-theme-secondary mt-0.5">Today's Scripture Passages</p>
+                                    <p id="bible-date" class="text-xs text-theme-secondary mt-0.5">Today's Scripture
+                                        Passages</p>
                                 </div>
                                 <div class="flex items-center gap-1">
-                                    <button id="prev-bible-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
-                                    <button id="next-bible-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
+                                    <button id="prev-bible-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
+                                    <button id="next-bible-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
                                 </div>
                             </div>
                         </div>
@@ -650,18 +865,21 @@
                             </div>
                         </div>
                     </div>
-                    <div id="daily-catechism-reading-card"
-                        class="card card-theme-bg p-6">
+                    <div id="daily-catechism-reading-card" class="card card-theme-bg p-6">
                         <div class="flex items-center mb-5">
                             <i class="fas fa-cross text-2xl mr-4 flex-shrink-0" style="color:var(--accent);"></i>
                             <div class="flex justify-between items-center w-full gap-3">
                                 <div>
-                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Catechism in a Year</h3>
-                                    <p id="catechism-date" class="text-xs text-theme-secondary mt-0.5">Today's Paragraphs</p>
+                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Catechism in a Year
+                                    </h3>
+                                    <p id="catechism-date" class="text-xs text-theme-secondary mt-0.5">Today's
+                                        Paragraphs</p>
                                 </div>
                                 <div class="flex items-center gap-1">
-                                    <button id="prev-catechism-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
-                                    <button id="next-catechism-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
+                                    <button id="prev-catechism-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
+                                    <button id="next-catechism-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
                                 </div>
                             </div>
                         </div>
@@ -678,7 +896,9 @@
         <section id="meditation" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl" style="color:rgba(255,255,255,0.92);">Meditation</h2>
-                <div class="section-ornament" style="--accent:rgba(201,168,68,0.8);"><div class="section-ornament-dot"></div></div>
+                <div class="section-ornament" style="--accent:rgba(201,168,68,0.8);">
+                    <div class="section-ornament-dot"></div>
+                </div>
                 <div class="meditation-wrap flex flex-col items-center justify-center" style="min-height:420px;">
                     <div class="breathing-ring breathing-ring-3"></div>
                     <div class="breathing-ring breathing-ring-2"></div>
@@ -695,7 +915,9 @@
         <section id="rosary" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl">The Holy Rosary</h2>
-                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
                 <div id="rosary-albums" class="space-y-10">
                 </div>
             </div>
@@ -704,7 +926,9 @@
         <section id="useful-links" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl">Useful Links</h2>
-                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
                 <ul id="useful-links-list" class="space-y-3 max-w-md mx-auto">
                 </ul>
             </div>
@@ -717,11 +941,31 @@
 
     <footer>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center text-theme-secondary">
-            <p class="font-cinzel tracking-widest text-xs" style="color:var(--accent);letter-spacing:0.18em;">LEX CREDENDI</p>
-            <p class="mt-2 text-sm">&copy; <span id="currentYear"></span> Lex Credendi Online Catholic Resource Center</p>
+            <p class="font-cinzel tracking-widest text-xs" style="color:var(--accent);letter-spacing:0.18em;">LEX
+                CREDENDI</p>
+            <p class="mt-2 text-sm">&copy; <span id="currentYear"></span> Lex Credendi Online Catholic Resource Center
+            </p>
             <p class="text-xs mt-1 tracking-widest" style="letter-spacing:0.14em;">AD MAJOREM DEI GLORIAM</p>
         </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] hidden bg-black/90 items-center justify-center backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <button id="lightbox-close"
+            class="absolute top-6 right-6 text-white text-3xl hover:text-gray-300 focus:outline-none cursor-pointer z-50">&times;</button>
+        <button id="lightbox-prev"
+            class="absolute left-6 text-white text-4xl hover:text-gray-300 focus:outline-none cursor-pointer p-4 z-50">&#10094;</button>
+        <div class="relative flex flex-col items-center justify-center w-full h-full p-4 md:p-12">
+            <img id="lightbox-img" src="" alt="Lightbox Image"
+                class="max-h-[85vh] max-w-full object-contain shadow-2xl rounded-lg">
+            <div id="lightbox-caption"
+                class="absolute bottom-2 md:bottom-8 text-white text-lg md:text-xl font-cinzel tracking-widest text-center w-full drop-shadow-lg">
+            </div>
+        </div>
+        <button id="lightbox-next"
+            class="absolute right-6 text-white text-4xl hover:text-gray-300 focus:outline-none cursor-pointer p-4 z-50">&#10095;</button>
+    </div>
 
     <script>
         // --- Theme Toggle ---
@@ -1871,6 +2115,7 @@
             },
         ];
 
+        const allRosaryImages = [];
         rosaryAlbums.forEach(album => {
             const albumDiv = document.createElement('div');
             albumDiv.className = 'mb-14';
@@ -1880,16 +2125,78 @@
             gridDiv.className = 'rosary-grid';
 
             album.images.forEach(image => {
+                const globalIndex = allRosaryImages.length;
+                allRosaryImages.push(image);
+
                 const imageContainer = document.createElement('div');
-                imageContainer.className = 'rosary-image-container card card-theme-bg shadow-md overflow-hidden aspect-w-4 aspect-h-3 md:aspect-w-1 md:aspect-h-1';
+                imageContainer.className = 'rosary-image-container card card-theme-bg shadow-md overflow-hidden aspect-w-4 aspect-h-3 md:aspect-w-1 md:aspect-h-1 cursor-pointer';
                 imageContainer.innerHTML = `
                     <img src="${image.src}" alt="${image.name}" class="object-cover w-full h-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Error';">
                     <div class="rosary-mystery-name">${image.name}</div>
                 `;
+                imageContainer.addEventListener('click', () => openLightbox(globalIndex));
                 gridDiv.appendChild(imageContainer);
             });
             albumDiv.appendChild(gridDiv);
             rosaryAlbumsContainer.appendChild(albumDiv);
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentLightboxIndex = 0;
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.remove('flex');
+                lightbox.classList.add('hidden');
+            }, 300);
+        }
+
+        function updateLightboxContent() {
+            const img = allRosaryImages[currentLightboxIndex];
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.name;
+            lightboxCaption.textContent = img.name;
+        }
+
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-prev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex - 1 + allRosaryImages.length) % allRosaryImages.length;
+            updateLightboxContent();
+        });
+        document.getElementById('lightbox-next').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex + 1) % allRosaryImages.length;
+            updateLightboxContent();
+        });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.closest('.relative') === null) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                else if (e.key === 'ArrowLeft') {
+                    currentLightboxIndex = (currentLightboxIndex - 1 + allRosaryImages.length) % allRosaryImages.length;
+                    updateLightboxContent();
+                } else if (e.key === 'ArrowRight') {
+                    currentLightboxIndex = (currentLightboxIndex + 1) % allRosaryImages.length;
+                    updateLightboxContent();
+                }
+            }
         });
 
         const usefulLinksList = document.getElementById('useful-links-list');
