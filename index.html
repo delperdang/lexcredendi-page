@@ -8,430 +8,489 @@
     <link rel="icon" href="https://imagedelivery.net/PwwFoxX145pJ1GHCG1Npzg/9d5b7875-4ec5-400e-2858-f6ff14f27400/public"
         type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        a {
-            color: #3b82f6;
-            text-decoration: underline;
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --bg-primary: #f2efe9;
+            --bg-secondary: #e8e4dd;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --accent: #c9a844;
+            --accent-dim: #9a7a2a;
+            --glass-bg: rgba(255,255,255,0.60);
+            --glass-bg-hover: rgba(255,255,255,0.80);
+            --glass-border: rgba(255,255,255,0.75);
+            --glass-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            --nav-bg: rgba(242,239,233,0.82);
+        }
+        html.dark {
+            --bg-primary: #0d1117;
+            --bg-secondary: #111827;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3af;
+            --accent: #d4a853;
+            --accent-dim: #b8972e;
+            --glass-bg: rgba(255,255,255,0.04);
+            --glass-bg-hover: rgba(255,255,255,0.09);
+            --glass-border: rgba(255,255,255,0.10);
+            --glass-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.25);
+            --nav-bg: rgba(13,17,23,0.85);
         }
 
-        a:hover {
-            color: #2563eb;
-            text-decoration: none;
+        /* ===== BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
         }
 
-        a:visited {
-            color: #7e22ce;
+        h1, h2, h3, .font-cinzel { font-family: 'Cinzel', serif; }
+
+        /* ===== LINKS ===== */
+        a { color: var(--accent); text-decoration: underline; }
+        a:hover { color: var(--accent-dim); text-decoration: none; }
+        a:visited { color: var(--accent); }
+        .nav-link-theme, .nav-link-theme:visited { color: var(--text-primary); text-decoration: none !important; }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent), var(--accent-dim));
+            border-radius: 3px;
         }
 
+        /* ===== THEME CLASSES ===== */
+        .bg-theme-primary { background-color: var(--bg-primary); }
+        .section-bg-alt { background-color: var(--bg-secondary); }
+        .text-theme-primary { color: var(--text-primary); }
+        .text-theme-secondary { color: var(--text-secondary); }
+        .border-theme-primary { border-color: var(--glass-border); }
+
+        /* ===== GLASS CARD ===== */
+        .card-theme-bg {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+        }
+        .card-theme-hover-bg:hover { background: var(--glass-bg-hover); }
+
+        .card {
+            border-radius: 1rem;
+            box-shadow: var(--glass-shadow);
+            transition: box-shadow 0.35s ease, transform 0.35s ease, background 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 24px 48px rgba(0,0,0,0.14), 0 4px 8px rgba(0,0,0,0.06);
+            transform: translateY(-5px);
+        }
+        html.dark .card:hover {
+            box-shadow: 0 24px 48px rgba(0,0,0,0.55), 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* ===== NAV ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--nav-bg);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
         .nav-link-theme {
-            text-decoration: none !important;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        .nav-link-theme::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        .nav-link-theme:hover { color: var(--accent) !important; }
+        .nav-link-theme:hover::after { width: 100%; }
+        .active-nav-link-theme { color: var(--accent) !important; font-weight: 600; }
+        .active-nav-link-theme::after { width: 100%; }
+
+        #mobile-menu {
+            background: var(--nav-bg);
+            backdrop-filter: blur(28px);
+            border-top: 1px solid var(--glass-border);
         }
 
+        /* ===== BUTTONS ===== */
+        .button-theme {
+            background: linear-gradient(135deg, #1e3a8a, #1a56db);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(30,58,138,0.3);
+        }
+        .button-theme:hover {
+            background: linear-gradient(135deg, #163070, #1347c0);
+            box-shadow: 0 6px 20px rgba(30,58,138,0.45);
+            transform: translateY(-1px);
+        }
+        html.dark .button-theme {
+            background: linear-gradient(135deg, #2563eb, #60a5fa);
+            box-shadow: 0 4px 14px rgba(59,130,246,0.3);
+        }
+        html.dark .button-theme:hover {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+        }
+
+        /* ===== HERO ===== */
         #hero {
             position: relative;
             background-image: url('https://imagedelivery.net/PwwFoxX145pJ1GHCG1Npzg/2060b674-8da2-4d22-a4cf-f4b420862600/public');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
-
         #hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            inset: 0;
+            background: linear-gradient(160deg, rgba(8,12,28,0.88) 0%, rgba(26,58,107,0.72) 50%, rgba(8,12,28,0.88) 100%);
             z-index: 1;
         }
+        #hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(201,168,68,0.12) 0%, transparent 70%);
+            z-index: 1;
+        }
+        #hero > div { position: relative; z-index: 2; }
 
-        #hero>div {
-            position: relative;
-            z-index: 2;
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 0 80px rgba(201,168,68,0.2);
+            animation: heroFadeUp 1.2s ease-out both;
+        }
+        .hero-subtitle { animation: heroFadeUp 1.2s ease-out 0.25s both; }
+        .hero-quote {
+            color: rgba(201,168,68,0.88);
+            font-style: italic;
+            letter-spacing: 0.03em;
+            animation: heroFadeUp 1.2s ease-out 0.5s both;
+        }
+        .gold-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            animation: heroFadeUp 1.2s ease-out 0.75s both;
+        }
+        .gold-ornament::before, .gold-ornament::after {
+            content: '';
+            flex: 1;
+            max-width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,168,68,0.7));
+        }
+        .gold-ornament::after {
+            background: linear-gradient(90deg, rgba(201,168,68,0.7), transparent);
+        }
+        .gold-ornament-diamond {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            transform: rotate(45deg);
+            box-shadow: 0 0 12px rgba(201,168,68,0.6);
+        }
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .custom-shape-divider-bottom-1663186399 {
             position: absolute;
-            bottom: -64px;
+            bottom: -1px;
             left: 0;
             width: 100%;
             overflow: hidden;
             line-height: 0;
-            transform: rotate(180deg);
-            z-index: 1;
+            z-index: 3;
         }
-
-        @media (min-width: 768px) {
-            .custom-shape-divider-bottom-1663186399 {
-                bottom: -96px;
-            }
-        }
-
         .custom-shape-divider-bottom-1663186399 svg {
             position: relative;
             display: block;
             width: calc(100% + 1.3px);
-            height: 120px;
+            height: 70px;
+        }
+        @media (min-width: 768px) {
+            .custom-shape-divider-bottom-1663186399 svg { height: 90px; }
+        }
+        .custom-shape-divider-bottom-1663186399 .shape-fill { fill: var(--bg-primary); }
+
+        /* ===== SECTIONS ===== */
+        section { padding-top: 5rem; padding-bottom: 5rem; position: relative; }
+
+        .section-heading {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 0;
+        }
+        .section-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        .section-ornament::before, .section-ornament::after {
+            content: '';
+            width: 48px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent));
+        }
+        .section-ornament::after {
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+        .section-ornament-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
         }
 
-        .custom-shape-divider-bottom-1663186399 .shape-fill {
-            fill: #F3F4F6;
-        }
+        /* ===== SECTION BACKGROUNDS ===== */
+        #prayers { background: var(--bg-primary); }
+        #apologetics { background: var(--bg-secondary); }
+        #doctrine { background: var(--bg-primary); }
+        #reading-plans { background: var(--bg-secondary); }
+        #meditation { background: linear-gradient(160deg, #080c1c 0%, #1a3278 50%, #080c1c 100%); }
+        #rosary { background: var(--bg-primary); }
+        #useful-links { background: var(--bg-secondary); }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        html.dark ::-webkit-scrollbar-track {
-            background: #2d3748;
-        }
-
-        html.dark ::-webkit-scrollbar-thumb {
-            background: #718096;
-        }
-
-        html.dark ::-webkit-scrollbar-thumb:hover {
-            background: #a0aec0;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .bg-theme-primary {
-            background-color: #ffffff;
-        }
-
-        .text-theme-primary {
-            color: #1f2937;
-        }
-
-        .text-theme-secondary {
-            color: #4b5563;
-        }
-
-        .border-theme-primary {
-            border-color: #e5e7eb;
-        }
-
-        .card-theme-bg {
-            background-color: #f9fafb;
-        }
-
-        .card-theme-hover-bg:hover {
-            background-color: #f3f4f6;
-        }
-
-        .button-theme {
-            background-color: #3b82f6;
-            color: #ffffff;
-        }
-
-        .button-theme:hover {
-            background-color: #2563eb;
-        }
-
-        .nav-link-theme {
-            color: #374151;
-        }
-
-        .nav-link-theme:hover {
-            color: #1d4ed8;
-        }
-
-        .active-nav-link-theme {
-            color: #1d4ed8;
-            font-weight: 600;
-        }
-
-        .meditation-theme-bg {
-            background: radial-gradient(circle, #a7c5eb 0%, #6495ed 100%);
-        }
-
-        .section-bg-alt {
-            background-color: #f9fafb;
-        }
-
-        html.dark .bg-theme-primary {
-            background-color: #111827;
-        }
-
-        html.dark .text-theme-primary {
-            color: #f3f4f6;
-        }
-
-        html.dark .text-theme-secondary {
-            color: #9ca3af;
-        }
-
-        html.dark .border-theme-primary {
-            border-color: #374151;
-        }
-
-        html.dark .card-theme-bg {
-            background-color: #1f2937;
-        }
-
-        html.dark .card-theme-hover-bg:hover {
-            background-color: #374151;
-        }
-
-        html.dark .button-theme {
-            background-color: #60a5fa;
-            color: #111827;
-        }
-
-        html.dark .button-theme:hover {
-            background-color: #3b82f6;
-        }
-
-        html.dark .nav-link-theme {
-            color: #d1d5db;
-        }
-
-        html.dark .nav-link-theme:hover {
-            color: #93c5fd;
-        }
-
-        html.dark .active-nav-link-theme {
-            color: #93c5fd;
-            font-weight: 600;
-        }
-
-        html.dark .meditation-theme-bg {
-            background: radial-gradient(circle, #4a5568 0%, #2c3e50 100%);
-        }
-
-        html.dark .section-bg-alt {
-            background-color: #1f2937;
-        }
-
+        /* ===== ACCORDION ===== */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.35s ease;
             padding-top: 0;
             padding-bottom: 0;
         }
-
         .accordion-content.open {
-            max-height: 1000px;
+            max-height: 3000px;
             padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding-bottom: 1.25rem;
         }
 
-        .breathing-circle {
-            width: 250px;
-            height: 250px;
+        /* ===== PILL TOGGLE ===== */
+        .pill-toggle {
+            display: inline-flex;
+            background: rgba(0,0,0,0.07);
+            border-radius: 9999px;
+            padding: 3px;
+            border: 1px solid var(--glass-border);
+        }
+        html.dark .pill-toggle { background: rgba(255,255,255,0.07); }
+        .pill-toggle button {
+            border: none;
+            background: none;
+            padding: 0.2rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .pill-toggle button.active {
+            background: linear-gradient(135deg, #1e3a8a, #1a56db);
+            color: white;
+            box-shadow: 0 2px 10px rgba(30,58,138,0.35);
+        }
+        html.dark .pill-toggle button.active {
+            background: linear-gradient(135deg, #2563eb, #60a5fa);
+            box-shadow: 0 2px 10px rgba(59,130,246,0.3);
+        }
+
+        /* ===== TABS ===== */
+        .tab-active {
+            border-bottom-width: 2px;
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ===== BREATHING MEDITATION ===== */
+        .meditation-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+        .breathing-ring {
+            position: absolute;
             border-radius: 50%;
-            animation: breath 8s ease-in-out infinite;
+            border: 1px solid rgba(201,168,68,0.25);
+            animation: breathRing 8s ease-in-out infinite;
+        }
+        .breathing-ring-1 { width: 300px; height: 300px; animation-delay: -0.4s; }
+        .breathing-ring-2 { width: 360px; height: 360px; animation-delay: -0.8s; border-color: rgba(201,168,68,0.12); }
+        .breathing-ring-3 { width: 420px; height: 420px; animation-delay: -1.2s; border-color: rgba(201,168,68,0.06); }
+        @media (max-width: 480px) {
+            .breathing-ring-1 { width: 240px; height: 240px; }
+            .breathing-ring-2 { width: 290px; height: 290px; }
+            .breathing-ring-3 { width: 340px; height: 340px; }
+        }
+        @keyframes breathRing {
+            0%, 100% { transform: scale(0.87); opacity: 0.6; }
+            50%       { transform: scale(1); opacity: 1; }
+        }
+        .breathing-circle {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            animation: breathCircle 8s ease-in-out infinite;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            z-index: 1;
         }
-
-        @keyframes breath {
-
-            0%,
-            100% {
-                transform: scale(0.8);
-                opacity: 0.7;
-            }
-
-            50% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        @media (max-width: 480px) {
+            .breathing-circle { width: 190px; height: 190px; }
         }
-
+        @keyframes breathCircle {
+            0%, 100% { transform: scale(0.87); opacity: 0.75; box-shadow: 0 0 30px rgba(30,58,138,0.5), 0 0 60px rgba(201,168,68,0.1); }
+            50%       { transform: scale(1);    opacity: 1;    box-shadow: 0 0 60px rgba(30,58,138,0.8), 0 0 120px rgba(201,168,68,0.2); }
+        }
+        .meditation-theme-bg {
+            background: radial-gradient(circle at 40% 40%, #2a4faa, #0d1b3e);
+        }
         .meditation-text {
+            color: white;
+            line-height: 1.65;
             animation: fadeInOut 8s ease-in-out infinite;
+            font-size: 0.88rem;
+            padding: 0 1rem;
         }
-
         @keyframes fadeInOut {
-
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.6; }
+            50%       { opacity: 1; }
         }
 
+        /* ===== ROSARY ===== */
         .rosary-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
-
         .rosary-image-container {
             position: relative;
             overflow: hidden;
-            border-radius: 0.5rem;
+            border-radius: 0.875rem;
+            aspect-ratio: 3/4;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
         }
-
         .rosary-image-container img {
-            transition: transform 0.3s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-
-        .rosary-image-container:hover img {
-            transform: scale(1.05);
-        }
-
+        .rosary-image-container:hover img { transform: scale(1.08); }
         .rosary-mystery-name {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(0, 0, 0, 0.6);
+            background: linear-gradient(transparent, rgba(0,0,0,0.82));
             color: white;
-            padding: 0.5rem;
+            padding: 2rem 0.75rem 0.75rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
             text-align: center;
-            font-size: 0.875rem;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.35s ease;
         }
+        .rosary-image-container:hover .rosary-mystery-name { opacity: 1; }
 
-        .rosary-image-container:hover .rosary-mystery-name {
-            opacity: 1;
-        }
-
-        .tab-active {
-            border-bottom-width: 2px;
-            border-color: #3b82f6;
-            color: #3b82f6;
-        }
-
-        html.dark .tab-active {
-            border-color: #60a5fa;
-            color: #60a5fa;
-        }
-
-        .card {
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transform: translateY(-5px);
-        }
-
-        .fade-in-element {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in-element.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        /* ===== BACK TO TOP ===== */
         #back-to-top-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 24px;
+            right: 24px;
             display: none;
             z-index: 100;
-        }
-
-        .pill-toggle {
-            display: inline-flex;
-            background-color: #e5e7eb;
-            border-radius: 9999px;
-            padding: 0.25rem;
-        }
-
-        html.dark .pill-toggle {
-            background-color: #4b5563;
-        }
-
-        .pill-toggle button {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-dim), var(--accent));
             border: none;
-            background: none;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: color 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+            transition: all 0.3s ease;
+        }
+        #back-to-top-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.3);
         }
 
-        .pill-toggle button.active {
-            background-color: #ffffff;
-            color: #1f2937;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-        }
-
-        html.dark .pill-toggle button.active {
-            background-color: #374151;
-            color: #f9fafb;
-        }
-
-        section {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
+        /* ===== SEARCH ===== */
         .search-input-theme {
-            background-color: #ffffff;
-            border-color: #e5e7eb;
-            color: #1f2937;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-color: var(--glass-border);
+            color: var(--text-primary);
         }
+        .search-input-theme::placeholder { color: var(--text-secondary); }
 
-        .search-input-theme::placeholder {
-            color: #9ca3af;
+        /* ===== FADE IN ===== */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
+        .fade-in-element.is-visible { opacity: 1; transform: translateY(0); }
 
-        html.dark .search-input-theme {
-            background-color: #374151;
-            border-color: #4b5563;
-            color: #f3f4f6;
-        }
-
-        html.dark .search-input-theme::placeholder {
-            color: #6b7280;
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--glass-border);
         }
     </style>
 </head>
 
 <body class="bg-theme-primary text-theme-primary">
 
-    <header id="mainHeader" class="bg-theme-primary shadow-md">
+    <header id="mainHeader">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-theme-primary">Lex Credendi</a>
+                    <a href="#" class="font-cinzel text-xl font-bold tracking-widest text-theme-primary" style="text-decoration:none;letter-spacing:0.12em;">LEX CREDENDI</a>
                 </div>
 
                 <nav class="hidden md:flex space-x-6 items-center">
@@ -452,7 +511,7 @@
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Links</a>
 
                     <button id="theme-toggle" type="button"
-                        class="text-theme-secondary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        class="text-theme-secondary focus:outline-none rounded-full p-2 transition-all duration-200" style="background:var(--glass-bg);border:1px solid var(--glass-border);" onmouseenter="this.style.background='var(--glass-bg-hover)'" onmouseleave="this.style.background='var(--glass-bg)'">
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -468,7 +527,7 @@
 
                 <div class="md:hidden flex items-center">
                     <button id="theme-toggle-mobile" type="button"
-                        class="mr-2 text-theme-secondary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        class="mr-2 text-theme-secondary focus:outline-none rounded-full p-2 transition-all duration-200" style="background:var(--glass-bg);border:1px solid var(--glass-border);" onmouseenter="this.style.background='var(--glass-bg-hover)'" onmouseleave="this.style.background='var(--glass-bg)'">
                         <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -481,7 +540,7 @@
                         </svg>
                     </button>
                     <button id="mobile-menu-button"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-theme-secondary hover:text-theme-primary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        class="inline-flex items-center justify-center p-2 rounded-md text-theme-secondary focus:outline-none transition-colors duration-200" style="background:var(--glass-bg);border:1px solid var(--glass-border);">
                         <span class="sr-only">Open main menu</span>
                         <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" aria-hidden="true">
@@ -499,37 +558,32 @@
         </div>
 
         <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#prayers"
-                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Prayers</a>
-                <a href="#apologetics"
-                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Apologetics</a>
-                <a href="#doctrine"
-                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Doctrine</a>
-                <a href="#reading-plans"
-                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Reading
-                    Plan</a>
-                <a href="#meditation"
-                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Meditation</a>
-                <a href="#rosary"
-                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Rosary</a>
-                <a href="#useful-links"
-                    class="nav-link-theme hover:bg-gray-50 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Links</a>
+            <div class="px-4 pt-3 pb-4 space-y-1">
+                <a href="#prayers" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Prayers</a>
+                <a href="#apologetics" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Apologetics</a>
+                <a href="#doctrine" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Doctrine</a>
+                <a href="#reading-plans" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reading Plan</a>
+                <a href="#meditation" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Meditation</a>
+                <a href="#rosary" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Rosary</a>
+                <a href="#useful-links" class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Links</a>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="relative py-16 md:py-24">
-            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white">
+        <section id="hero" class="relative">
+            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center py-32 md:py-40">
+                <h1 class="hero-title text-5xl sm:text-6xl md:text-7xl font-bold text-white">
                     Lex Credendi
                 </h1>
-                <p class="mt-4 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                <div class="gold-ornament mx-auto" style="max-width:320px;">
+                    <div class="gold-ornament-diamond"></div>
+                </div>
+                <p class="hero-subtitle mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
                     Your comprehensive hub for Catholic prayers, apologetics, doctrine, and spiritual resources.
                 </p>
-                <p class="mt-2 text-sm text-theme-secondary max-w-2xl mx-auto">
-                    <i>"The law of prayer is the law of belief."</i>
+                <p class="hero-quote mt-6 text-sm sm:text-base max-w-2xl mx-auto">
+                    "The law of prayer is the law of belief."
                 </p>
             </div>
             <div class="custom-shape-divider-bottom-1663186399">
@@ -542,50 +596,51 @@
             </div>
         </section>
 
-        <section id="prayers" class="section-bg-alt fade-in-element">
+        <section id="prayers" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Prayers</h2>
+                <h2 class="section-heading text-3xl">Prayers</h2>
+                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
                 <div id="prayers-list" class="space-y-6">
                 </div>
             </div>
         </section>
 
-        <section id="apologetics" class="bg-theme-primary fade-in-element">
+        <section id="apologetics" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Apologetics</h2>
+                <h2 class="section-heading text-3xl">Apologetics</h2>
+                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
                 <div id="apologetics-list" class="space-y-4">
                 </div>
             </div>
         </section>
 
-        <section id="doctrine" class="section-bg-alt fade-in-element">
+        <section id="doctrine" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Doctrine</h2>
+                <h2 class="section-heading text-3xl">Doctrine</h2>
+                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
                 <div id="doctrine-list" class="space-y-4">
                 </div>
             </div>
         </section>
 
-        <section id="reading-plans" class="bg-theme-primary fade-in-element">
+        <section id="reading-plans" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-theme-primary mb-12 text-center">Reading Plan</h2>
+                <h2 class="section-heading text-3xl">Reading Plan</h2>
+                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
 
                     <div id="daily-bible-reading-card"
-                        class="card card-theme-bg p-6 shadow-xl rounded-2xl border border-theme-primary transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-book-bible text-3xl text-theme-secondary mr-4"></i>
-                            <div class="flex justify-between items-center w-full">
+                        class="card card-theme-bg p-6">
+                        <div class="flex items-center mb-5">
+                            <i class="fas fa-book-bible text-2xl mr-4 flex-shrink-0" style="color:var(--accent);"></i>
+                            <div class="flex justify-between items-center w-full gap-3">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-theme-primary">Bible in a Year</h3>
-                                    <p id="bible-date" class="text-sm text-theme-secondary">Today's Scripture Passages
-                                    </p>
+                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Bible in a Year</h3>
+                                    <p id="bible-date" class="text-xs text-theme-secondary mt-0.5">Today's Scripture Passages</p>
                                 </div>
-                                <div class="flex items-center">
-                                    <button id="prev-bible-day"
-                                        class="mr-2 px-2 py-1 rounded-md bg-theme-secondary text-white">-</button>
-                                    <button id="next-bible-day"
-                                        class="px-2 py-1 rounded-md bg-theme-secondary text-white">+</button>
+                                <div class="flex items-center gap-1">
+                                    <button id="prev-bible-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
+                                    <button id="next-bible-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
                                 </div>
                             </div>
                         </div>
@@ -596,19 +651,17 @@
                         </div>
                     </div>
                     <div id="daily-catechism-reading-card"
-                        class="card card-theme-bg p-6 shadow-xl rounded-2xl border border-theme-primary transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-cross text-3xl text-theme-secondary mr-4"></i>
-                            <div class="flex justify-between items-center w-full">
+                        class="card card-theme-bg p-6">
+                        <div class="flex items-center mb-5">
+                            <i class="fas fa-cross text-2xl mr-4 flex-shrink-0" style="color:var(--accent);"></i>
+                            <div class="flex justify-between items-center w-full gap-3">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-theme-primary">Catechism in a Year</h3>
-                                    <p id="catechism-date" class="text-sm text-theme-secondary">Today's Paragraphs</p>
+                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Catechism in a Year</h3>
+                                    <p id="catechism-date" class="text-xs text-theme-secondary mt-0.5">Today's Paragraphs</p>
                                 </div>
-                                <div class="flex items-center">
-                                    <button id="prev-catechism-day"
-                                        class="mr-2 px-2 py-1 rounded-md bg-theme-secondary text-white">-</button>
-                                    <button id="next-catechism-day"
-                                        class="px-2 py-1 rounded-md bg-theme-secondary text-white">+</button>
+                                <div class="flex items-center gap-1">
+                                    <button id="prev-catechism-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
+                                    <button id="next-catechism-day" class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
                                 </div>
                             </div>
                         </div>
@@ -622,12 +675,16 @@
             </div>
         </section>
 
-        <section id="meditation" class="bg-theme-primary fade-in-element">
+        <section id="meditation" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-theme-primary mb-12 text-center">Meditation</h2>
-                <div class="flex flex-col items-center justify-center min-h-[300px]">
-                    <div class="breathing-circle meditation-theme-bg mb-6">
-                        <p class="meditation-text text-lg font-semibold text-white dark:text-gray-200 p-4">
+                <h2 class="section-heading text-3xl" style="color:rgba(255,255,255,0.92);">Meditation</h2>
+                <div class="section-ornament" style="--accent:rgba(201,168,68,0.8);"><div class="section-ornament-dot"></div></div>
+                <div class="meditation-wrap flex flex-col items-center justify-center" style="min-height:420px;">
+                    <div class="breathing-ring breathing-ring-3"></div>
+                    <div class="breathing-ring breathing-ring-2"></div>
+                    <div class="breathing-ring breathing-ring-1"></div>
+                    <div class="breathing-circle meditation-theme-bg">
+                        <p class="meditation-text font-medium p-4">
                             Lord Jesus Christ, Son of God, have mercy on me, a sinner.
                         </p>
                     </div>
@@ -635,32 +692,34 @@
             </div>
         </section>
 
-        <section id="rosary" class="section-bg-alt fade-in-element">
+        <section id="rosary" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">The Holy Rosary</h2>
+                <h2 class="section-heading text-3xl">The Holy Rosary</h2>
+                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
                 <div id="rosary-albums" class="space-y-10">
                 </div>
             </div>
         </section>
 
-        <section id="useful-links" class="bg-theme-primary fade-in-element">
+        <section id="useful-links" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-theme-primary mb-8 text-center">Useful Links</h2>
+                <h2 class="section-heading text-3xl">Useful Links</h2>
+                <div class="section-ornament"><div class="section-ornament-dot"></div></div>
                 <ul id="useful-links-list" class="space-y-3 max-w-md mx-auto">
                 </ul>
             </div>
         </section>
     </main>
 
-    <button id="back-to-top-btn"
-        class="button-theme p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-opacity duration-300">
-        <i class="fas fa-arrow-up text-white"></i>
+    <button id="back-to-top-btn" aria-label="Back to top">
+        <i class="fas fa-arrow-up" style="color:white;font-size:0.9rem;"></i>
     </button>
 
-    <footer class="bg-gray-100 dark:bg-gray-900 border-t border-theme-primary mt-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-theme-secondary">
-            <p>&copy; <span id="currentYear"></span> Lex Credendi Online Catholic Resource Center</p>
-            <p class="text-xs mt-1">Ad Majorem Dei Gloriam</p>
+    <footer>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center text-theme-secondary">
+            <p class="font-cinzel tracking-widest text-xs" style="color:var(--accent);letter-spacing:0.18em;">LEX CREDENDI</p>
+            <p class="mt-2 text-sm">&copy; <span id="currentYear"></span> Lex Credendi Online Catholic Resource Center</p>
+            <p class="text-xs mt-1 tracking-widest" style="letter-spacing:0.14em;">AD MAJOREM DEI GLORIAM</p>
         </div>
     </footer>
 
@@ -1609,18 +1668,18 @@
             prayerData.forEach((prayer, index) => {
                 const prayerId = `prayer-${index}`;
                 const card = document.createElement('div');
-                card.className = 'card card-theme-bg p-6 shadow-lg rounded-xl';
+                card.className = 'card card-theme-bg p-6';
                 card.innerHTML = `
-                <div class="flex justify-between items-center mb-3">
-                    <h3 class="text-xl font-semibold text-theme-primary prayer-title-en">${prayer.Prayer_Title_EN}</h3>
-                    <h3 class="text-xl font-semibold text-theme-primary prayer-title-la hidden">${prayer.Prayer_Title_LA}</h3>
-                    <div class="pill-toggle">
+                <div class="flex justify-between items-start gap-3 mb-4">
+                    <h3 class="font-cinzel text-lg font-semibold text-theme-primary prayer-title-en leading-snug">${prayer.Prayer_Title_EN}</h3>
+                    <h3 class="font-cinzel text-lg font-semibold text-theme-primary prayer-title-la hidden leading-snug">${prayer.Prayer_Title_LA}</h3>
+                    <div class="pill-toggle flex-shrink-0">
                         <button data-lang="en" class="lang-toggle-btn active" aria-pressed="true">EN</button>
                         <button data-lang="la" class="lang-toggle-btn" aria-pressed="false">LA</button>
                     </div>
                 </div>
-                <div class="prayer-text-en text-theme-secondary leading-relaxed">${prayer.Prayer_Text_EN}</div>
-                <div class="prayer-text-la text-theme-secondary leading-relaxed hidden">${prayer.Prayer_Text_LA}</div>
+                <div class="prayer-text-en text-theme-secondary leading-relaxed text-sm">${prayer.Prayer_Text_EN}</div>
+                <div class="prayer-text-la text-theme-secondary leading-relaxed text-sm hidden">${prayer.Prayer_Text_LA}</div>
             `;
                 prayersList.appendChild(card);
 
@@ -1664,13 +1723,13 @@
             apologeticsData.forEach((topic, index) => {
                 const topicId = `apologetics-${index}`;
                 const item = document.createElement('div');
-                item.className = 'card card-theme-bg rounded-lg shadow-md fade-in-element';
+                item.className = 'card card-theme-bg fade-in-element overflow-hidden';
                 item.innerHTML = `
-                <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-medium text-theme-primary card-theme-hover-bg focus:outline-none" aria-expanded="false" aria-controls="${topicId}-content">
-                    <span><i class="fas fa-shield-halved text-theme-secondary mr-3"></i>${topic.Topic_Title}</span>
-                    <svg class="w-5 h-5 shrink-0 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <button class="accordion-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium text-theme-primary card-theme-hover-bg focus:outline-none transition-colors duration-200 rounded-2xl" aria-expanded="false" aria-controls="${topicId}-content">
+                    <span class="flex items-center gap-3"><i class="fas fa-shield-halved" style="color:var(--accent);width:16px;"></i><span class="font-cinzel text-sm tracking-wide">${topic.Topic_Title}</span></span>
+                    <svg class="w-4 h-4 shrink-0 transform transition-transform duration-300 text-theme-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div id="${topicId}-content" class="accordion-content px-5 text-theme-secondary leading-relaxed">
+                <div id="${topicId}-content" class="accordion-content px-6 text-theme-secondary leading-relaxed text-sm">
                     ${topic.Topic_Content_With_Linked_References}
                 </div>
             `;
@@ -1685,13 +1744,13 @@
             doctrineData.forEach((formula, index) => {
                 const formulaId = `doctrine-${index}`;
                 const item = document.createElement('div');
-                item.className = 'card card-theme-bg rounded-lg shadow-md fade-in-element';
+                item.className = 'card card-theme-bg fade-in-element overflow-hidden';
                 item.innerHTML = `
-                <button class="accordion-toggle w-full flex justify-between items-center p-5 text-left font-medium text-theme-primary card-theme-hover-bg focus:outline-none" aria-expanded="false" aria-controls="${formulaId}-content">
-                    <span><i class="fas fa-scroll text-theme-secondary mr-3"></i>${formula.Formula_Title}</span>
-                     <svg class="w-5 h-5 shrink-0 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <button class="accordion-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium text-theme-primary card-theme-hover-bg focus:outline-none transition-colors duration-200 rounded-2xl" aria-expanded="false" aria-controls="${formulaId}-content">
+                    <span class="flex items-center gap-3"><i class="fas fa-scroll" style="color:var(--accent);width:16px;"></i><span class="font-cinzel text-sm tracking-wide">${formula.Formula_Title}</span></span>
+                    <svg class="w-4 h-4 shrink-0 transform transition-transform duration-300 text-theme-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div id="${formulaId}-content" class="accordion-content px-5 text-theme-secondary leading-relaxed">
+                <div id="${formulaId}-content" class="accordion-content px-6 text-theme-secondary leading-relaxed text-sm">
                     ${formula.Formula_Content}
                 </div>
             `;
@@ -1814,8 +1873,8 @@
 
         rosaryAlbums.forEach(album => {
             const albumDiv = document.createElement('div');
-            albumDiv.className = 'mb-10';
-            albumDiv.innerHTML = `<h3 class="text-2xl font-semibold text-theme-primary mb-6 text-center">${album.description}</h3>`;
+            albumDiv.className = 'mb-14';
+            albumDiv.innerHTML = `<h3 class="font-cinzel text-xl font-semibold text-theme-primary mb-6 text-center tracking-wide">${album.description}</h3>`;
 
             const gridDiv = document.createElement('div');
             gridDiv.className = 'rosary-grid';
@@ -1842,11 +1901,11 @@
 
         links.forEach(link => {
             const listItem = document.createElement('li');
-            listItem.className = 'card card-theme-bg card-theme-hover-bg p-4 shadow-md rounded-lg transition-all duration-200 ease-in-out';
+            listItem.className = 'card card-theme-bg card-theme-hover-bg transition-all duration-200';
             listItem.innerHTML = `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-6 py-4 font-cinzel text-sm tracking-wide" style="color:var(--accent);text-decoration:none;">
                     <span>${link.text}</span>
-                    <i class="fas fa-external-link-alt text-sm opacity-70"></i>
+                    <i class="fas fa-external-link-alt text-xs opacity-60 flex-shrink-0"></i>
                 </a>
             `;
             usefulLinksList.appendChild(listItem);
