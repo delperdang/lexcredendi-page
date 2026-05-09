@@ -911,7 +911,7 @@
                 </div>
                 <p
                     class="hero-subtitle mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-                    Your comprehensive hub for Catholic prayers, apologetics, doctrine, and spiritual resources.
+                    Your comprehensive hub for Catholic prayers, apologetics, reference, and spiritual resources.
                 </p>
                 <p class="hero-quote mt-6 text-sm sm:text-base max-w-2xl mx-auto">
                     "The law of prayer is the law of belief."
@@ -948,7 +948,7 @@
                 <div class="section-ornament">
                     <div class="section-ornament-dot"></div>
                 </div>
-                <div id="doctrine-list" class="space-y-4">
+                <div id="reference-list" class="space-y-4">
                 </div>
             </div>
         </section>
@@ -1280,7 +1280,7 @@
             { "Topic_Title": "Worship", "Topic_Content_With_Linked_References": "<a href=https://bible.usccb.org/bible/revelation/4>Rev 4:8</a> – heavenly hosts repeat set prayers<br><a href=https://bible.usccb.org/bible/1kings/8>1 Kg 8:54</a>; <a href=https://bible.usccb.org/bible/2chronicles/6>2 Chr 6:13</a>; <a href=https://bible.usccb.org/bible/ezra/9>Ezra 9:5</a>; <a href=https://bible.usccb.org/bible/matthew/17>Mt 17:14</a>; <a href=https://bible.usccb.org/bible/luke/5>Lk 5:8</a> – kneeling as a position of prayer and worship<br><a href=https://bible.usccb.org/bible/revelation/5>Rev 5:8</a>; <a href=https://bible.usccb.org/bible/revelation/8>Rev 8:3-4</a> – incense used in New Testament<br><a href=https://bible.usccb.org/bible/1corinthians/12>1 Cor 12</a> – different roles of members of body<br><a href=https://bible.usccb.org/bible/hebrews/13>Heb 13:10</a>; <a href=https://bible.usccb.org/bible/revelation/8>Rev 8:3</a> – Christian worship involves an altar<br><a href=https://bible.usccb.org/bible/revelation/4>Rev 4:4</a> – elders/presbyters (priests) wearing vestments in worship" }
         ];
 
-        const doctrineData = [
+        const referenceData = [
             { "Formula_Title": "Beatitudes", "Formula_Content": "Blessed are the poor in spirit for theirs is the kingdom of heaven.<br>Blessed are they who mourn for they will be comforted.<br>Blessed are the meek for they will inherit the earth.<br>Blessed are they who hunger and thirst for righteousness for they will be satisfied.<br>Blessed are the merciful for they will be shown mercy.<br>Blessed are the pure of heart for they will see God.<br>Blessed are the peacemakers for they will be called children of God.<br>Blessed are those who are persecuted for righteousness sake for theirs is the kingdom of heaven.<br>Blessed are you when people revile you and persecute you and utter all kinds of evil against you falsely on my account.<br>Rejoice and be glad for your reward will be great in heaven." },
             { "Formula_Title": "Capital Sins", "Formula_Content": "Pride<br>Covetousness<br>Lust<br>Anger<br>Gluttony<br>Envy<br>Sloth" },
             { "Formula_Title": "Cardinal Virtues", "Formula_Content": "Prudence<br>Justice<br>Fortitude<br>Temperance" },
@@ -2117,11 +2117,11 @@
         }
         loadApologetics();
 
-        const doctrineList = document.getElementById('doctrine-list');
+        const referenceList = document.getElementById('reference-list');
 
-        function loadDoctrine() {
-            doctrineData.forEach((formula, index) => {
-                const formulaId = `doctrine-${index}`;
+        function loadReference() {
+            referenceData.forEach((formula, index) => {
+                const formulaId = `reference-${index}`;
                 const item = document.createElement('div');
                 item.className = 'card card-theme-bg fade-in-element overflow-hidden';
                 item.innerHTML = `
@@ -2133,10 +2133,10 @@
                     ${formula.Formula_Content}
                 </div>
             `;
-                doctrineList.appendChild(item);
+                referenceList.appendChild(item);
             });
         }
-        loadDoctrine();
+        loadReference();
 
         document.querySelectorAll('.accordion-toggle').forEach(button => {
             button.addEventListener('click', () => {
