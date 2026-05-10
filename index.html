@@ -815,6 +815,8 @@
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Apologetics</a>
                     <a href="#reference"
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Reference</a>
+                    <a href="#confession"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Confession</a>
                     <a href="#reading-plans"
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Reading
                         Plan</a>
@@ -887,6 +889,8 @@
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Apologetics</a>
                 <a href="#reference"
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reference</a>
+                <a href="#confession"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Confession</a>
                 <a href="#reading-plans"
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reading
                     Plan</a>
@@ -949,6 +953,172 @@
                     <div class="section-ornament-dot"></div>
                 </div>
                 <div id="reference-list" class="space-y-4">
+                </div>
+            </div>
+        </section>
+
+        <section id="confession" class="fade-in-element">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading text-3xl">Confession</h2>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
+                <div class="space-y-6">
+
+                    <!-- Examination of Conscience -->
+                    <div class="card card-theme-bg p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                            <h3 class="font-cinzel text-xl font-bold text-theme-primary">
+                                Examination of Conscience
+                            </h3>
+                            <div class="flex rounded-lg overflow-hidden text-xs font-cinzel tracking-wide" style="border:1px solid var(--glass-border);">
+                                <button id="conscience-btn-child" onclick="toggleConscience('child')" class="px-4 py-2 transition-colors duration-200">Child</button>
+                                <button id="conscience-btn-adult" onclick="toggleConscience('adult')" class="px-4 py-2 transition-colors duration-200">Teen / Adult</button>
+                            </div>
+                        </div>
+
+                        <!-- Child -->
+                        <div id="conscience-child" class="overflow-y-auto pr-1" style="max-height:480px;">
+                            <p class="font-cinzel text-xs tracking-widest uppercase mb-3" style="color:var(--accent);">Responsibilities to God</p>
+                            <ul class="space-y-2 text-theme-secondary text-sm leading-relaxed mb-6">
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I prayed every day?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I prayed my morning prayers and night prayers?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I prayed with my parents and family?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I been moody and rebellious about praying and going to church on Sunday?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I asked the Holy Spirit to help me whenever I have been tempted to sin?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I asked the Holy Spirit to help me do what is right?</span></li>
+                            </ul>
+                            <p class="font-cinzel text-xs tracking-widest uppercase mb-3" style="color:var(--accent);">Responsibilities to Others</p>
+                            <ul class="space-y-2 text-theme-secondary text-sm leading-relaxed">
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I been obedient and respectful to my parents?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I lied or been deceitful to them or to others?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I been arrogant, stubborn or rebellious?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I talked back to parents, teachers or other adults?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I pouted and been moody?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I been selfish toward my parents, brothers, and sisters, teachers, or my friends and schoolmates?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I gotten angry at them? Have I hit anyone?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I held grudges or not forgiven others?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I treated other children with respect or have I made fun of them and called them names?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I used bad language?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I stolen anything? Have I returned it?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I performed my responsibilities, such as homework and household chores?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I been helpful and affectionate toward my family?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I been kind and generous with my friends?</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Teen / Adult (hidden by default) -->
+                        <div id="conscience-adult" class="hidden overflow-y-auto pr-1" style="max-height:480px;">
+                            <ul class="space-y-2 text-theme-secondary text-sm leading-relaxed">
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I deny or doubt God&apos;s existence?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I refuse to believe God&apos;s revelation?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I believe in (or use) horoscopes, fortune telling, good luck charms, tarot cards, Ouija boards or reincarnation?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I deny that I was a Catholic?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I abandon the Catholic Faith for any period of time?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I despair of or presume on God&apos;s mercy?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I neglect prayer for a long time?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I fail to pray daily?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I blaspheme God or take God&apos;s Name in vain, curse or break an oath or vow?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I miss Mass on a Sunday or on a Holy Day of Obligation through my own fault?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Am I always reverent in the presence of the Most Blessed Sacrament?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Was I voluntarily inattentive at Mass?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I arrive at Mass late through my own fault?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I leave Mass early?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I do unnecessary servile work on Sunday?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I disobey or disrespect my parents or legitimate superiors?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I neglect my duties to my husband, wife, children or parents?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I fail to actively take an interest in the religious education and formation of my children?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I failed to educate myself concerning the teachings of the Church?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I give a full day&apos;s work in return for a full day&apos;s pay?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I give a fair wage to my employee(s)?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I give scandal by what I said or did, especially to the young?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I contribute to anyone&apos;s abandoning of the Catholic Faith?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Was I impatient, angry, envious, unkind, proud, jealous, revengeful, hateful toward others or lazy?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I give bad example, abuse drugs, drink alcohol to excess, fight or quarrel?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I physically injure or kill anyone?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I had an abortion, or advised or supported an abortion?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I participate in or approve of the grave evil known as &ldquo;mercy killing,&rdquo; euthanasia or doctor assisted suicide?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I attempt suicide or physically harm myself?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I willfully entertain impure thoughts and desires?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I dress immodestly or provocatively?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I use impure or suggestive words?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I tell impure stories or listen to them?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I deliberately look at impure television, internet, plays, pictures or movies?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I deliberately read or send impure material?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I perform impure acts by myself (masturbation) or with another (adultery, fornication or sodomy)?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I marry or advise another to marry outside of the Church?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I abuse my marriage rights?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Was I unfaithful to my marriage vows?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I kept company with someone else&apos;s spouse?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I practice artificial birth control or was I or my spouse permanently sterilized (tubal ligation or vasectomy)?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I steal, cheat, help or encourage others to steal, cheat, or keep stolen goods?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I made restitution for stolen goods?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I deliberately fail to fulfill my contracts or to pay my bills? Did I give or accept bribes?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I rashly gamble or speculate or deprive my family of the necessities of life?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I tell lies? Deliberately in order to deceive or injure others? (slander or calumny)</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I commit perjury?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I vote in accordance with a properly informed conscience, in a way consistent with the teachings of the Church, in regard to the sanctity of marriage and of human life issues?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Was I uncharitable in thought, word or deed?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I gossip or reveal the faults or sins of others? (detraction)</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I fail to keep secrets that I should have kept?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I eat meat knowingly on the Fridays during Lent or on Ash Wednesday? (Ages 14+)</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I fast as required on Ash Wednesday and Good Friday? (Ages 18-59)</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I fail to receive Holy Communion during the Easter Season?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I fail to confess my sins at least once a year?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I receive Holy Communion in the state of mortal sin?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I receive Holy Communion without fasting for one hour or more from food and drink? (water and medicine are permitted)</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I make a bad Confession by deliberately not telling all the mortal sins I had committed?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Did I fail to contribute to the support of the Church?</span></li>
+                                <li class="flex gap-2"><span style="color:var(--accent);">&#8226;</span><span>Have I forgiven those who have hurt or harmed me or my loved ones?</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- How to go to Confession -->
+                    <div class="card card-theme-bg p-6">
+                        <h3 class="font-cinzel text-xl font-bold text-theme-primary mb-5">
+                            How to go to Confession
+                        </h3>
+                        <ol class="space-y-3">
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">1.</span>
+                                <span>The priest will greet you.</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">2.</span>
+                                <span>The penitent says: &ldquo;Bless me, Father, for I have sinned.&rdquo; You then say how long it has been since your last Confession.</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">3.</span>
+                                <span>The penitent tells the priest his sins simply and forthrightly (if mortal sin, give kind and approximate number).</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">4.</span>
+                                <span>The priest will give you some advice and will assign you a penance.</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">5.</span>
+                                <span>The penitent will next pray the Act of Contrition.</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">6.</span>
+                                <span>The priest then gives the penitent absolution.</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">7.</span>
+                                <span>The priest will then say: &ldquo;Give thanks to the Lord, for He is good.&rdquo;</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">8.</span>
+                                <span>The penitent responds: &ldquo;His mercy endures forever.&rdquo; The priest will then dismiss you.</span>
+                            </li>
+                            <li class="flex gap-3 text-theme-secondary text-sm leading-relaxed">
+                                <span class="font-cinzel font-bold shrink-0" style="color:var(--accent);">9.</span>
+                                <span>The penitent carries out the assigned penance.</span>
+                            </li>
+                        </ol>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -2466,6 +2636,29 @@
         });
 
         stopMeditation();
+
+        function toggleConscience(tab) {
+            const childContent = document.getElementById('conscience-child');
+            const adultContent = document.getElementById('conscience-adult');
+            const childBtn = document.getElementById('conscience-btn-child');
+            const adultBtn = document.getElementById('conscience-btn-adult');
+            if (tab === 'child') {
+                childContent.classList.remove('hidden');
+                adultContent.classList.add('hidden');
+                childBtn.style.background = 'var(--accent)';
+                childBtn.style.color = '#fff';
+                adultBtn.style.background = 'transparent';
+                adultBtn.style.color = '';
+            } else {
+                adultContent.classList.remove('hidden');
+                childContent.classList.add('hidden');
+                adultBtn.style.background = 'var(--accent)';
+                adultBtn.style.color = '#fff';
+                childBtn.style.background = 'transparent';
+                childBtn.style.color = '';
+            }
+        }
+        toggleConscience('child');
     </script>
 </body>
 
