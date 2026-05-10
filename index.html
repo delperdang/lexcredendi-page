@@ -2823,9 +2823,9 @@
             var crucifixY = pendOFy + 30;
             svg.appendChild(svgEl('line', { x1: medalX, y1: medalY + 14, x2: medalX, y2: crucifixY - 4, stroke: 'var(--accent-dim)', 'stroke-width': '1.5', opacity: '0.35' }));
 
-            var N = 55, angleStep = 360 / N;
+            var N = 55, gap = 14, angleStep = (360 - 2 * gap) / N;
             for (var i = 0; i < N; i++) {
-                var angle = 180 + (i + 0.5) * angleStep;
+                var angle = 180 + gap + (i + 0.5) * angleStep;
                 var pt = ovalPt(angle);
                 var decade = Math.floor(i / 11), within = i % 11;
                 var isOF = (within === 0);
@@ -2892,10 +2892,9 @@
                             + '<br><br>'
                             + (lang === 'en' ? fat.Prayer_Text_EN : fat.Prayer_Text_LA);
             } else if (s.titleEN === 'COMPLETE') {
-                prayerName = lang === 'en' ? 'Rosary Complete' : 'Rosarium Completum';
-                prayerHtml = lang === 'en'
-                    ? 'You have completed the Holy Rosary.<br>May Our Lady intercede for you and bring you ever closer to her Son, Jesus Christ.<br>Amen.'
-                    : 'Rosarium completum est.<br>Intercedat pro te Beata Virgo Maria ut propius accedas ad Filium Suum Iesum Christum.<br>Amen.';
+                var concluding = irGetPrayer('Prayer concluding the Rosary');
+                prayerName = concluding ? (lang === 'en' ? concluding.Prayer_Title_EN : concluding.Prayer_Title_LA) : 'Rosary Complete';
+                prayerHtml = concluding ? (lang === 'en' ? concluding.Prayer_Text_EN : concluding.Prayer_Text_LA) : '';
             } else {
                 var prayer = irGetPrayer(s.titleEN);
                 prayerName = prayer ? (lang === 'en' ? prayer.Prayer_Title_EN : prayer.Prayer_Title_LA) : s.label;
