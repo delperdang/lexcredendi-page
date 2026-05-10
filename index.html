@@ -795,6 +795,32 @@
             background: var(--bg-secondary);
             border-top: 1px solid var(--glass-border);
         }
+
+        /* ===== INTERACTIVE ROSARY ===== */
+        .ir-mystery-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            padding: 0.3rem 0.9rem;
+            border-radius: 9999px;
+            border: 1px solid var(--glass-border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.22s ease;
+        }
+        .ir-mystery-btn:hover { background: var(--glass-bg-hover); }
+        .ir-mystery-btn.ir-active {
+            background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+            color: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 2px 10px rgba(201,168,68,0.35);
+        }
+        #rosary-svg .r-bead { cursor: pointer; }
+        #rosary-svg .r-bead:hover > circle,
+        #rosary-svg .r-bead:hover > rect { filter: brightness(1.2); }
+        #ir-prayer-display { transition: all 0.3s ease; overflow-y: auto; max-height: 300px; }
+        #ir-next-btn:disabled { opacity: 0.45; cursor: not-allowed; }
     </style>
 </head>
 
@@ -1218,6 +1244,41 @@
                 <div class="section-ornament">
                     <div class="section-ornament-dot"></div>
                 </div>
+                <!-- Interactive Rosary -->
+                <div class="card card-theme-bg p-6 lg:p-8 mb-10">
+                    <h3 class="font-cinzel text-2xl font-bold text-theme-primary text-center mb-1">Interactive Rosary</h3>
+                    <p class="text-xs text-center text-theme-secondary mb-5 tracking-wide">Select a mystery set, then click any bead or press Next to pray</p>
+                    <div class="flex flex-wrap justify-center items-center gap-3 mb-7">
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <button class="ir-mystery-btn ir-active" onclick="setRosaryMystery('joyful',this)">Joyful</button>
+                            <button class="ir-mystery-btn" onclick="setRosaryMystery('luminous',this)">Luminous</button>
+                            <button class="ir-mystery-btn" onclick="setRosaryMystery('sorrowful',this)">Sorrowful</button>
+                            <button class="ir-mystery-btn" onclick="setRosaryMystery('glorious',this)">Glorious</button>
+                        </div>
+                        <div class="pill-toggle flex-shrink-0">
+                            <button onclick="setIRLang('en',this)" class="active">EN</button>
+                            <button onclick="setIRLang('la',this)">LA</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
+                        <div class="flex-shrink-0 w-full lg:w-auto flex justify-center">
+                            <svg id="rosary-svg" viewBox="0 0 420 515" style="width:100%;max-width:320px;height:auto;" aria-label="Interactive Rosary beads"></svg>
+                        </div>
+                        <div class="flex-1 w-full min-w-0">
+                            <div id="ir-prayer-display" class="rounded-2xl p-5 mb-4" style="background:var(--glass-bg);border:1px solid var(--glass-border);min-height:200px;">
+                                <p class="font-cinzel text-xs tracking-widest uppercase mb-2" style="color:var(--accent);" id="ir-mystery-label">&nbsp;</p>
+                                <h4 class="font-cinzel text-lg font-bold text-theme-primary mb-3" id="ir-prayer-name">Welcome</h4>
+                                <p class="text-sm leading-relaxed text-theme-secondary" id="ir-prayer-text">Select a mystery set above, then click any bead or press &ldquo;Next&rdquo; to begin praying the Rosary.</p>
+                            </div>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <button id="ir-next-btn" onclick="rosaryNext()" class="font-cinzel text-sm tracking-wide px-5 py-2 rounded-xl" style="background:linear-gradient(135deg,var(--accent-dim),var(--accent));color:#fff;border:none;cursor:pointer;box-shadow:0 2px 10px rgba(201,168,68,0.3);">Next ›</button>
+                                <button onclick="rosaryReset()" class="font-cinzel text-xs tracking-wide px-4 py-2 rounded-xl" style="background:transparent;border:1px solid var(--glass-border);color:var(--text-secondary);cursor:pointer;">&#8635; Reset</button>
+                                <span class="text-xs text-theme-secondary ml-auto" id="ir-progress">Step 1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="rosary-albums" class="space-y-10">
                 </div>
             </div>
@@ -2659,6 +2720,213 @@
             }
         }
         toggleConscience('child');
+
+        // ===== INTERACTIVE ROSARY =====
+
+        let irState = 0, irMystery = 'joyful', irStates = [], irLang = 'en';
+
+        function irGetPrayer(titleEN) {
+            return prayerData.find(function(p) { return p.Prayer_Title_EN === titleEN; });
+        }
+
+        const IR_MYSTERIES = {
+            joyful: [
+                { name: "The Annunciation",         desc: "The Angel Gabriel announces to the Blessed Virgin Mary that she is to become the Mother of God." },
+                { name: "The Visitation",            desc: "Mary visits her cousin Elizabeth, who is filled with the Holy Spirit and rejoices that the Mother of the Lord has come to her." },
+                { name: "The Nativity",              desc: "Jesus Christ, the Son of God, is born in a stable in Bethlehem to the Virgin Mary." },
+                { name: "The Presentation",          desc: "Mary and Joseph present the infant Jesus in the Temple. Simeon and Anna the prophetess recognize Him as the Messiah." },
+                { name: "The Finding in the Temple", desc: "After three days, Mary and Joseph find the twelve-year-old Jesus in the Temple, conversing with the teachers." }
+            ],
+            luminous: [
+                { name: "The Baptism of Christ",             desc: "Jesus is baptized by John in the Jordan. The heavens open, the Holy Spirit descends as a dove, and the Father's voice is heard." },
+                { name: "The Wedding at Cana",               desc: "At Mary's intercession, Jesus performs His first miracle, turning water into wine at a wedding feast." },
+                { name: "The Proclamation of the Kingdom",   desc: "Jesus preaches the Kingdom of God, calling all to conversion, and forgives the sins of those who turn to Him in trust." },
+                { name: "The Transfiguration",               desc: "Jesus reveals His divine glory to Peter, James, and John on Mount Tabor. Moses and Elijah appear alongside Him." },
+                { name: "The Institution of the Eucharist",  desc: "At the Last Supper, Jesus offers His Body and Blood under the forms of bread and wine, instituting the Holy Eucharist." }
+            ],
+            sorrowful: [
+                { name: "The Agony in the Garden",    desc: "Jesus prays in the Garden of Gethsemane, sweating blood as He accepts the will of the Father and prepares for His Passion." },
+                { name: "The Scourging at the Pillar", desc: "Jesus is bound to a pillar and scourged with great cruelty at the command of Pilate." },
+                { name: "The Crowning with Thorns",   desc: "The soldiers mock Jesus as King, placing a crown of thorns upon His head and a reed scepter in His hand." },
+                { name: "The Carrying of the Cross",  desc: "Jesus carries His Cross through the streets of Jerusalem to Calvary, meeting His sorrowful Mother along the way." },
+                { name: "The Crucifixion",            desc: "Jesus is nailed to the Cross and dies for the salvation of all mankind. Mary and John stand at the foot of the Cross." }
+            ],
+            glorious: [
+                { name: "The Resurrection",                desc: "On the third day, Jesus rises from the dead in glory, conquering sin and death, and appears to His disciples." },
+                { name: "The Ascension",                   desc: "Forty days after the Resurrection, Jesus ascends into Heaven and is seated at the right hand of the Father." },
+                { name: "The Descent of the Holy Spirit",  desc: "On Pentecost, the Holy Spirit descends upon Mary and the Apostles as tongues of fire, sending them forth to proclaim the Gospel." },
+                { name: "The Assumption of Mary",          desc: "At the end of her earthly life, the Blessed Virgin Mary is taken up body and soul into Heaven." },
+                { name: "The Coronation of Mary",          desc: "Mary is crowned Queen of Heaven and Earth by her Son, to intercede for her children until the end of time." }
+            ]
+        };
+
+        function buildIRStates(mysteryKey) {
+            var mysteries = IR_MYSTERIES[mysteryKey];
+            var states = [];
+            var ord = ['1st','2nd','3rd','4th','5th'];
+            states.push({ beadId: 'crucifix',    titleEN: 'Sign of the Cross',  label: 'Sign of the Cross' });
+            states.push({ beadId: 'crucifix',    titleEN: "Apostles' Creed",    label: "Apostles' Creed" });
+            states.push({ beadId: 'pendant-of',  titleEN: 'Our Father',         label: 'Our Father' });
+            states.push({ beadId: 'pendant-hm2', titleEN: 'Hail Mary',          label: 'Hail Mary — for an increase in Faith' });
+            states.push({ beadId: 'pendant-hm1', titleEN: 'Hail Mary',          label: 'Hail Mary — for an increase in Hope' });
+            states.push({ beadId: 'pendant-hm0', titleEN: 'Hail Mary',          label: 'Hail Mary — for an increase in Charity' });
+            states.push({ beadId: null,           titleEN: 'GLORY_FATIMA',      label: 'Glory Be & Fatima Prayer' });
+            for (var d = 0; d < 5; d++) {
+                var m = mysteries[d];
+                states.push({ beadId: 'loop-of-' + d, titleEN: 'Our Father', mysteryName: m.name, mysteryDesc: m.desc, label: ord[d] + ' Mystery: ' + m.name });
+                for (var h = 0; h < 10; h++) {
+                    states.push({ beadId: 'loop-hm-' + d + '-' + h, titleEN: 'Hail Mary', mysteryName: m.name, label: 'Hail Mary ' + (h + 1) + ' of 10 — ' + m.name });
+                }
+                states.push({ beadId: null, titleEN: 'GLORY_FATIMA', mysteryName: m.name, label: 'Glory Be & Fatima Prayer' });
+            }
+            states.push({ beadId: 'medal', titleEN: 'Hail Holy Queen', label: 'Hail Holy Queen' });
+            states.push({ beadId: null,    titleEN: 'COMPLETE',        label: 'Rosary Complete' });
+            return states;
+        }
+
+        function renderIRSvg() {
+            var svg = document.getElementById('rosary-svg');
+            svg.innerHTML = '';
+            var NS = 'http://www.w3.org/2000/svg';
+            var CX = 210, CY = 182, RX = 172, RY = 145;
+            var medalX = CX, medalY = CY + RY;
+
+            function ovalPt(theta) {
+                var rad = (theta - 90) * Math.PI / 180;
+                return { x: CX + RX * Math.cos(rad), y: CY + RY * Math.sin(rad) };
+            }
+            function svgEl(tag, attrs) {
+                var e = document.createElementNS(NS, tag);
+                Object.keys(attrs).forEach(function(k) { e.setAttribute(k, attrs[k]); });
+                return e;
+            }
+            function makeBead(x, y, r, beadId, type) {
+                var g = document.createElementNS(NS, 'g');
+                g.id = 'rb-' + beadId;
+                g.setAttribute('class', 'r-bead');
+                g.setAttribute('data-bead-id', beadId);
+                g.appendChild(svgEl('circle', { cx: x, cy: y, r: r + 5, fill: 'none', stroke: '#e8c869', 'stroke-width': '2.5', opacity: '0', class: 'r-glow' }));
+                var fill = (type === 'large') ? '#8B6A14' : 'var(--accent)';
+                var sw   = (type === 'medal') ? '2' : '1';
+                g.appendChild(svgEl('circle', { cx: x, cy: y, r: r, fill: fill, stroke: 'var(--accent-dim)', 'stroke-width': sw }));
+                if (type === 'large' || type === 'medal') {
+                    g.appendChild(svgEl('circle', { cx: x - r * 0.28, cy: y - r * 0.28, r: r * 0.22, fill: 'rgba(255,255,255,0.45)' }));
+                }
+                g.addEventListener('click', function() { irBeadClick(beadId); });
+                return g;
+            }
+
+            svg.appendChild(svgEl('ellipse', { cx: CX, cy: CY, rx: RX, ry: RY, fill: 'none', stroke: 'var(--accent-dim)', 'stroke-width': '1.5', opacity: '0.35' }));
+
+            var pendHMstep = 25, pendHMstart = medalY + 28;
+            var pendOFy = pendHMstart + 3 * pendHMstep + 20;
+            var crucifixY = pendOFy + 30;
+            svg.appendChild(svgEl('line', { x1: medalX, y1: medalY + 14, x2: medalX, y2: crucifixY - 4, stroke: 'var(--accent-dim)', 'stroke-width': '1.5', opacity: '0.35' }));
+
+            var N = 55, angleStep = 360 / N;
+            for (var i = 0; i < N; i++) {
+                var angle = 180 + (i + 0.5) * angleStep;
+                var pt = ovalPt(angle);
+                var decade = Math.floor(i / 11), within = i % 11;
+                var isOF = (within === 0);
+                var bid = isOF ? ('loop-of-' + decade) : ('loop-hm-' + decade + '-' + (within - 1));
+                svg.appendChild(makeBead(pt.x, pt.y, isOF ? 10 : 6.5, bid, isOF ? 'large' : 'small'));
+            }
+
+            svg.appendChild(makeBead(medalX, medalY, 13, 'medal', 'medal'));
+            for (var j = 0; j < 3; j++) {
+                svg.appendChild(makeBead(medalX, pendHMstart + j * pendHMstep, 6.5, 'pendant-hm' + j, 'small'));
+            }
+            svg.appendChild(makeBead(medalX, pendOFy, 10, 'pendant-of', 'large'));
+
+            var cg = document.createElementNS(NS, 'g');
+            cg.id = 'rb-crucifix';
+            cg.setAttribute('class', 'r-bead');
+            cg.setAttribute('data-bead-id', 'crucifix');
+            cg.appendChild(svgEl('ellipse', { cx: medalX, cy: crucifixY + 5, rx: '13', ry: '17', fill: 'none', stroke: '#e8c869', 'stroke-width': '2.5', opacity: '0', class: 'r-glow' }));
+            cg.appendChild(svgEl('rect', { x: medalX - 3.5, y: crucifixY, width: '7', height: '22', rx: '1.5', fill: 'var(--accent)' }));
+            cg.appendChild(svgEl('rect', { x: medalX - 11, y: crucifixY + 6, width: '22', height: '6', rx: '1.5', fill: 'var(--accent)' }));
+            cg.addEventListener('click', function() { irBeadClick('crucifix'); });
+            svg.appendChild(cg);
+
+            svg.setAttribute('viewBox', '0 0 420 ' + (crucifixY + 32));
+        }
+
+        function irBeadClick(beadId) {
+            var idx = irStates.findIndex(function(s) { return s.beadId === beadId; });
+            if (idx !== -1) { irState = idx; updateIRDisplay(); }
+        }
+        function rosaryNext() {
+            if (irState < irStates.length - 1) { irState++; updateIRDisplay(); }
+        }
+        function rosaryReset() { irState = 0; updateIRDisplay(); }
+        function setRosaryMystery(mystery, btn) {
+            irMystery = mystery;
+            irState = 0;
+            document.querySelectorAll('.ir-mystery-btn').forEach(function(b) { b.classList.remove('ir-active'); });
+            btn.classList.add('ir-active');
+            irStates = buildIRStates(irMystery);
+            updateIRDisplay();
+        }
+        function setIRLang(lang, btn) {
+            irLang = lang;
+            document.querySelectorAll('.pill-toggle button').forEach(function(b) {
+                if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf('setIRLang') !== -1) {
+                    b.classList.remove('active');
+                }
+            });
+            btn.classList.add('active');
+            updateIRDisplay();
+        }
+        function updateIRDisplay() {
+            var s = irStates[irState];
+            if (!s) return;
+            var lang = irLang;
+            var prayerName, prayerHtml;
+
+            if (s.titleEN === 'GLORY_FATIMA') {
+                var gb  = irGetPrayer('Glory Be');
+                var fat = irGetPrayer('Fatima Prayer');
+                prayerName  = lang === 'en' ? 'Glory Be & Fatima Prayer' : 'Gloria Patri & Oratio Fatimae';
+                prayerHtml  = (lang === 'en' ? gb.Prayer_Text_EN : gb.Prayer_Text_LA)
+                            + '<br><br>'
+                            + (lang === 'en' ? fat.Prayer_Text_EN : fat.Prayer_Text_LA);
+            } else if (s.titleEN === 'COMPLETE') {
+                prayerName = lang === 'en' ? 'Rosary Complete' : 'Rosarium Completum';
+                prayerHtml = lang === 'en'
+                    ? 'You have completed the Holy Rosary.<br>May Our Lady intercede for you and bring you ever closer to her Son, Jesus Christ.<br>Amen.'
+                    : 'Rosarium completum est.<br>Intercedat pro te Beata Virgo Maria ut propius accedas ad Filium Suum Iesum Christum.<br>Amen.';
+            } else {
+                var prayer = irGetPrayer(s.titleEN);
+                prayerName = prayer ? (lang === 'en' ? prayer.Prayer_Title_EN : prayer.Prayer_Title_LA) : s.label;
+                prayerHtml = prayer ? (lang === 'en' ? prayer.Prayer_Text_EN : prayer.Prayer_Text_LA) : '';
+                if (s.mysteryDesc) {
+                    prayerHtml = '<em style="color:var(--text-secondary);">' + s.mysteryDesc + '</em><br><br>' + prayerHtml;
+                }
+            }
+
+            document.getElementById('ir-mystery-label').textContent = s.mysteryName || s.label || ' ';
+            document.getElementById('ir-prayer-name').textContent   = prayerName;
+            document.getElementById('ir-prayer-text').innerHTML      = prayerHtml;
+            document.getElementById('ir-progress').textContent       = 'Step ' + (irState + 1) + ' of ' + irStates.length;
+            document.getElementById('ir-next-btn').disabled          = (irState >= irStates.length - 1);
+
+            document.querySelectorAll('#rosary-svg .r-bead').forEach(function(g) {
+                var glow = g.querySelector('.r-glow');
+                if (glow) glow.setAttribute('opacity', '0');
+            });
+            if (s.beadId) {
+                var active = document.getElementById('rb-' + s.beadId);
+                if (active) {
+                    var glow = active.querySelector('.r-glow');
+                    if (glow) glow.setAttribute('opacity', '1');
+                }
+            }
+        }
+
+        irStates = buildIRStates(irMystery);
+        renderIRSvg();
+        updateIRDisplay();
     </script>
 </body>
 
