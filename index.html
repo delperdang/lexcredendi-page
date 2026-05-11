@@ -411,6 +411,14 @@
             padding-bottom: 1.25rem;
         }
 
+        .prayer-header:hover h3 {
+            color: var(--accent);
+        }
+
+        .prayer-header h3 {
+            transition: color 0.2s ease;
+        }
+
         /* ===== PILL TOGGLE ===== */
         .pill-toggle {
             display: inline-flex;
@@ -2428,28 +2436,52 @@
 
         function loadPrayers() {
             prayerData.forEach((prayer, index) => {
-                const prayerId = `prayer-${index}`;
                 const card = document.createElement('div');
                 card.className = 'card card-theme-bg p-6';
                 card.innerHTML = `
-                <div class="flex justify-between items-start gap-3 mb-4">
-                    <h3 class="font-cinzel text-lg font-semibold text-theme-primary prayer-title-en leading-snug">${prayer.Prayer_Title_EN}</h3>
-                    <h3 class="font-cinzel text-lg font-semibold text-theme-primary prayer-title-la hidden leading-snug">${prayer.Prayer_Title_LA}</h3>
-                    <div class="pill-toggle flex-shrink-0">
-                        <button data-lang="en" class="lang-toggle-btn active" aria-pressed="true">EN</button>
-                        <button data-lang="la" class="lang-toggle-btn" aria-pressed="false">LA</button>
+                <div class="prayer-header flex justify-between items-start gap-3 cursor-pointer select-none" role="button" tabindex="0" aria-expanded="false">
+                    <div class="min-w-0">
+                        <h3 class="font-cinzel text-lg font-semibold text-theme-primary prayer-title-en leading-snug">${prayer.Prayer_Title_EN}</h3>
+                        <h3 class="font-cinzel text-lg font-semibold text-theme-primary prayer-title-la hidden leading-snug">${prayer.Prayer_Title_LA}</h3>
+                    </div>
+                    <div class="flex items-center gap-2 flex-shrink-0">
+                        <div class="pill-toggle">
+                            <button data-lang="en" class="lang-toggle-btn active" aria-pressed="true">EN</button>
+                            <button data-lang="la" class="lang-toggle-btn" aria-pressed="false">LA</button>
+                        </div>
+                        <i class="fa-solid fa-chevron-down prayer-chevron flex-shrink-0" style="color:var(--accent);font-size:0.75rem;transition:transform 0.3s ease;"></i>
                     </div>
                 </div>
-                <div class="prayer-text-en text-theme-secondary leading-relaxed text-sm">${prayer.Prayer_Text_EN}</div>
-                <div class="prayer-text-la text-theme-secondary leading-relaxed text-sm hidden">${prayer.Prayer_Text_LA}</div>
+                <div class="accordion-content prayer-body">
+                    <div class="prayer-text-en text-theme-secondary leading-relaxed text-sm">${prayer.Prayer_Text_EN}</div>
+                    <div class="prayer-text-la text-theme-secondary leading-relaxed text-sm hidden">${prayer.Prayer_Text_LA}</div>
+                </div>
             `;
                 prayersList.appendChild(card);
 
+                const header = card.querySelector('.prayer-header');
+                const body = card.querySelector('.prayer-body');
+                const chevron = card.querySelector('.prayer-chevron');
                 const langToggleButtons = card.querySelectorAll('.lang-toggle-btn');
                 const titleEn = card.querySelector('.prayer-title-en');
                 const titleLa = card.querySelector('.prayer-title-la');
                 const textEn = card.querySelector('.prayer-text-en');
                 const textLa = card.querySelector('.prayer-text-la');
+
+                function togglePrayer() {
+                    const isOpen = body.classList.contains('open');
+                    body.classList.toggle('open');
+                    chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+                    header.setAttribute('aria-expanded', String(!isOpen));
+                }
+
+                header.addEventListener('click', (e) => {
+                    if (!e.target.closest('.pill-toggle')) togglePrayer();
+                });
+
+                header.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePrayer(); }
+                });
 
                 langToggleButtons.forEach(button => {
                     button.addEventListener('click', () => {
