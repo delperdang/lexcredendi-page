@@ -862,6 +862,11 @@
                 </div>
 
                 <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="#reading-plans"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Reading
+                        Plan</a>
+                    <a href="#rosary"
+                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Rosary</a>
                     <a href="#prayers"
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Prayers</a>
                     <a href="#apologetics"
@@ -870,13 +875,8 @@
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Reference</a>
                     <a href="#confession"
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Confession</a>
-                    <a href="#reading-plans"
-                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Reading
-                        Plan</a>
                     <a href="#meditation"
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Meditation</a>
-                    <a href="#rosary"
-                        class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Rosary</a>
                     <a href="#useful-links"
                         class="nav-link-theme hover:text-theme-secondary px-3 py-2 rounded-md text-sm font-medium">Links</a>
 
@@ -936,6 +936,11 @@
 
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-4 pt-3 pb-4 space-y-1">
+                <a href="#reading-plans"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reading
+                    Plan</a>
+                <a href="#rosary"
+                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Rosary</a>
                 <a href="#prayers"
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Prayers</a>
                 <a href="#apologetics"
@@ -944,13 +949,8 @@
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reference</a>
                 <a href="#confession"
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Confession</a>
-                <a href="#reading-plans"
-                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Reading
-                    Plan</a>
                 <a href="#meditation"
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Meditation</a>
-                <a href="#rosary"
-                    class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Rosary</a>
                 <a href="#useful-links"
                     class="nav-link-theme block px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 card-theme-hover-bg">Links</a>
             </div>
@@ -975,6 +975,125 @@
                 </p>
             </div>
 
+        </section>
+
+        <section id="reading-plans" class="fade-in-element">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading text-3xl">Reading Plan</h2>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+
+                    <div id="daily-bible-reading-card" class="card card-theme-bg p-6">
+                        <div class="flex items-center mb-5">
+                            <div class="flex justify-between items-center w-full gap-3">
+                                <div>
+                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Bible in a Year</h3>
+                                    <p id="bible-date" class="text-xs text-theme-secondary mt-0.5">Today's Scripture
+                                        Passages</p>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button id="prev-bible-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
+                                    <button id="next-bible-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="daily-bible-content" class="text-theme-secondary space-y-3">
+                            <div class="text-center p-8">
+                                <p class="text-lg italic">Loading today's reading...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="daily-catechism-reading-card" class="card card-theme-bg p-6">
+                        <div class="flex items-center mb-5">
+                            <div class="flex justify-between items-center w-full gap-3">
+                                <div>
+                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Catechism in a Year
+                                    </h3>
+                                    <p id="catechism-date" class="text-xs text-theme-secondary mt-0.5">Today's
+                                        Paragraphs</p>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <button id="prev-catechism-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
+                                    <button id="next-catechism-day"
+                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="daily-catechism-content" class="text-theme-secondary space-y-3">
+                            <div class="text-center p-8">
+                                <p class="text-lg italic">Loading today's reading...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rosary" class="fade-in-element">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-heading text-3xl">The Holy Rosary</h2>
+                <div class="section-ornament">
+                    <div class="section-ornament-dot"></div>
+                </div>
+                <!-- Interactive Rosary -->
+                <div class="card card-theme-bg p-6 lg:p-8 mb-10">
+                    <h3 class="font-cinzel text-2xl font-bold text-theme-primary text-center mb-1">Interactive Rosary
+                    </h3>
+                    <p class="text-xs text-center text-theme-secondary mb-5 tracking-wide">Select a mystery set, then
+                        click any bead or press Next to pray</p>
+                    <div class="flex flex-wrap justify-center items-center gap-3 mb-7">
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <button class="ir-mystery-btn ir-active"
+                                onclick="setRosaryMystery('joyful',this)">Joyful</button>
+                            <button class="ir-mystery-btn" onclick="setRosaryMystery('luminous',this)">Luminous</button>
+                            <button class="ir-mystery-btn"
+                                onclick="setRosaryMystery('sorrowful',this)">Sorrowful</button>
+                            <button class="ir-mystery-btn" onclick="setRosaryMystery('glorious',this)">Glorious</button>
+                        </div>
+                        <div class="pill-toggle flex-shrink-0">
+                            <button onclick="setIRLang('en',this)" class="active">EN</button>
+                            <button onclick="setIRLang('la',this)">LA</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
+                        <div class="flex-shrink-0 w-full lg:w-auto flex justify-center">
+                            <svg id="rosary-svg" viewBox="0 0 420 515" style="width:100%;max-width:320px;height:auto;"
+                                aria-label="Interactive Rosary beads"></svg>
+                        </div>
+                        <div class="flex-1 w-full min-w-0">
+                            <div id="ir-prayer-display" class="rounded-2xl p-5 mb-4"
+                                style="background:var(--glass-bg);border:1px solid var(--glass-border);min-height:200px;">
+                                <p class="font-cinzel text-xs tracking-widest uppercase mb-2"
+                                    style="color:var(--accent);" id="ir-mystery-label">&nbsp;</p>
+                                <h4 class="font-cinzel text-lg font-bold text-theme-primary mb-3" id="ir-prayer-name">
+                                    Welcome</h4>
+                                <p class="text-sm leading-relaxed text-theme-secondary" id="ir-prayer-text">Select a
+                                    mystery set above, then click any bead or press &ldquo;Next&rdquo; to begin praying
+                                    the Rosary.</p>
+                            </div>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <button id="ir-next-btn" onclick="rosaryNext()"
+                                    class="font-cinzel text-sm tracking-wide px-5 py-2 rounded-xl"
+                                    style="background:linear-gradient(135deg,var(--accent-dim),var(--accent));color:#fff;border:none;cursor:pointer;box-shadow:0 2px 10px rgba(201,168,68,0.3);">Next
+                                    ›</button>
+                                <button onclick="rosaryReset()"
+                                    class="font-cinzel text-xs tracking-wide px-4 py-2 rounded-xl"
+                                    style="background:transparent;border:1px solid var(--glass-border);color:var(--text-secondary);cursor:pointer;">&#8635;
+                                    Reset</button>
+                                <span class="text-xs text-theme-secondary ml-auto" id="ir-progress">Step 1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rosary-albums" class="space-y-10">
+                </div>
+            </div>
         </section>
 
         <section id="prayers" class="fade-in-element">
@@ -1288,63 +1407,6 @@
             </div>
         </section>
 
-        <section id="reading-plans" class="fade-in-element">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="section-heading text-3xl">Reading Plan</h2>
-                <div class="section-ornament">
-                    <div class="section-ornament-dot"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-
-                    <div id="daily-bible-reading-card" class="card card-theme-bg p-6">
-                        <div class="flex items-center mb-5">
-                            <div class="flex justify-between items-center w-full gap-3">
-                                <div>
-                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Bible in a Year</h3>
-                                    <p id="bible-date" class="text-xs text-theme-secondary mt-0.5">Today's Scripture
-                                        Passages</p>
-                                </div>
-                                <div class="flex items-center gap-1">
-                                    <button id="prev-bible-day"
-                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
-                                    <button id="next-bible-day"
-                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="daily-bible-content" class="text-theme-secondary space-y-3">
-                            <div class="text-center p-8">
-                                <p class="text-lg italic">Loading today's reading...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="daily-catechism-reading-card" class="card card-theme-bg p-6">
-                        <div class="flex items-center mb-5">
-                            <div class="flex justify-between items-center w-full gap-3">
-                                <div>
-                                    <h3 class="font-cinzel text-xl font-bold text-theme-primary">Catechism in a Year
-                                    </h3>
-                                    <p id="catechism-date" class="text-xs text-theme-secondary mt-0.5">Today's
-                                        Paragraphs</p>
-                                </div>
-                                <div class="flex items-center gap-1">
-                                    <button id="prev-catechism-day"
-                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">‹</button>
-                                    <button id="next-catechism-day"
-                                        class="button-theme px-3 py-1 rounded-lg text-sm font-bold">›</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="daily-catechism-content" class="text-theme-secondary space-y-3">
-                            <div class="text-center p-8">
-                                <p class="text-lg italic">Loading today's reading...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="meditation" class="fade-in-element">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="section-heading text-3xl">Meditation</h2>
@@ -1373,68 +1435,6 @@
                     <div class="meditation-controls">
                         <button id="meditation-toggle" class="btn-meditation">Start Session</button>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="rosary" class="fade-in-element">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="section-heading text-3xl">The Holy Rosary</h2>
-                <div class="section-ornament">
-                    <div class="section-ornament-dot"></div>
-                </div>
-                <!-- Interactive Rosary -->
-                <div class="card card-theme-bg p-6 lg:p-8 mb-10">
-                    <h3 class="font-cinzel text-2xl font-bold text-theme-primary text-center mb-1">Interactive Rosary
-                    </h3>
-                    <p class="text-xs text-center text-theme-secondary mb-5 tracking-wide">Select a mystery set, then
-                        click any bead or press Next to pray</p>
-                    <div class="flex flex-wrap justify-center items-center gap-3 mb-7">
-                        <div class="flex flex-wrap gap-2 justify-center">
-                            <button class="ir-mystery-btn ir-active"
-                                onclick="setRosaryMystery('joyful',this)">Joyful</button>
-                            <button class="ir-mystery-btn" onclick="setRosaryMystery('luminous',this)">Luminous</button>
-                            <button class="ir-mystery-btn"
-                                onclick="setRosaryMystery('sorrowful',this)">Sorrowful</button>
-                            <button class="ir-mystery-btn" onclick="setRosaryMystery('glorious',this)">Glorious</button>
-                        </div>
-                        <div class="pill-toggle flex-shrink-0">
-                            <button onclick="setIRLang('en',this)" class="active">EN</button>
-                            <button onclick="setIRLang('la',this)">LA</button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
-                        <div class="flex-shrink-0 w-full lg:w-auto flex justify-center">
-                            <svg id="rosary-svg" viewBox="0 0 420 515" style="width:100%;max-width:320px;height:auto;"
-                                aria-label="Interactive Rosary beads"></svg>
-                        </div>
-                        <div class="flex-1 w-full min-w-0">
-                            <div id="ir-prayer-display" class="rounded-2xl p-5 mb-4"
-                                style="background:var(--glass-bg);border:1px solid var(--glass-border);min-height:200px;">
-                                <p class="font-cinzel text-xs tracking-widest uppercase mb-2"
-                                    style="color:var(--accent);" id="ir-mystery-label">&nbsp;</p>
-                                <h4 class="font-cinzel text-lg font-bold text-theme-primary mb-3" id="ir-prayer-name">
-                                    Welcome</h4>
-                                <p class="text-sm leading-relaxed text-theme-secondary" id="ir-prayer-text">Select a
-                                    mystery set above, then click any bead or press &ldquo;Next&rdquo; to begin praying
-                                    the Rosary.</p>
-                            </div>
-                            <div class="flex items-center gap-3 flex-wrap">
-                                <button id="ir-next-btn" onclick="rosaryNext()"
-                                    class="font-cinzel text-sm tracking-wide px-5 py-2 rounded-xl"
-                                    style="background:linear-gradient(135deg,var(--accent-dim),var(--accent));color:#fff;border:none;cursor:pointer;box-shadow:0 2px 10px rgba(201,168,68,0.3);">Next
-                                    ›</button>
-                                <button onclick="rosaryReset()"
-                                    class="font-cinzel text-xs tracking-wide px-4 py-2 rounded-xl"
-                                    style="background:transparent;border:1px solid var(--glass-border);color:var(--text-secondary);cursor:pointer;">&#8635;
-                                    Reset</button>
-                                <span class="text-xs text-theme-secondary ml-auto" id="ir-progress">Step 1</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="rosary-albums" class="space-y-10">
                 </div>
             </div>
         </section>
