@@ -805,13 +805,30 @@
         }
 
         /* ===== INTERACTIVE ROSARY ===== */
+        :root {
+            --ir-sheet-bg: #f2efe9;
+            --ir-btn-border: rgba(26, 26, 46, 0.16);
+        }
+
+        html.dark {
+            --ir-sheet-bg: #161a22;
+            --ir-btn-border: rgba(255, 255, 255, 0.14);
+        }
+
+        /* The interactive card should not lift on hover like decorative cards */
+        .ir-card.card:hover {
+            transform: none;
+            box-shadow: var(--glass-shadow);
+        }
+
         .ir-mystery-btn {
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
+            font-size: 0.78rem;
             letter-spacing: 0.06em;
-            padding: 0.3rem 0.9rem;
+            min-height: 40px;
+            padding: 0.4rem 1rem;
             border-radius: 9999px;
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--ir-btn-border);
             background: transparent;
             color: var(--text-secondary);
             cursor: pointer;
@@ -829,24 +846,260 @@
             box-shadow: 0 2px 10px rgba(201, 168, 68, 0.35);
         }
 
+        .ir-card .pill-toggle button {
+            min-height: 34px;
+            padding: 0.3rem 1rem;
+            font-size: 0.75rem;
+        }
+
+        .ir-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ir-beads-wrap {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        #rosary-svg {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #rosary-svg:focus {
+            outline: none;
+        }
+
+        #rosary-svg:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 6px;
+            border-radius: 12px;
+        }
+
         #rosary-svg .r-bead {
             cursor: pointer;
         }
 
-        #rosary-svg .r-bead:hover>circle,
-        #rosary-svg .r-bead:hover>rect {
+        #rosary-svg .r-hit {
+            fill: transparent;
+            pointer-events: all;
+        }
+
+        #rosary-svg .r-body {
+            transition: fill 0.25s ease, transform 0.2s ease;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        #rosary-svg .r-bead:hover .r-body {
             filter: brightness(1.2);
         }
 
-        #ir-prayer-display {
-            transition: all 0.3s ease;
-            overflow-y: auto;
-            max-height: 300px;
+        #rosary-svg .r-core-small,
+        #rosary-svg .r-core-medal {
+            fill: var(--accent);
         }
 
-        #ir-next-btn:disabled {
-            opacity: 0.45;
+        #rosary-svg .r-core-large {
+            fill: #8B6A14;
+        }
+
+        #rosary-svg .r-bead.r-done .r-body {
+            opacity: 0.4;
+        }
+
+        #rosary-svg .r-bead.r-active .r-body {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 5px rgba(232, 200, 105, 0.9));
+        }
+
+        #rosary-svg .r-glow {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        #rosary-svg .r-bead.r-active .r-glow {
+            opacity: 1;
+            animation: ir-pulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes ir-pulse {
+
+            0%,
+            100% {
+                stroke-opacity: 1;
+            }
+
+            50% {
+                stroke-opacity: 0.35;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            #rosary-svg .r-bead.r-active .r-glow {
+                animation: none;
+            }
+
+            #rosary-svg .r-body {
+                transition: none;
+            }
+        }
+
+        #ir-prayer-display {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        /* Fade the last lines when the prayer scrolls, so it's clear there is more */
+        #ir-prayer-display.ir-more {
+            -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent);
+            mask-image: linear-gradient(to bottom, #000 80%, transparent);
+        }
+
+        #ir-prayer-text {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .ir-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ir-btn {
+            font-family: 'Cinzel', serif;
+            min-height: 44px;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            letter-spacing: 0.04em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            transition: opacity 0.2s ease, filter 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .ir-btn-primary {
+            flex: 1 1 auto;
+            font-size: 0.95rem;
+            padding: 0.5rem 1.25rem;
+            background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 10px rgba(201, 168, 68, 0.3);
+        }
+
+        .ir-btn-secondary {
+            font-size: 0.85rem;
+            padding: 0.5rem 0.9rem;
+            background: transparent;
+            border: 1px solid var(--ir-btn-border);
+            color: var(--text-secondary);
+        }
+
+        .ir-btn:hover:not(:disabled) {
+            filter: brightness(1.1);
+        }
+
+        .ir-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .ir-btn:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
+        }
+
+        .ir-progress-track {
+            height: 4px;
+            border-radius: 9999px;
+            background: var(--glass-border);
+            overflow: hidden;
+        }
+
+        .ir-progress-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        /* Mobile / tablet: rosary on top, prayer + controls pinned to the bottom of the screen */
+        @media (max-width: 1023px) {
+            .ir-panel {
+                position: sticky;
+                bottom: 0;
+                z-index: 20;
+                margin: 0 -0.5rem;
+                padding: 0.75rem 0.75rem calc(0.75rem + env(safe-area-inset-bottom));
+                background: var(--ir-sheet-bg);
+                border-top: 1px solid var(--glass-border);
+                border-radius: 1rem 1rem 0 0;
+                box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.18);
+            }
+
+            /* Inside the sheet the prayer text needs no second box around it */
+            #ir-prayer-display {
+                max-height: 24vh;
+                max-height: 24dvh;
+                padding: 0.25rem 0.25rem 0;
+                background: none;
+                border: none;
+                border-radius: 0;
+            }
+
+            #ir-prayer-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* The floating back-to-top button would cover the controls */
+            body.ir-in-view #back-to-top-btn {
+                display: none !important;
+            }
+        }
+
+        /* Desktop: rosary and prayer side by side */
+        @media (min-width: 1024px) {
+            .ir-layout {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 2.5rem;
+            }
+
+            .ir-beads-wrap {
+                flex: 0 0 380px;
+                width: 380px;
+            }
+
+            .ir-panel {
+                flex: 1 1 auto;
+                min-width: 0;
+                position: sticky;
+                top: 6.5rem;
+            }
+
+            #ir-prayer-display {
+                min-height: 260px;
+                max-height: 480px;
+                padding: 1.5rem 1.75rem;
+            }
+
+            #ir-prayer-text {
+                font-size: 1.05rem;
+            }
         }
     </style>
 </head>
@@ -1041,51 +1294,55 @@
                     <div class="section-ornament-dot"></div>
                 </div>
                 <!-- Interactive Rosary -->
-                <div class="card card-theme-bg p-6 lg:p-8 mb-10">
+                <div id="ir-card" class="ir-card card card-theme-bg p-4 sm:p-6 lg:p-8 mb-10">
                     <h3 class="font-cinzel text-2xl font-bold text-theme-primary text-center mb-1">Interactive Rosary
                     </h3>
-                    <p class="text-xs text-center text-theme-secondary mb-5 tracking-wide">Select a mystery set, then
-                        click any bead or press Next to pray</p>
-                    <div class="flex flex-wrap justify-center items-center gap-3 mb-7">
-                        <div class="flex flex-wrap gap-2 justify-center">
-                            <button class="ir-mystery-btn ir-active"
+                    <p class="text-sm text-center text-theme-secondary mb-5 tracking-wide">Tap any bead or use
+                        Next&nbsp;/&nbsp;Back to pray. Today&rsquo;s mysteries are selected automatically.</p>
+                    <div class="flex flex-wrap justify-center items-center gap-3 mb-6">
+                        <div class="flex flex-wrap gap-2 justify-center" role="group" aria-label="Mystery set">
+                            <button class="ir-mystery-btn" data-mystery="joyful" aria-pressed="false"
                                 onclick="setRosaryMystery('joyful',this)">Joyful</button>
-                            <button class="ir-mystery-btn" onclick="setRosaryMystery('luminous',this)">Luminous</button>
-                            <button class="ir-mystery-btn"
+                            <button class="ir-mystery-btn" data-mystery="luminous" aria-pressed="false"
+                                onclick="setRosaryMystery('luminous',this)">Luminous</button>
+                            <button class="ir-mystery-btn" data-mystery="sorrowful" aria-pressed="false"
                                 onclick="setRosaryMystery('sorrowful',this)">Sorrowful</button>
-                            <button class="ir-mystery-btn" onclick="setRosaryMystery('glorious',this)">Glorious</button>
+                            <button class="ir-mystery-btn" data-mystery="glorious" aria-pressed="false"
+                                onclick="setRosaryMystery('glorious',this)">Glorious</button>
                         </div>
-                        <div class="pill-toggle flex-shrink-0">
-                            <button onclick="setIRLang('en',this)" class="active">EN</button>
-                            <button onclick="setIRLang('la',this)">LA</button>
+                        <div class="pill-toggle flex-shrink-0" role="group" aria-label="Prayer language">
+                            <button onclick="setIRLang('en',this)" class="active" aria-pressed="true">EN</button>
+                            <button onclick="setIRLang('la',this)" aria-pressed="false">LA</button>
                         </div>
                     </div>
-                    <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
-                        <div class="flex-shrink-0 w-full lg:w-auto flex justify-center">
-                            <svg id="rosary-svg" viewBox="0 0 420 515" style="width:100%;max-width:320px;height:auto;"
-                                aria-label="Interactive Rosary beads"></svg>
+                    <div class="ir-layout">
+                        <div class="ir-beads-wrap">
+                            <svg id="rosary-svg" viewBox="0 0 360 620" tabindex="0" role="group"
+                                aria-label="Rosary beads. Use the left and right arrow keys to move between prayers."></svg>
                         </div>
-                        <div class="flex-1 w-full min-w-0">
-                            <div id="ir-prayer-display" class="rounded-2xl p-5 mb-4"
-                                style="background:var(--glass-bg);border:1px solid var(--glass-border);min-height:200px;">
-                                <p class="font-cinzel text-xs tracking-widest uppercase mb-2"
+                        <div class="ir-panel">
+                            <div id="ir-prayer-display" class="rounded-2xl mb-3">
+                                <p class="font-cinzel text-xs tracking-widest uppercase mb-1"
                                     style="color:var(--accent);" id="ir-mystery-label">&nbsp;</p>
-                                <h4 class="font-cinzel text-lg font-bold text-theme-primary mb-3" id="ir-prayer-name">
-                                    Welcome</h4>
-                                <p class="text-sm leading-relaxed text-theme-secondary" id="ir-prayer-text">Select a
-                                    mystery set above, then click any bead or press &ldquo;Next&rdquo; to begin praying
-                                    the Rosary.</p>
+                                <h4 class="font-cinzel text-lg lg:text-xl font-bold text-theme-primary mb-2"
+                                    id="ir-prayer-name">Welcome</h4>
+                                <p class="text-theme-secondary" id="ir-prayer-text"></p>
                             </div>
-                            <div class="flex items-center gap-3 flex-wrap">
-                                <button id="ir-next-btn" onclick="rosaryNext()"
-                                    class="font-cinzel text-sm tracking-wide px-5 py-2 rounded-xl"
-                                    style="background:linear-gradient(135deg,var(--accent-dim),var(--accent));color:#fff;border:none;cursor:pointer;box-shadow:0 2px 10px rgba(201,168,68,0.3);">Next
-                                    ›</button>
-                                <button onclick="rosaryReset()"
-                                    class="font-cinzel text-xs tracking-wide px-4 py-2 rounded-xl"
-                                    style="background:transparent;border:1px solid var(--glass-border);color:var(--text-secondary);cursor:pointer;">&#8635;
-                                    Reset</button>
-                                <span class="text-xs text-theme-secondary ml-auto" id="ir-progress">Step 1</span>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="ir-progress-track flex-1" aria-hidden="true">
+                                    <div class="ir-progress-fill" id="ir-progress-fill"></div>
+                                </div>
+                                <span class="text-xs text-theme-secondary whitespace-nowrap" id="ir-progress"
+                                    aria-live="polite">Step 1</span>
+                            </div>
+                            <div class="ir-controls">
+                                <button id="ir-prev-btn" onclick="rosaryPrev()" class="ir-btn ir-btn-secondary"
+                                    aria-label="Previous prayer">&lsaquo; Back</button>
+                                <button id="ir-next-btn" onclick="rosaryNext()" class="ir-btn ir-btn-primary"
+                                    aria-label="Next prayer">Next &rsaquo;</button>
+                                <button onclick="rosaryReset()" class="ir-btn ir-btn-secondary"
+                                    aria-label="Start over">&#8635;<span
+                                        class="hidden sm:inline">&nbsp;Reset</span></button>
                             </div>
                         </div>
                     </div>
@@ -2940,6 +3197,11 @@
             ]
         };
 
+        // Bead layout follows a standard five-decade rosary:
+        //   pendant (from crucifix up): Our Father bead, 3 Hail Mary beads, large bead for the 1st decade's Our Father
+        //   loop (from the centerpiece): 10 HM, OF, 10 HM, OF, 10 HM, OF, 10 HM, OF, 10 HM
+        // `beadId` is the bead the prayer is said on (and the bead a click jumps to);
+        // `hl` highlights a bead without making it a click target (e.g. Glory Be said before the next Our Father).
         function buildIRStates(mysteryKey) {
             var mysteries = IR_MYSTERIES[mysteryKey];
             var states = [];
@@ -2950,17 +3212,17 @@
             states.push({ beadId: 'pendant-hm2', titleEN: 'Hail Mary', label: 'Hail Mary — for an increase in Faith' });
             states.push({ beadId: 'pendant-hm1', titleEN: 'Hail Mary', label: 'Hail Mary — for an increase in Hope' });
             states.push({ beadId: 'pendant-hm0', titleEN: 'Hail Mary', label: 'Hail Mary — for an increase in Charity' });
-            states.push({ beadId: null, titleEN: 'GLORY_FATIMA', label: 'Glory Be & Fatima Prayer' });
+            states.push({ beadId: null, hl: 'loop-of-0', titleEN: 'GLORY_FATIMA', label: 'Glory Be & Fatima Prayer' });
             for (var d = 0; d < 5; d++) {
                 var m = mysteries[d];
                 states.push({ beadId: 'loop-of-' + d, titleEN: 'Our Father', mysteryName: m.name, mysteryDesc: m.desc, label: ord[d] + ' Mystery: ' + m.name });
                 for (var h = 0; h < 10; h++) {
                     states.push({ beadId: 'loop-hm-' + d + '-' + h, titleEN: 'Hail Mary', mysteryName: m.name, label: 'Hail Mary ' + (h + 1) + ' of 10 — ' + m.name });
                 }
-                states.push({ beadId: null, titleEN: 'GLORY_FATIMA', mysteryName: m.name, label: 'Glory Be & Fatima Prayer' });
+                states.push({ beadId: null, hl: d < 4 ? 'loop-of-' + (d + 1) : 'medal', titleEN: 'GLORY_FATIMA', mysteryName: m.name, label: 'Glory Be & Fatima Prayer' });
             }
             states.push({ beadId: 'medal', titleEN: 'Hail Holy Queen', label: 'Hail Holy Queen' });
-            states.push({ beadId: null, titleEN: 'COMPLETE', label: 'Rosary Complete' });
+            states.push({ beadId: null, hl: 'medal', titleEN: 'COMPLETE', label: 'Rosary Complete' });
             return states;
         }
 
@@ -2968,96 +3230,179 @@
             var svg = document.getElementById('rosary-svg');
             svg.innerHTML = '';
             var NS = 'http://www.w3.org/2000/svg';
-            var CX = 210, CY = 182, RX = 172, RY = 145;
-            var medalX = CX, medalY = CY + RY;
 
-            function ovalPt(theta) {
-                var rad = (theta - 90) * Math.PI / 180;
-                return { x: CX + RX * Math.cos(rad), y: CY + RY * Math.sin(rad) };
-            }
+            // Geometry (viewBox units). The loop is a teardrop that hangs from the centerpiece,
+            // taller than it is wide, the way a rosary is usually pictured.
+            var W = 360, CX = W / 2;
+            var LOOP_TOP = 24, LOOP_H = 410, HALF_W = 158, TAPER = 0.9;
+            var R_HM = 8, R_OF = 11.5, R_MEDAL = 15, MEDAL_CLEAR = 30;
+            var medalX = CX, medalY = LOOP_TOP + LOOP_H;
+
             function svgEl(tag, attrs) {
                 var e = document.createElementNS(NS, tag);
                 Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); });
                 return e;
             }
-            function makeBead(x, y, r, beadId, type) {
-                var g = document.createElementNS(NS, 'g');
-                g.id = 'rb-' + beadId;
-                g.setAttribute('class', 'r-bead');
-                g.setAttribute('data-bead-id', beadId);
-                g.appendChild(svgEl('circle', { cx: x, cy: y, r: r + 5, fill: 'none', stroke: '#e8c869', 'stroke-width': '2.5', opacity: '0', class: 'r-glow' }));
-                var fill = (type === 'large') ? '#8B6A14' : 'var(--accent)';
-                var sw = (type === 'medal') ? '2' : '1';
-                g.appendChild(svgEl('circle', { cx: x, cy: y, r: r, fill: fill, stroke: 'var(--accent-dim)', 'stroke-width': sw }));
-                if (type === 'large' || type === 'medal') {
-                    g.appendChild(svgEl('circle', { cx: x - r * 0.28, cy: y - r * 0.28, r: r * 0.22, fill: 'rgba(255,255,255,0.45)' }));
+
+            // Teardrop: t=0 at the centerpiece (bottom tip), increasing t travels up the left side first.
+            function rawPt(t) {
+                return {
+                    x: -Math.sin(t) * Math.pow(Math.sin(t / 2), TAPER),
+                    y: (1 + Math.cos(t)) / 2 // 1 at the tip, 0 at the top
+                };
+            }
+            var SAMPLES = 1200, pts = [], maxX = 0;
+            for (var s = 0; s <= SAMPLES; s++) {
+                var p = rawPt(2 * Math.PI * s / SAMPLES);
+                pts.push(p);
+                maxX = Math.max(maxX, Math.abs(p.x));
+            }
+            pts = pts.map(function (p) {
+                return { x: CX + p.x / maxX * HALF_W, y: LOOP_TOP + p.y * LOOP_H };
+            });
+            var cum = [0];
+            for (var k = 1; k < pts.length; k++) {
+                cum.push(cum[k - 1] + Math.hypot(pts[k].x - pts[k - 1].x, pts[k].y - pts[k - 1].y));
+            }
+            var L = cum[cum.length - 1];
+            function ptAt(dist) {
+                var lo = 0, hi = cum.length - 1;
+                while (hi - lo > 1) {
+                    var mid = (lo + hi) >> 1;
+                    if (cum[mid] < dist) lo = mid; else hi = mid;
                 }
+                var f = (dist - cum[lo]) / ((cum[hi] - cum[lo]) || 1);
+                return { x: pts[lo].x + (pts[hi].x - pts[lo].x) * f, y: pts[lo].y + (pts[hi].y - pts[lo].y) * f };
+            }
+
+            function makeBead(x, y, r, beadId, kind, title) {
+                var g = svgEl('g', { id: 'rb-' + beadId, class: 'r-bead', 'data-bead-id': beadId });
+                var t = svgEl('title', {});
+                t.textContent = title;
+                g.appendChild(t);
+                g.appendChild(svgEl('circle', { cx: x, cy: y, r: Math.max(r + 6, 13), class: 'r-hit' }));
+                g.appendChild(svgEl('circle', { cx: x, cy: y, r: r + 6, fill: 'none', stroke: '#e8c869', 'stroke-width': '2.5', class: 'r-glow' }));
+                var body = svgEl('g', { class: 'r-body' });
+                body.appendChild(svgEl('circle', { cx: x, cy: y, r: r, class: 'r-core r-core-' + kind, stroke: 'var(--accent-dim)', 'stroke-width': kind === 'medal' ? 2 : 1 }));
+                if (kind === 'medal') {
+                    body.appendChild(svgEl('circle', { cx: x, cy: y, r: r * 0.62, fill: 'none', stroke: 'rgba(255,255,255,0.45)', 'stroke-width': 1.2 }));
+                }
+                body.appendChild(svgEl('circle', { cx: x - r * 0.3, cy: y - r * 0.3, r: r * 0.24, fill: 'rgba(255,255,255,0.45)', 'pointer-events': 'none' }));
+                g.appendChild(body);
                 g.addEventListener('click', function () { irBeadClick(beadId); });
                 return g;
             }
 
-            svg.appendChild(svgEl('ellipse', { cx: CX, cy: CY, rx: RX, ry: RY, fill: 'none', stroke: 'var(--accent-dim)', 'stroke-width': '1.5', opacity: '0.35' }));
+            // Chain for the loop
+            var d = 'M' + pts.map(function (p) { return p.x.toFixed(1) + ' ' + p.y.toFixed(1); }).join('L') + 'Z';
+            svg.appendChild(svgEl('path', { d: d, fill: 'none', stroke: 'var(--accent-dim)', 'stroke-width': '1.5', opacity: '0.4' }));
 
-            var pendHMstep = 25, pendHMstart = medalY + 28;
-            var pendOFy = pendHMstart + 3 * pendHMstep + 20;
-            var crucifixY = pendOFy + 30;
-            svg.appendChild(svgEl('line', { x1: medalX, y1: medalY + 14, x2: medalX, y2: crucifixY - 4, stroke: 'var(--accent-dim)', 'stroke-width': '1.5', opacity: '0.35' }));
+            // Pendant positions (top to bottom)
+            var ofTopY = medalY + 44;
+            var hmY = [ofTopY + 34, ofTopY + 34 + 27, ofTopY + 34 + 54];
+            var ofLowY = hmY[2] + 34;
+            var crucifixY = ofLowY + 24;
+            svg.appendChild(svgEl('line', { x1: medalX, y1: medalY, x2: medalX, y2: crucifixY, stroke: 'var(--accent-dim)', 'stroke-width': '1.5', opacity: '0.4' }));
 
-            var N = 55, gap = 14, angleStep = (360 - 2 * gap) / N;
-            for (var i = 0; i < N; i++) {
-                var angle = 180 + gap + (i + 0.5) * angleStep;
-                var pt = ovalPt(angle);
-                var decade = Math.floor(i / 11), within = i % 11;
-                var isOF = (within === 0);
-                var bid = isOF ? ('loop-of-' + decade) : ('loop-hm-' + decade + '-' + (within - 1));
-                svg.appendChild(makeBead(pt.x, pt.y, isOF ? 10 : 6.5, bid, isOF ? 'large' : 'small'));
+            // Loop beads, spaced evenly by arc length, larger gaps on either side of each Our Father bead
+            var seq = [];
+            for (var dec = 0; dec < 5; dec++) {
+                if (dec > 0) seq.push({ id: 'loop-of-' + dec, r: R_OF, kind: 'large', title: 'Our Father' });
+                for (var h = 0; h < 10; h++) {
+                    seq.push({ id: 'loop-hm-' + dec + '-' + h, r: R_HM, kind: 'small', title: 'Hail Mary' });
+                }
+            }
+            var gapUnits = 0, beadLen = 0;
+            for (var i = 0; i < seq.length; i++) {
+                beadLen += 2 * seq[i].r;
+                if (i > 0) gapUnits += (seq[i].kind === 'large' || seq[i - 1].kind === 'large') ? 1.8 : 1;
+            }
+            var gap = (L - 2 * MEDAL_CLEAR - beadLen) / gapUnits;
+            var pos = MEDAL_CLEAR;
+            for (var j = 0; j < seq.length; j++) {
+                if (j > 0) pos += (seq[j].kind === 'large' || seq[j - 1].kind === 'large') ? 1.8 * gap : gap;
+                pos += seq[j].r;
+                var pt = ptAt(pos);
+                svg.appendChild(makeBead(pt.x, pt.y, seq[j].r, seq[j].id, seq[j].kind, seq[j].title));
+                pos += seq[j].r;
             }
 
-            svg.appendChild(makeBead(medalX, medalY, 13, 'medal', 'medal'));
-            for (var j = 0; j < 3; j++) {
-                svg.appendChild(makeBead(medalX, pendHMstart + j * pendHMstep, 6.5, 'pendant-hm' + j, 'small'));
+            svg.appendChild(makeBead(medalX, medalY, R_MEDAL, 'medal', 'medal', 'Centerpiece — Hail Holy Queen'));
+            svg.appendChild(makeBead(medalX, ofTopY, R_OF, 'loop-of-0', 'large', 'Our Father'));
+            for (var q = 0; q < 3; q++) {
+                svg.appendChild(makeBead(medalX, hmY[q], R_HM, 'pendant-hm' + q, 'small', 'Hail Mary'));
             }
-            svg.appendChild(makeBead(medalX, pendOFy, 10, 'pendant-of', 'large'));
+            svg.appendChild(makeBead(medalX, ofLowY, R_OF, 'pendant-of', 'large', 'Our Father'));
 
-            var cg = document.createElementNS(NS, 'g');
-            cg.id = 'rb-crucifix';
-            cg.setAttribute('class', 'r-bead');
-            cg.setAttribute('data-bead-id', 'crucifix');
-            cg.appendChild(svgEl('ellipse', { cx: medalX, cy: crucifixY + 5, rx: '13', ry: '17', fill: 'none', stroke: '#e8c869', 'stroke-width': '2.5', opacity: '0', class: 'r-glow' }));
-            cg.appendChild(svgEl('rect', { x: medalX - 3.5, y: crucifixY, width: '7', height: '22', rx: '1.5', fill: 'var(--accent)' }));
-            cg.appendChild(svgEl('rect', { x: medalX - 11, y: crucifixY + 6, width: '22', height: '6', rx: '1.5', fill: 'var(--accent)' }));
+            // Crucifix
+            var cg = svgEl('g', { id: 'rb-crucifix', class: 'r-bead', 'data-bead-id': 'crucifix' });
+            var ct = svgEl('title', {});
+            ct.textContent = 'Crucifix — Sign of the Cross & Apostles’ Creed';
+            cg.appendChild(ct);
+            cg.appendChild(svgEl('rect', { x: medalX - 22, y: crucifixY - 4, width: 44, height: 52, class: 'r-hit' }));
+            cg.appendChild(svgEl('rect', { x: medalX - 20, y: crucifixY - 4, width: 40, height: 50, rx: 10, fill: 'none', stroke: '#e8c869', 'stroke-width': '2.5', class: 'r-glow' }));
+            var cb = svgEl('g', { class: 'r-body' });
+            cb.appendChild(svgEl('rect', { x: medalX - 4, y: crucifixY, width: 8, height: 42, rx: 2, class: 'r-core r-core-small' }));
+            cb.appendChild(svgEl('rect', { x: medalX - 14, y: crucifixY + 10, width: 28, height: 7.5, rx: 2, class: 'r-core r-core-small' }));
+            cg.appendChild(cb);
             cg.addEventListener('click', function () { irBeadClick('crucifix'); });
             svg.appendChild(cg);
 
-            svg.setAttribute('viewBox', '0 0 420 ' + (crucifixY + 32));
+            svg.setAttribute('viewBox', '0 0 ' + W + ' ' + (crucifixY + 50));
         }
+
+        var irReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         function irBeadClick(beadId) {
             var idx = irStates.findIndex(function (s) { return s.beadId === beadId; });
             if (idx !== -1) { irState = idx; updateIRDisplay(); }
         }
         function rosaryNext() {
-            if (irState < irStates.length - 1) { irState++; updateIRDisplay(); }
+            if (irState < irStates.length - 1) { irState++; updateIRDisplay(); irKeepBeadVisible(); }
         }
-        function rosaryReset() { irState = 0; updateIRDisplay(); }
+        function rosaryPrev() {
+            if (irState > 0) { irState--; updateIRDisplay(); irKeepBeadVisible(); }
+        }
+        function rosaryReset() { irState = 0; updateIRDisplay(); irKeepBeadVisible(); }
         function setRosaryMystery(mystery, btn) {
             irMystery = mystery;
             irState = 0;
-            document.querySelectorAll('.ir-mystery-btn').forEach(function (b) { b.classList.remove('ir-active'); });
-            btn.classList.add('ir-active');
+            document.querySelectorAll('.ir-mystery-btn').forEach(function (b) {
+                var on = b === btn;
+                b.classList.toggle('ir-active', on);
+                b.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
             irStates = buildIRStates(irMystery);
             updateIRDisplay();
         }
         function setIRLang(lang, btn) {
             irLang = lang;
-            document.querySelectorAll('.pill-toggle button').forEach(function (b) {
-                if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf('setIRLang') !== -1) {
-                    b.classList.remove('active');
-                }
+            btn.parentElement.querySelectorAll('button').forEach(function (b) {
+                var on = b === btn;
+                b.classList.toggle('active', on);
+                b.setAttribute('aria-pressed', on ? 'true' : 'false');
             });
-            btn.classList.add('active');
             updateIRDisplay();
         }
+
+        // On small screens the prayer panel is pinned over the bottom of the rosary.
+        // When Next/Back moves to a bead hidden behind it (or above the header), scroll it into view.
+        function irKeepBeadVisible() {
+            if (window.innerWidth >= 1024 || !document.body.classList.contains('ir-in-view')) return;
+            var s = irStates[irState];
+            var id = s && (s.beadId || s.hl);
+            var bead = id && document.getElementById('rb-' + id);
+            if (!bead) return;
+            var header = document.getElementById('mainHeader');
+            var panel = document.querySelector('.ir-panel');
+            var top = (header ? header.offsetHeight : 0) + 12; // the site header is sticky at the top
+            var bottom = panel.getBoundingClientRect().top - 12;
+            var r = bead.getBoundingClientRect();
+            if (r.top >= top && r.bottom <= bottom) return;
+            var delta = (r.top + r.height / 2) - (top + bottom) / 2;
+            window.scrollBy({ top: delta, behavior: irReducedMotion ? 'auto' : 'smooth' });
+        }
+
         function updateIRDisplay() {
             var s = irStates[irState];
             if (!s) return;
@@ -3084,28 +3429,60 @@
                 }
             }
 
-            document.getElementById('ir-mystery-label').textContent = s.mysteryName || s.label || ' ';
+            var total = irStates.length;
+            document.getElementById('ir-mystery-label').textContent = s.label || s.mysteryName || ' ';
             document.getElementById('ir-prayer-name').textContent = prayerName;
             document.getElementById('ir-prayer-text').innerHTML = prayerHtml;
-            document.getElementById('ir-progress').textContent = 'Step ' + (irState + 1) + ' of ' + irStates.length;
-            document.getElementById('ir-next-btn').disabled = (irState >= irStates.length - 1);
+            var display = document.getElementById('ir-prayer-display');
+            display.scrollTop = 0;
+            irUpdateOverflowHint();
+            document.getElementById('ir-progress').textContent = 'Step ' + (irState + 1) + ' of ' + total;
+            document.getElementById('ir-progress-fill').style.width = ((irState + 1) / total * 100) + '%';
+            document.getElementById('ir-next-btn').disabled = (irState >= total - 1);
+            document.getElementById('ir-prev-btn').disabled = (irState === 0);
 
-            document.querySelectorAll('#rosary-svg .r-bead').forEach(function (g) {
-                var glow = g.querySelector('.r-glow');
-                if (glow) glow.setAttribute('opacity', '0');
-            });
-            if (s.beadId) {
-                var active = document.getElementById('rb-' + s.beadId);
-                if (active) {
-                    var glow = active.querySelector('.r-glow');
-                    if (glow) glow.setAttribute('opacity', '1');
-                }
+            // Beads already prayed are dimmed; the current bead glows.
+            var done = {};
+            for (var i = 0; i < irState; i++) {
+                var id = irStates[i].beadId || irStates[i].hl;
+                if (id) done[id] = true;
             }
+            var activeId = s.beadId || s.hl;
+            document.querySelectorAll('#rosary-svg .r-bead').forEach(function (g) {
+                var bid = g.getAttribute('data-bead-id');
+                g.classList.toggle('r-active', bid === activeId);
+                g.classList.toggle('r-done', bid !== activeId && !!done[bid]);
+            });
         }
 
-        irStates = buildIRStates(irMystery);
-        renderIRSvg();
-        updateIRDisplay();
+        function irUpdateOverflowHint() {
+            var el = document.getElementById('ir-prayer-display');
+            el.classList.toggle('ir-more', el.scrollTop + el.clientHeight < el.scrollHeight - 4);
+        }
+        document.getElementById('ir-prayer-display').addEventListener('scroll', irUpdateOverflowHint, { passive: true });
+        window.addEventListener('resize', irUpdateOverflowHint);
+
+        // Keyboard: left/right arrows step through the prayers while focus is inside the rosary card
+        document.getElementById('ir-card').addEventListener('keydown', function (e) {
+            if (e.altKey || e.ctrlKey || e.metaKey) return;
+            if (e.key === 'ArrowRight') { e.preventDefault(); rosaryNext(); }
+            else if (e.key === 'ArrowLeft') { e.preventDefault(); rosaryPrev(); }
+        });
+
+        // Track whether the rosary card is on screen (hides the floating back-to-top button on mobile)
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+                document.body.classList.toggle('ir-in-view', entries[0].isIntersecting);
+            }).observe(document.getElementById('ir-card'));
+        }
+
+        // Default to the mysteries traditionally prayed today
+        (function () {
+            var byDay = ['glorious', 'joyful', 'sorrowful', 'glorious', 'luminous', 'sorrowful', 'joyful'];
+            renderIRSvg();
+            var today = byDay[new Date().getDay()];
+            setRosaryMystery(today, document.querySelector('.ir-mystery-btn[data-mystery="' + today + '"]'));
+        })();
     </script>
 </body>
 
